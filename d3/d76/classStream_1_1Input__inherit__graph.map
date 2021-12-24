@@ -1,0 +1,12 @@
+<map id="Stream::Input" name="Stream::Input">
+<area shape="rect" id="node1" title="Input stream base class." alt="" coords="374,5,775,141"/>
+<area shape="rect" id="node2" href="$d5/d93/classStream_1_1FileInput.html" title="IO::File Input stream." alt="" coords="5,189,328,340"/>
+<area shape="rect" id="node4" href="$d3/d2f/classStream_1_1InputFilter.html" title="Input stream filter base class." alt="" coords="363,226,519,303"/>
+<area shape="rect" id="node7" href="$df/d21/classStream_1_1PipeInput.html" title="IO::Pipe Input stream." alt="" coords="543,204,875,325"/>
+<area shape="rect" id="node9" href="$dc/d10/classStream_1_1SocketInput.html" title="IO::Socket Input stream." alt="" coords="900,204,1263,325"/>
+<area shape="rect" id="node3" href="$df/d21/classStream_1_1File.html" title="IO::File Input and Output stream." alt="" coords="108,439,201,517"/>
+<area shape="rect" id="node5" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="226,388,657,568"/>
+<area shape="rect" id="node6" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="135,616,748,737"/>
+<area shape="rect" id="node8" href="$d3/de2/classStream_1_1Pipe.html" title="IO::Pipe Input / Output stream." alt="" coords="681,439,780,517"/>
+<area shape="rect" id="node10" href="$d1/db1/classStream_1_1Socket.html" title="IO::Socket Input and Output stream." alt="" coords="1025,439,1138,517"/>
+</map>
