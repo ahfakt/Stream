@@ -52,84 +52,6 @@ public:
 	readSome(void* dest, std::size_t size);
 };//class Input
 
-/**
- * @brief	Deserializable concept
- * @tparam	T
- * @tparam	InType Derived Input stream type
- * @details	Requires T has an <b>InType& operator>>(InType&, T&)</b> overload
- */
-template <typename T, typename InType = Input>
-concept Deserializable = std::is_base_of_v<Input, InType> && requires(InType& is, T& t)
-{{ is >> t } -> std::same_as<InType&>; };
-
-/**
- * @brief	Constructible concept
- * @tparam	T
- * @tparam	InType Derived Input stream type
- * @tparam	Args Optional additional parameter types to be used to construct T
- * @details	Requires T has a <b>T(InType&, Args ...)</b> constructor
- */
-template <typename T, typename InType, typename ... Args>
-concept Constructible = std::is_base_of_v<Input, InType> && std::constructible_from<T, InType&, Args ...>;
-
-/**
- * @brief	ConstructibleDeserializable concept
- * @tparam	T
- * @tparam	InType Derived Input stream type
- * @tparam	Args Optional parameter types to be used to construct T
- * @details	Requires T has a <b>T(Args ...)</b> constructor and <b>InType& operator>>(InType&, T&)</b> overload
- */
-template <typename T, typename InType, typename ... Args>
-concept ConstructibleDeserializable = std::constructible_from<T, Args ...> && Deserializable<T, InType>;
-
-/**
- * @brief	TrivialDeserializable concept
- * @tparam	T
- * @tparam	InType Derived Input stream type
- * @details	Requires T has a trivial default constructor and <b>InType& operator>>(InType&, T&)</b> overload
- */
-template <typename T, typename InType>
-concept TrivialDeserializable = std::is_trivially_default_constructible_v<T> && Deserializable<T, InType>;
-
-/**
- * @brief	Extractable concept
- * @tparam	T
- * @tparam	Args Optional parameter types to be used to construct T
- * @details	Requires T has either trivial default constructor or a <b>T(Args ...)</b> constructor
- * 			and <b>InType& operator>>(InType&, T&)</b> overload
- */
-template <typename T, typename ... Args>
-concept Extractable = Deserializable<T> && (std::is_trivially_default_constructible_v<T> || std::constructible_from<T, Args ...>);
-
-template <typename T>
-concept InType = std::is_base_of_v<Input, T>;
-
-template <typename T, typename ... Args>
-T
-Get(InType auto& input, Args&& ... args)
-requires Constructible<T, std::remove_reference_t<decltype(input)>, Args ...>
-{ return T(input, std::forward<Args>(args) ...); }
-
-template <typename T, typename ... Args>
-T
-Get(InType auto& input, Args&& ... args)
-requires ConstructibleDeserializable<T, std::remove_reference_t<decltype(input)>, Args ...>
-{
-	T t(std::forward<Args>(args) ...);
-	input >> t;
-	return t;
-}
-
-template <typename T>
-T
-Get(InType auto& input)
-requires TrivialDeserializable<T, std::remove_reference_t<decltype(input)>>
-{
-	T t;
-	input >> t;
-	return t;
-}
-
 template <typename T>
 Input&
 operator>>(Input& input, T& t)
@@ -202,10 +124,6 @@ operator<<(Output& output, std::string const& str);
 Output&
 operator<<(Output& output, char const* str);
 
-template <typename T, typename OutType = Output>
-concept Serializable = std::is_base_of_v<Output, OutType> && requires(OutType& os, T const& t)
-{{ os << t } -> std::same_as<OutType&>; };
-
 /**
  * @brief	Input stream filter base class
  * @class	InputFilter InOut.h "Stream/InOut.h"
@@ -249,19 +167,100 @@ public:
 };//class OutputFilter
 
 template <typename T>
-concept InFilterType = std::is_base_of_v<InputFilter, T>;
+concept InType = std::is_base_of_v<Input, T>;
 
 template <typename T>
 concept OutType = std::is_base_of_v<Output, T>;
 
 template <typename T>
-concept OutFilterType = std::is_base_of_v<OutputFilter, T>;
-
-template <typename T>
 concept InOutType = InType<T> && OutType<T>;
 
 template <typename T>
+concept InFilterType = std::is_base_of_v<InputFilter, T>;
+
+template <typename T>
+concept OutFilterType = std::is_base_of_v<OutputFilter, T>;
+
+template <typename T>
 concept InOutFilterType = InFilterType<T> && OutFilterType<T>;
+
+/**
+ * @brief	Deserializable concept
+ * @tparam	T
+ * @tparam	InputType Derived Input stream type
+ * @details	Requires T has an <b>InputType& operator>>(InputType&, T&)</b> overload
+ */
+template <typename T, typename InputType>
+concept Deserializable = InType<InputType> && requires(InputType& is, T& t)
+{{ is >> t } -> std::same_as<InputType&>; };
+
+template <typename T, typename InputRef>
+concept DeserializableR = Deserializable<T, std::remove_reference_t<InputRef>>;
+
+/**
+ * @brief	Serializable concept
+ * @tparam	T
+ * @tparam	OutputType Derived Output stream type
+ * @details	Requires T has an <b>OutputType& operator<<(OutputType&, T const&)</b> overload
+ */
+template <typename T, typename OutputType>
+concept Serializable = OutType<OutputType> && requires(OutputType& os, T const& t)
+{{ os << t } -> std::same_as<OutputType&>; };
+
+template <typename T, typename OutputRef>
+concept SerializableR = Serializable<T, std::remove_reference_t<OutputRef>>;
+
+/**
+ * @brief	Constructible concept
+ * @tparam	T
+ * @tparam	InputType Derived Input stream type
+ * @tparam	Args Optional additional parameter types to be used to construct T
+ * @details	Requires T has a <b>T(InputType&, Args ...)</b> constructor
+ */
+template <typename T, typename InputType, typename ... Args>
+concept Constructible = InType<InputType> && std::constructible_from<T, InputType&, Args ...>;
+
+template <typename T, typename InputRef, typename ... Args>
+concept ConstructibleR = Constructible<T, std::remove_reference_t<InputRef>, Args ...>;
+
+/**
+ * @brief	Extractable concept
+ * @tparam	T
+ * @tparam	Args Optional parameter types to be used to construct T
+ * @details	Requires T has either trivial default constructor or a <b>T(Args ...)</b> constructor
+ * 			and <b>InType& operator>>(InType&, T&)</b> overload
+ */
+template <typename T, typename InputType, typename ... Args>
+concept Extractable = Deserializable<T, InputType> && (std::is_trivially_default_constructible_v<T> || std::constructible_from<T, Args ...>);
+
+template <typename T, typename InputRef, typename ... Args>
+concept ExtractableR = DeserializableR<T, InputRef> && (std::is_trivially_default_constructible_v<T> || std::constructible_from<T, Args ...>);
+
+template <typename T, typename ... Args>
+T
+Get(InType auto& input, Args&& ... args)
+requires std::constructible_from<T, decltype(input), Args ...>
+{ return T(input, std::forward<Args>(args) ...); }
+
+template <typename T, typename ... Args>
+T
+Get(InType auto& input, Args&& ... args)
+requires std::constructible_from<T, Args ...> && DeserializableR<T, decltype(input)>
+{
+	T t(std::forward<Args>(args) ...);
+	input >> t;
+	return t;
+}
+
+template <typename T>
+T
+Get(InType auto& input)
+requires std::is_trivially_default_constructible_v<T> && DeserializableR<T, decltype(input)>
+{
+	T t;
+	input >> t;
+	return t;
+}
 
 auto&
 operator<=>(InOutType auto& inOut, InOutFilterType auto& inOutFilter) noexcept
