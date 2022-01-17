@@ -31,10 +31,6 @@ std::size_t
 Input::Exception::getUnreadSize() const noexcept
 { return mSize; }
 
-std::size_t
-Output::writeBytes(std::byte const* src, std::size_t size)
-{ return size; }
-
 void
 Output::flush()
 {}
@@ -139,10 +135,6 @@ operator>>(Input& input, std::string& str)
 	return input;
 }
 
-Output&
-operator<<(Output& output, std::string const& str)
-{ return output.write(str.c_str(), str.size() + 1); }
-
 Input&
 operator>>(Input& input, char* str)
 {
@@ -151,6 +143,10 @@ operator>>(Input& input, char* str)
 	} while(*str++);
 	return input;
 }
+
+Output&
+operator<<(Output& output, std::string const& str)
+{ return output.write(str.c_str(), str.size() + 1); }
 
 Output&
 operator<<(Output& output, char const* str)

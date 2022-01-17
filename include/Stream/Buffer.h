@@ -103,6 +103,7 @@ public:
 			BadAllocation = 1
 		};
 	};//struct Exception
+
 	explicit Buffer(std::size_t inBuffInitialSize = 0, std::size_t outBuffInitialSize = 0);
 
 	Buffer(std::size_t inBuffInitialSize, void* sinkBuff, std::size_t sinkSize);

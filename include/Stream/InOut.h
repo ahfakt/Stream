@@ -69,10 +69,11 @@ operator>>(Input& input, char* str);
  * @class	Output InOut.h "Stream/InOut.h"
  */
 class Output {
-	friend class OutputFilter;
 protected:
+	Output() noexcept = default;
+
 	virtual std::size_t
-	writeBytes(std::byte const* src, std::size_t size);
+	writeBytes(std::byte const* src, std::size_t size) = 0;
 
 	virtual void
 	flush();
@@ -97,8 +98,6 @@ public:
 		void const* mSrc;
 		std::size_t mSize;
 	};//struct Exception
-
-	Output() noexcept = default;
 
 	Output(Output const&) = delete;
 
