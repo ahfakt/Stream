@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 		<meta name="generator" content="Doxygen 1.9.2"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Stream: Stream::Constructible Concept Reference</title>
+		<title>Stream: Stream::Serializable Concept Reference</title>
 		<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="../../jquery.js"></script>
 		<script type="text/javascript" src="../../dynsections.js"></script>
@@ -64,35 +64,35 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Stream</b></li><li class="navelem"><a class="el" href="../../db/d8f/conceptStream_1_1Constructible.html">Constructible</a></li>  </ul>
+<li class="navelem"><b>Stream</b></li><li class="navelem"><a class="el" href="../../de/d51/conceptStream_1_1Serializable.html">Serializable</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">Stream::Constructible Concept Reference</div></div>
+  <div class="headertitle"><div class="title">Stream::Serializable Concept Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Constructible concept.  
-<a href="../../db/d8f/conceptStream_1_1Constructible.html#details">More...</a></p>
+<p>Serializable concept.  
+<a href="../../de/d51/conceptStream_1_1Serializable.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d4/d34/InOut_8h_source.html">InOut.h</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
-<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> InputType, <span class="keyword">typename</span> ... Args&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../db/d8f/conceptStream_1_1Constructible.html">Stream::Constructible</a> =  InType&lt;InputType&gt; &amp;&amp; std::constructible_from&lt;T, InputType&amp;, Args ...&gt;</div>
-<div class="ttc" id="aconceptStream_1_1Constructible_html"><div class="ttname"><a href="../../db/d8f/conceptStream_1_1Constructible.html">Stream::Constructible</a></div><div class="ttdoc">Constructible concept.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d34/InOut_8h_source.html#l00220">InOut.h:220</a></div></div>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> OutputType&gt;</div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../de/d51/conceptStream_1_1Serializable.html">Stream::Serializable</a> =  OutType&lt;OutputType&gt; &amp;&amp; <span class="keyword">requires</span>(OutputType&amp; os, T <span class="keyword">const</span>&amp; t)</div>
+<div class="line">{{ os &lt;&lt; t } -&gt; std::same_as&lt;OutputType&amp;&gt;; }</div>
+<div class="ttc" id="aconceptStream_1_1Serializable_html"><div class="ttname"><a href="../../de/d51/conceptStream_1_1Serializable.html">Stream::Serializable</a></div><div class="ttdoc">Serializable concept.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d34/InOut_8h_source.html#l00206">InOut.h:206</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Constructible concept. </p>
+<div class="textblock"><p >Serializable concept. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td></td></tr>
-    <tr><td class="paramname">InputType</td><td>Derived Input stream type </td></tr>
-    <tr><td class="paramname">Args</td><td>Optional additional parameter types to be used to construct T</td></tr>
+    <tr><td class="paramname">OutputType</td><td>Derived Output stream type</td></tr>
   </table>
   </dd>
 </dl>
-<p>Requires T has a <b>T(InputType&amp;, Args ...)</b> constructor </p>
+<p>Requires T has an <b>OutputType&amp; operator&lt;&lt;(OutputType&amp;, T const&amp;)</b> overload </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d34/InOut_8h_source.html#l00220">220</a> of file <a class="el" href="../../d4/d34/InOut_8h_source.html">InOut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d34/InOut_8h_source.html#l00206">206</a> of file <a class="el" href="../../d4/d34/InOut_8h_source.html">InOut.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 		<script src="../../custom.js"></script>
