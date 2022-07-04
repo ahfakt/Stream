@@ -33,6 +33,14 @@ Output::operator<<(std::nullptr_t)
 	return *this;
 }
 
+Output&
+Output::operator<<(std::string const& str)
+{ return write(str.c_str(), str.size() + 1); }
+
+Output&
+Output::operator<<(char const* str)
+{ return write(str, std::strlen(str) + 1); }
+
 void const*
 Output::Exception::getUnwrittenBuffer() const noexcept
 { return mSrc; }
@@ -51,6 +59,24 @@ swap(OutputFilter& a, OutputFilter& b) noexcept
 std::size_t
 OutputFilter::writeBytes(std::byte const* src, std::size_t size)
 { return mSink->writeSome(src, size); }
+
+OutputFilter&
+operator<<(Output& output, OutputFilter& outputFilter) noexcept
+{
+	outputFilter.mSink = &output;
+	return outputFilter;
+}
+
+OutputFilter&
+operator<<(std::nullptr_t, OutputFilter& outputFilter) noexcept
+{
+	static class : public Output {
+		std::size_t
+		writeBytes(std::byte const* src, std::size_t size) override
+		{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	} nullOutput;
+	return nullOutput << outputFilter;
+}
 
 std::error_code
 make_error_code(Output::Exception::Code e) noexcept

@@ -22,6 +22,28 @@ Input::readSome(void* dest, std::size_t size)
 	return outl;
 }
 
+Input&
+Input::operator>>(std::string& str)
+{
+	str.clear();
+	char c;
+	read(&c, 1);
+	while (c) {
+		str.push_back(c);
+		read(&c, 1);
+	}
+	return *this;
+}
+
+Input&
+Input::operator>>(char* str)
+{
+	do {
+		read(str, 1);
+	} while(*str++);
+	return *this;
+}
+
 void*
 Input::Exception::getUnreadBuffer() const noexcept
 { return mDest; }
@@ -40,6 +62,24 @@ swap(InputFilter& a, InputFilter& b) noexcept
 std::size_t
 InputFilter::readBytes(std::byte* dest, std::size_t size)
 { return mSource->readSome(dest, size); }
+
+InputFilter&
+operator>>(Input& input, InputFilter& inputFilter) noexcept
+{
+	inputFilter.mSource = &input;
+	return inputFilter;
+}
+
+InputFilter&
+operator>>(std::nullptr_t, InputFilter& inputFilter) noexcept
+{
+	static class : public Input {
+		std::size_t
+		readBytes(std::byte* dest, std::size_t size) override
+		{ throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA))); }
+	} nullInput;
+	return nullInput >> inputFilter;
+}
 
 std::error_code
 make_error_code(Input::Exception::Code e) noexcept

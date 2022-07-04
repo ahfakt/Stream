@@ -45,15 +45,17 @@ public:
 
 	std::size_t
 	readSome(void* dest, std::size_t size);
+
+	Input&
+	operator>>(std::string& str);
+
+	Input&
+	operator>>(char* str);
+
+	Input&
+	operator>>(auto& t)
+	requires std::is_trivially_copyable_v<std::remove_cvref_t<decltype(t)>>;
 };//class Input
-
-template <typename T>
-concept In = std::is_base_of_v<Input, T>;
-
-class InputFilter;
-
-template <typename T>
-concept InFilter = std::is_base_of_v<InputFilter, T>;
 
 /**
  * @brief	Input stream filter base class
@@ -72,21 +74,17 @@ public:
 	friend void
 	swap(InputFilter& a, InputFilter& b) noexcept;
 
-	friend auto&
-	operator>>(In auto& in, InFilter auto& inFilter) noexcept;
+	friend InputFilter&
+	operator>>(Input& input, InputFilter& inputFilter) noexcept;
+
+	friend InputFilter&
+	operator>>(std::nullptr_t, InputFilter& inputFilter) noexcept;
 };//class InputFilter
 
 std::error_code
 make_error_code(Input::Exception::Code e) noexcept;
 
 }//namespace Stream
-
-namespace std {
-
-template <>
-struct is_error_code_enum<Stream::Input::Exception::Code> : true_type {};
-
-}//namespace std
 
 #include "../src/Input.hpp"
 

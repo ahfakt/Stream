@@ -51,15 +51,17 @@ public:
 
 	Output&
 	operator<<(std::nullptr_t);
+
+	Output&
+	operator<<(std::string const& str);
+
+	Output&
+	operator<<(char const* str);
+
+	Output&
+	operator<<(auto const& t)
+	requires std::is_trivially_copyable_v<std::remove_cvref_t<decltype(t)>>;
 };//class Output
-
-template <typename T>
-concept Out = std::is_base_of_v<Output, T>;
-
-class OutputFilter;
-
-template <typename T>
-concept OutFilter = std::is_base_of_v<OutputFilter, T>;
 
 /**
  * @brief	Output stream filter base class
@@ -78,21 +80,17 @@ public:
 	friend void
 	swap(OutputFilter& a, OutputFilter& b) noexcept;
 
-	friend auto&
-	operator<<(Out auto& out, OutFilter auto& outFilter) noexcept;
+	friend OutputFilter&
+	operator<<(Output& output, OutputFilter& outputFilter) noexcept;
+
+	friend OutputFilter&
+	operator<<(std::nullptr_t, OutputFilter& outputFilter) noexcept;
 };//class OutputFilter
 
 std::error_code
 make_error_code(Output::Exception::Code e) noexcept;
 
 }//namespace Stream
-
-namespace std {
-
-template <>
-struct is_error_code_enum<Stream::Output::Exception::Code> : true_type {};
-
-}//namespace std
 
 #include "../src/Output.hpp"
 
