@@ -38,7 +38,7 @@ concept Deserializable = In<std::remove_cvref_t<InputRef>> && requires(InputRef 
  * @details	Requires T has a <b>T(InputRef&, Args ...)</b> constructor
  */
 template <typename T, typename InputRef, typename ... Args>
-concept Constructible = In<InputRef> && std::constructible_from<T, InputRef, Args ...>;
+concept Constructible = In<std::remove_cvref_t<InputRef>> && std::constructible_from<T, InputRef, Args ...>;
 
 /**
  * @brief	Extractable concept
@@ -47,8 +47,8 @@ concept Constructible = In<InputRef> && std::constructible_from<T, InputRef, Arg
  * @details	Requires T has either trivial default constructor or a <b>T(Args ...)</b> constructor
  * 			and <b>In& operator>>(In&, T&)</b> overload
  */
-template <typename T, typename InputRef, typename ... Args>
-concept Extractable = Deserializable<T, InputRef> && (std::is_trivially_default_constructible_v<T> || std::constructible_from<T, Args ...>);
+template <typename T, typename InputType, typename ... Args>
+concept Extractable = Deserializable<T, InputType> && (std::is_trivially_default_constructible_v<T> || std::constructible_from<T, Args ...>);
 
 template <typename T, typename ... Args>
 T
