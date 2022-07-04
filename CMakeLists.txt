@@ -13,12 +13,18 @@ set(INC_LIST
 		${INC_ROOT}/${PROJECT_NAME}/Buffer.h
 		${INC_ROOT}/${PROJECT_NAME}/File.h
 		${INC_ROOT}/${PROJECT_NAME}/InOut.h
+		${INC_ROOT}/${PROJECT_NAME}/Input.h
+		${INC_ROOT}/${PROJECT_NAME}/Output.h
 		${INC_ROOT}/${PROJECT_NAME}/Pipe.h
 		${INC_ROOT}/${PROJECT_NAME}/Socket.h)
 set(SRC_LIST
 		${SRC_ROOT}/Buffer.cpp
 		${SRC_ROOT}/File.cpp
-		${SRC_ROOT}/InOut.cpp
+		${SRC_ROOT}/InOut.hpp
+		${SRC_ROOT}/Input.cpp
+		${SRC_ROOT}/Input.hpp
+		${SRC_ROOT}/Output.cpp
+		${SRC_ROOT}/Output.hpp
 		${SRC_ROOT}/Pipe.cpp
 		${SRC_ROOT}/Socket.cpp)
 

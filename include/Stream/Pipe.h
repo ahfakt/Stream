@@ -82,16 +82,16 @@ void
 swap(Pipe& a, Pipe& b) noexcept;
 
 template <typename T>
-concept PipeInType = std::is_base_of_v<PipeInput, T>;
+concept PipeIn = std::is_base_of_v<PipeInput, T>;
 
 template <typename T>
-concept PipeOutType = std::is_base_of_v<PipeOutput, T>;
+concept PipeOut = std::is_base_of_v<PipeOutput, T>;
 
 template <typename T>
-concept PipeInOutType = PipeInType<T> && PipeOutType<T>;
+concept PipeInOut = PipeIn<T> && PipeOut<T>;
 
 auto&
-operator<=>(IO::Pipe& pipe, PipeInOutType auto& pipeInOut) noexcept
+operator<=>(IO::Pipe& pipe, PipeInOut auto& pipeInOut) noexcept
 {
 	pipe >> pipeInOut;
 	pipe << pipeInOut;
@@ -99,7 +99,7 @@ operator<=>(IO::Pipe& pipe, PipeInOutType auto& pipeInOut) noexcept
 }
 
 auto&
-operator<=>(std::nullptr_t, PipeInOutType auto& pipeInOut) noexcept
+operator<=>(std::nullptr_t, PipeInOut auto& pipeInOut) noexcept
 {
 	nullptr >> pipeInOut;
 	nullptr << pipeInOut;

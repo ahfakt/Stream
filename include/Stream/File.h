@@ -102,16 +102,16 @@ void
 swap(File& a, File& b) noexcept;
 
 template <typename T>
-concept FileInType = std::is_base_of_v<FileInput, T>;
+concept FileIn = std::is_base_of_v<FileInput, T>;
 
 template <typename T>
-concept FileOutType = std::is_base_of_v<FileOutput, T>;
+concept FileOut = std::is_base_of_v<FileOutput, T>;
 
 template <typename T>
-concept FileInOutType = FileInType<T> && FileOutType<T>;
+concept FileInOut = FileIn<T> && FileOut<T>;
 
 auto&
-operator<=>(IO::File& file, FileInOutType auto& fileInOut) noexcept
+operator<=>(IO::File& file, FileInOut auto& fileInOut) noexcept
 {
 	file >> fileInOut;
 	file << fileInOut;
@@ -119,7 +119,7 @@ operator<=>(IO::File& file, FileInOutType auto& fileInOut) noexcept
 }
 
 auto&
-operator<=>(std::nullptr_t, FileInOutType auto& fileInOut) noexcept
+operator<=>(std::nullptr_t, FileInOut auto& fileInOut) noexcept
 {
 	nullptr >> fileInOut;
 	nullptr << fileInOut;

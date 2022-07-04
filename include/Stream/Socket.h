@@ -82,16 +82,16 @@ void
 swap(Socket& a, Socket& b) noexcept;
 
 template <typename T>
-concept SocketInType = std::is_base_of_v<SocketInput, T>;
+concept SocketIn = std::is_base_of_v<SocketInput, T>;
 
 template <typename T>
-concept SocketOutType = std::is_base_of_v<SocketOutput, T>;
+concept SocketOut = std::is_base_of_v<SocketOutput, T>;
 
 template <typename T>
-concept SocketInOutType = SocketInType<T> && SocketOutType<T>;
+concept SocketInOut = SocketIn<T> && SocketOut<T>;
 
 auto&
-operator<=>(IO::Socket& socket, SocketInOutType auto& socketInOut) noexcept
+operator<=>(IO::Socket& socket, SocketInOut auto& socketInOut) noexcept
 {
 	socket >> socketInOut;
 	socket << socketInOut;
@@ -99,7 +99,7 @@ operator<=>(IO::Socket& socket, SocketInOutType auto& socketInOut) noexcept
 }
 
 auto&
-operator<=>(std::nullptr_t, SocketInOutType auto& socketInOut) noexcept
+operator<=>(std::nullptr_t, SocketInOut auto& socketInOut) noexcept
 {
 	nullptr >> socketInOut;
 	nullptr << socketInOut;

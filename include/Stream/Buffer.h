@@ -90,6 +90,9 @@ public:
 
 	std::size_t
 	provideSpace(std::size_t min);
+
+	void
+	resetPut() noexcept;
 };//class BufferOutput
 
 /**

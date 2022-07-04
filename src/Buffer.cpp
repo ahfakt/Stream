@@ -5,7 +5,7 @@
 namespace Stream {
 
 BufferInput::BufferInput(std::size_t buffInitialSize)
-		: mBuff(new std::byte[buffInitialSize])
+		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
 		, mEnd(mBuff.get())
 		, mBuffSize(buffInitialSize)
 		, mGet(mBuff.get())
@@ -68,7 +68,7 @@ BufferInput::provideData(std::size_t max)
 		return mEnd - mGet;
 
 	if (max > mBuffSize) {
-		if (auto* ptr = new(std::nothrow_t{}) std::byte[max]) {
+		if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))) {
 			mBuff.reset(ptr);
 			mBuffSize = max;
 			mGet = mEnd = mBuff.get();
@@ -82,7 +82,7 @@ BufferInput::provideData(std::size_t max)
 }
 
 BufferOutput::BufferOutput(std::size_t buffInitialSize)
-		: mBuff(new std::byte[buffInitialSize])
+		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
 		, mBeg(mBuff.get())
 		, mEnd(mBeg + buffInitialSize)
 		, mBuffSize(buffInitialSize)
@@ -170,7 +170,7 @@ BufferOutput::provideSpace(std::size_t min)
 	BufferOutput::flush();
 
 	if (min > mBuffSize) {
-		if (auto* ptr = new(std::nothrow_t{}) std::byte[min]) {
+		if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t{}))) {
 			mBuff.reset(ptr);
 			mBeg = mBuff.get();
 			mPut = mBuff.get();
@@ -180,6 +180,10 @@ BufferOutput::provideSpace(std::size_t min)
 	}
 	return mBuffSize;
 }
+
+void
+BufferOutput::resetPut() noexcept
+{ mPut = const_cast<std::byte*>(mBeg); }
 
 Buffer::Buffer(std::size_t inBuffInitialSize, std::size_t outBuffInitialSize)
 		: BufferInput(inBuffInitialSize)
@@ -217,8 +221,8 @@ make_error_code(Buffer::Exception::Code e) noexcept
 		{ return "Stream::Buffer"; }
 
 		[[nodiscard]] std::string
-		message(int ev) const noexcept override
-		{ return ev == 1 ? "Bad Allocation" : "Unknown Error"; }
+		message(int e) const noexcept override
+		{ return e == 1 ? "Bad Allocation" : "Unknown Error"; }
 	} instance;
 	return {static_cast<int>(e), instance};
 }
