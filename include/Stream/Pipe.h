@@ -2,7 +2,7 @@
 #define STREAM_PIPE_H
 
 #include "InOut.h"
-#include "IO/Pipe.h"
+#include <IO/Pipe.h>
 
 namespace Stream {
 
@@ -82,13 +82,7 @@ void
 swap(Pipe& a, Pipe& b) noexcept;
 
 template <typename T>
-concept PipeIn = std::is_base_of_v<PipeInput, T>;
-
-template <typename T>
-concept PipeOut = std::is_base_of_v<PipeOutput, T>;
-
-template <typename T>
-concept PipeInOut = PipeIn<T> && PipeOut<T>;
+concept PipeInOut = std::derived_from<T, PipeInput> && std::derived_from<T, PipeOutput>;
 
 auto&
 operator<=>(IO::Pipe& pipe, PipeInOut auto& pipeInOut) noexcept

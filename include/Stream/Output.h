@@ -60,7 +60,7 @@ public:
 
 	Output&
 	operator<<(auto const& t)
-	requires std::is_trivially_copyable_v<std::remove_cvref_t<decltype(t)>>;
+	requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>;
 };//class Output
 
 /**
@@ -92,6 +92,6 @@ make_error_code(Output::Exception::Code e) noexcept;
 
 }//namespace Stream
 
-#include "../src/Output.hpp"
+#include "../../src/Output.hpp"
 
 #endif //STREAM_OUTPUT_H

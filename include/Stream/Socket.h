@@ -2,7 +2,7 @@
 #define STREAM_SOCKET_H
 
 #include "InOut.h"
-#include "IO/Socket.h"
+#include <IO/Socket.h>
 
 namespace Stream {
 
@@ -82,13 +82,7 @@ void
 swap(Socket& a, Socket& b) noexcept;
 
 template <typename T>
-concept SocketIn = std::is_base_of_v<SocketInput, T>;
-
-template <typename T>
-concept SocketOut = std::is_base_of_v<SocketOutput, T>;
-
-template <typename T>
-concept SocketInOut = SocketIn<T> && SocketOut<T>;
+concept SocketInOut = std::derived_from<T, SocketInput> && std::derived_from<T, SocketOutput>;
 
 auto&
 operator<=>(IO::Socket& socket, SocketInOut auto& socketInOut) noexcept

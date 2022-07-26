@@ -2,7 +2,7 @@
 #define STREAM_FILE_H
 
 #include "InOut.h"
-#include "IO/File.h"
+#include <IO/File.h>
 
 namespace Stream {
 
@@ -102,13 +102,7 @@ void
 swap(File& a, File& b) noexcept;
 
 template <typename T>
-concept FileIn = std::is_base_of_v<FileInput, T>;
-
-template <typename T>
-concept FileOut = std::is_base_of_v<FileOutput, T>;
-
-template <typename T>
-concept FileInOut = FileIn<T> && FileOut<T>;
+concept FileInOut = std::derived_from<T, FileInput> && std::derived_from<T, FileOutput>;
 
 auto&
 operator<=>(IO::File& file, FileInOut auto& fileInOut) noexcept

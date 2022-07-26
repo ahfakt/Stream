@@ -4,10 +4,10 @@
 namespace Stream {
 
 template <typename T>
-concept InOut = In<T> && Out<T>;
+concept InOut = std::derived_from<T, Input> && std::derived_from<T, Output>;
 
 template <typename T>
-concept InOutFilter = InFilter<T> && OutFilter<T>;
+concept InOutFilter = std::derived_from<T, InputFilter> && std::derived_from<T, OutputFilter>;
 
 auto&
 operator<=>(InOut auto& inOut, InOutFilter auto& inOutFilter) noexcept

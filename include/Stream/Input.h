@@ -54,7 +54,7 @@ public:
 
 	Input&
 	operator>>(auto& t)
-	requires std::is_trivially_copyable_v<std::remove_cvref_t<decltype(t)>>;
+	requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>;
 };//class Input
 
 /**
@@ -86,6 +86,6 @@ make_error_code(Input::Exception::Code e) noexcept;
 
 }//namespace Stream
 
-#include "../src/Input.hpp"
+#include "../../src/Input.hpp"
 
 #endif //STREAM_INPUT_H
