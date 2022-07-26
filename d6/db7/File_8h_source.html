@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define STREAM_FILE_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;InOut.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;IO/File.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;IO/File.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span>Stream {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
@@ -163,33 +163,27 @@ $(function() {
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>swap(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp; a, <a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp; b) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">concept </span>FileIn = std::is_base_of_v&lt;FileInput, T&gt;;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">concept </span>FileInOut = std::derived_from&lt;T, FileInput&gt; &amp;&amp; std::derived_from&lt;T, FileOutput&gt;;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword">concept </span>FileOut = std::is_base_of_v&lt;FileOutput, T&gt;;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword">concept </span>FileInOut = FileIn&lt;T&gt; &amp;&amp; FileOut&lt;T&gt;;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keyword">auto</span>&amp;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>operator&lt;=&gt;(<a class="code hl_namespaceRef" href="../../../IO/de/d76/structIO_1_1File_1_1Exception.html">IO::File</a>&amp; file, FileInOut <span class="keyword">auto</span>&amp; fileInOut) <span class="keyword">noexcept</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>{</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    file &gt;&gt; fileInOut;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    file &lt;&lt; fileInOut;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> fileInOut;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keyword">auto</span>&amp;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>operator&lt;=&gt;(std::nullptr_t, FileInOut <span class="keyword">auto</span>&amp; fileInOut) <span class="keyword">noexcept</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">nullptr</span> &gt;&gt; fileInOut;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keyword">nullptr</span> &lt;&lt; fileInOut;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">return</span> fileInOut;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}<span class="comment">//namespace Stream</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#endif </span><span class="comment">//STREAM_FILE_H</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">auto</span>&amp;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>operator&lt;=&gt;(<a class="code hl_namespaceRef" href="../../../IO/de/d76/structIO_1_1File_1_1Exception.html">IO::File</a>&amp; file, FileInOut <span class="keyword">auto</span>&amp; fileInOut) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    file &gt;&gt; fileInOut;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    file &lt;&lt; fileInOut;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">return</span> fileInOut;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">auto</span>&amp;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>operator&lt;=&gt;(std::nullptr_t, FileInOut <span class="keyword">auto</span>&amp; fileInOut) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">nullptr</span> &gt;&gt; fileInOut;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">nullptr</span> &lt;&lt; fileInOut;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> fileInOut;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}<span class="comment">//namespace Stream</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif </span><span class="comment">//STREAM_FILE_H</span></div>
 <div class="ttc" id="aclassStream_1_1FileInput_html"><div class="ttname"><a href="../../d5/d93/classStream_1_1FileInput.html">Stream::FileInput</a></div><div class="ttdoc">IO::File Input stream.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db7/File_8h_source.html#l00013">File.h:13</a></div></div>
 <div class="ttc" id="aclassStream_1_1FileOutput_html"><div class="ttname"><a href="../../df/dc2/classStream_1_1FileOutput.html">Stream::FileOutput</a></div><div class="ttdoc">IO::File Output stream.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db7/File_8h_source.html#l00053">File.h:53</a></div></div>
 <div class="ttc" id="aclassStream_1_1File_html"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html">Stream::File</a></div><div class="ttdoc">IO::File Input and Output stream.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/db7/File_8h_source.html#l00099">File.h:99</a></div></div>

@@ -87,10 +87,10 @@ Inheritance diagram for Stream::InputFilter:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d40/classStream_1_1InputFilter__inherit__graph.png" border="0" usemap="#aStream_1_1InputFilter_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStream_1_1InputFilter_inherit__map" id="aStream_1_1InputFilter_inherit__map">
-<area shape="rect" title="Input stream filter base class." alt="" coords="113,189,511,281"/>
-<area shape="rect" href="../../d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="97,329,527,509"/>
-<area shape="rect" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="111,5,513,141"/>
-<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,557,619,679"/>
+<area shape="rect" title="Input stream filter base class." alt="" coords="113,233,511,325"/>
+<area shape="rect" href="../../d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="97,373,527,553"/>
+<area shape="rect" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="111,5,513,185"/>
+<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,601,619,723"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -100,6 +100,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acab44ccdd132bf75e026757ed28bf9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a384d556a5657bfd088df0031ab290dc0"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#a384d556a5657bfd088df0031ab290dc0">readSome</a> (void *dest, std::size_t size)</td></tr>
 <tr class="separator:a384d556a5657bfd088df0031ab290dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fc7051ad641fcb1d586fb9bff7cbeb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#a2fc7051ad641fcb1d586fb9bff7cbeb7">operator&gt;&gt;</a> (std::string &amp;str)</td></tr>
+<tr class="separator:a2fc7051ad641fcb1d586fb9bff7cbeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7445fe1252aff13dd78545c16797864"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#aa7445fe1252aff13dd78545c16797864">operator&gt;&gt;</a> (char *str)</td></tr>
+<tr class="separator:aa7445fe1252aff13dd78545c16797864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#a0a8cb2f45caeb5a945eb15ea27244f31">operator&gt;&gt;</a> (auto &amp;t)</td></tr>
+<tr class="memdesc:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize t.  <a href="../../d7/d83/classStream_1_1Input.html#a0a8cb2f45caeb5a945eb15ea27244f31">More...</a><br /></td></tr>
+<tr class="separator:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -115,14 +122,15 @@ Protected Attributes</h2></td></tr>
 Friends</h2></td></tr>
 <tr class="memitem:a48074ad40dd9191aeb2b5588cc5579a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html#a48074ad40dd9191aeb2b5588cc5579a5">swap</a> (<a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;a, <a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;b) noexcept</td></tr>
 <tr class="separator:a48074ad40dd9191aeb2b5588cc5579a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeba01e30929df4a539cf130a30384020"><td class="memItemLeft" align="right" valign="top"><a id="aeba01e30929df4a539cf130a30384020" name="aeba01e30929df4a539cf130a30384020"></a>
-auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (In auto &amp;in, InFilter auto &amp;inFilter) noexcept</td></tr>
-<tr class="separator:aeba01e30929df4a539cf130a30384020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5000b2585263eec211e88d2599277e32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html#a5000b2585263eec211e88d2599277e32">operator&gt;&gt;</a> (<a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;input, <a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;inputFilter) noexcept</td></tr>
+<tr class="separator:a5000b2585263eec211e88d2599277e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a21337b723e889221ca6ba56250490"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html#ac6a21337b723e889221ca6ba56250490">operator&gt;&gt;</a> (std::nullptr_t, <a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;inputFilter) noexcept</td></tr>
+<tr class="separator:ac6a21337b723e889221ca6ba56250490"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class.">Input</a> stream filter base class. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/da6/Input_8h_source.html#l00062">62</a> of file <a class="el" href="../../d9/da6/Input_8h_source.html">Input.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/da6/Input_8h_source.html#l00070">70</a> of file <a class="el" href="../../d9/da6/Input_8h_source.html">Input.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a54615bf5bb58c96b4216e0486d7ca263" name="a54615bf5bb58c96b4216e0486d7ca263"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54615bf5bb58c96b4216e0486d7ca263">&#9670;&nbsp;</a></span>InputFilter()</h2>
@@ -147,8 +155,8 @@ auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00033">33</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>{ <span class="keyword">nullptr</span> &gt;&gt; *<span class="keyword">this</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{ <span class="keyword">nullptr</span> &gt;&gt; *<span class="keyword">this</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -189,8 +197,8 @@ auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt
 
 <p>Implements <a class="el" href="../../d7/d83/classStream_1_1Input.html">Stream::Input</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00041">41</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{ <span class="keywordflow">return</span> mSource-&gt;readSome(dest, size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00063">63</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{ <span class="keywordflow">return</span> mSource-&gt;readSome(dest, size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -284,6 +292,114 @@ auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a2fc7051ad641fcb1d586fb9bff7cbeb7" name="a2fc7051ad641fcb1d586fb9bff7cbeb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fc7051ad641fcb1d586fb9bff7cbeb7">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp; Stream::Input::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    str.clear();</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordtype">char</span> c;</div>
+<div class="line"><span class="lineno">   30</span>    read(&amp;c, 1);</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">while</span> (c) {</div>
+<div class="line"><span class="lineno">   32</span>        str.push_back(c);</div>
+<div class="line"><span class="lineno">   33</span>        read(&amp;c, 1);</div>
+<div class="line"><span class="lineno">   34</span>    }</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   36</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa7445fe1252aff13dd78545c16797864" name="aa7445fe1252aff13dd78545c16797864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7445fe1252aff13dd78545c16797864">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp; Stream::Input::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00039">39</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">   42</span>        read(str, 1);</div>
+<div class="line"><span class="lineno">   43</span>    } <span class="keywordflow">while</span>(*str++);</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   45</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0a8cb2f45caeb5a945eb15ea27244f31" name="a0a8cb2f45caeb5a945eb15ea27244f31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a8cb2f45caeb5a945eb15ea27244f31">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp; Stream::Input::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">auto &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deserialize t. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to this <a class="el" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class.">Input</a> stream</dd></dl>
+<p>Deserialize trivially copyable types from this <a class="el" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class.">Input</a> stream </p>
+
+</div>
+</div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
 <a id="a48074ad40dd9191aeb2b5588cc5579a5" name="a48074ad40dd9191aeb2b5588cc5579a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a48074ad40dd9191aeb2b5588cc5579a5">&#9670;&nbsp;</a></span>swap</h2>
@@ -319,8 +435,96 @@ auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00037">37</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{ std::swap(a.mSource, b.mSource); }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{ std::swap(a.mSource, b.mSource); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5000b2585263eec211e88d2599277e32" name="a5000b2585263eec211e88d2599277e32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5000b2585263eec211e88d2599277e32">&#9670;&nbsp;</a></span>operator&gt;&gt; <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;&#160;</td>
+          <td class="paramname"><em>inputFilter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00067">67</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    inputFilter.mSource = &amp;input;</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">return</span> inputFilter;</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac6a21337b723e889221ca6ba56250490" name="ac6a21337b723e889221ca6ba56250490"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a21337b723e889221ca6ba56250490">&#9670;&nbsp;</a></span>operator&gt;&gt; <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">std::nullptr_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html">InputFilter</a> &amp;&#160;</td>
+          <td class="paramname"><em>inputFilter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00074">74</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keyword">static</span> class : <span class="keyword">public</span> Input {</div>
+<div class="line"><span class="lineno">   77</span>        std::size_t</div>
+<div class="line"><span class="lineno">   78</span>        readBytes(std::byte* dest, std::size_t size)<span class="keyword"> override</span></div>
+<div class="line"><span class="lineno">   79</span><span class="keyword">        </span>{ <span class="keywordflow">throw</span> Exception(std::make_error_code(<span class="keyword">static_cast&lt;</span>std::errc<span class="keyword">&gt;</span>(ENODATA))); }</div>
+<div class="line"><span class="lineno">   80</span>    } nullInput;</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> nullInput &gt;&gt; inputFilter;</div>
+<div class="line"><span class="lineno">   82</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -345,7 +549,7 @@ auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/da6/Input_8h_source.html#l00064">64</a> of file <a class="el" href="../../d9/da6/Input_8h_source.html">Input.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/da6/Input_8h_source.html#l00072">72</a> of file <a class="el" href="../../d9/da6/Input_8h_source.html">Input.h</a>.</p>
 
 </div>
 </div>

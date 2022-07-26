@@ -7,8 +7,6 @@ var searchData=
   ['io_4',['IO',['../../IO/da/dbd/unionIO_1_1Socket_1_1INET_1_1Address.html',1,'']]],
   ['is_5ferror_5fcode_5fenum_3c_20io_3a_3asocket_3a_3ainet_3a_3aexception_3a_3acode_20_3e_5',['is_error_code_enum&lt; IO::Socket::INET::Exception::Code &gt;',['../../IO/dd/d42/structstd_1_1is__error__code__enum_3_01IO_1_1Socket_1_1INET_1_1Exception_1_1Code_01_4.html',1,'std']]],
   ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3abuffer_3a_3aexception_3a_3acode_20_3e_6',['is_error_code_enum&lt; Stream::Buffer::Exception::Code &gt;',['../d5/dba/structstd_1_1is__error__code__enum_3_01Stream_1_1Buffer_1_1Exception_1_1Code_01_4.html',1,'std']]],
-  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3ainput_3a_3aexception_3a_3acode_20_3e_7',['is_error_code_enum&lt; Stream::Input::Exception::Code &gt;',['../dd/d49/structstd_1_1is__error__code__enum_3_01Stream_1_1Input_1_1Exception_1_1Code_01_4.html',1,'std']]],
-  ['is_5ferror_5fcode_5fenum_3c_20stream_3a_3aoutput_3a_3aexception_3a_3acode_20_3e_8',['is_error_code_enum&lt; Stream::Output::Exception::Code &gt;',['../d1/d30/structstd_1_1is__error__code__enum_3_01Stream_1_1Output_1_1Exception_1_1Code_01_4.html',1,'std']]],
-  ['pipe_9',['Pipe',['../../IO/d7/d09/structIO_1_1Pipe_1_1Exception.html',1,'IO']]],
-  ['socket_10',['Socket',['../../IO/da/dbd/unionIO_1_1Socket_1_1INET_1_1Address.html',1,'IO']]]
+  ['pipe_7',['Pipe',['../../IO/d7/d09/structIO_1_1Pipe_1_1Exception.html',1,'IO']]],
+  ['socket_8',['Socket',['../../IO/da/dbd/unionIO_1_1Socket_1_1INET_1_1Address.html',1,'IO']]]
 ];

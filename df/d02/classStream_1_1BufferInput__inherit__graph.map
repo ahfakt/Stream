@@ -1,6 +1,6 @@
 <map id="Stream::BufferInput" name="Stream::BufferInput">
-<area shape="rect" id="node1" title="Input stream buffer." alt="" coords="97,329,527,509"/>
-<area shape="rect" id="node4" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,557,619,679"/>
-<area shape="rect" id="node2" href="$d3/d2f/classStream_1_1InputFilter.html" title="Input stream filter base class." alt="" coords="113,189,511,281"/>
-<area shape="rect" id="node3" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="111,5,513,141"/>
+<area shape="rect" id="node1" title="Input stream buffer." alt="" coords="97,373,527,553"/>
+<area shape="rect" id="node4" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,601,619,723"/>
+<area shape="rect" id="node2" href="$d3/d2f/classStream_1_1InputFilter.html" title="Input stream filter base class." alt="" coords="113,233,511,325"/>
+<area shape="rect" id="node3" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="111,5,513,185"/>
 </map>

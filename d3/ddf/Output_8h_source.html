@@ -120,51 +120,48 @@ $(function() {
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>&amp;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    operator&lt;&lt;(std::nullptr_t);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};<span class="comment">//class Output</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">concept </span>Out = std::is_base_of_v&lt;Output, T&gt;;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">class </span><a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>&amp;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    operator&lt;&lt;(std::string <span class="keyword">const</span>&amp; str);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>&amp;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    operator&lt;&lt;(<span class="keywordtype">char</span> <span class="keyword">const</span>* str);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">concept </span>OutFilter = std::is_base_of_v&lt;OutputFilter, T&gt;;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d0/d57/classStream_1_1OutputFilter.html">   68</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a> {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>* mSink;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>&amp;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    operator&lt;&lt;(<span class="keyword">auto</span> <span class="keyword">const</span>&amp; t)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">requires</span> std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(t)&gt;&gt;;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};<span class="comment">//class Output</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="../../d0/d57/classStream_1_1OutputFilter.html">   70</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a> {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>* mSink;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::size_t</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    writeBytes(std::byte <span class="keyword">const</span>* src, std::size_t size) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">friend</span> <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    swap(<a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; a, <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; b) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">friend</span> <span class="keyword">auto</span>&amp;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    operator&lt;&lt;(Out <span class="keyword">auto</span>&amp; out, OutFilter <span class="keyword">auto</span>&amp; outFilter) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>};<span class="comment">//class OutputFilter</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>std::error_code</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>make_error_code(Output::Exception::Code e) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}<span class="comment">//namespace Stream</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::size_t</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    writeBytes(std::byte <span class="keyword">const</span>* src, std::size_t size) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">friend</span> <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    swap(<a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; a, <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; b) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">friend</span> <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    operator&lt;&lt;(<a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>&amp; output, <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; outputFilter) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">friend</span> <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    operator&lt;&lt;(std::nullptr_t, <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; outputFilter) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};<span class="comment">//class OutputFilter</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">namespace </span>std {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="../../d1/d30/structstd_1_1is__error__code__enum_3_01Stream_1_1Output_1_1Exception_1_1Code_01_4.html">   93</a></span><span class="keyword">struct </span>is_error_code_enum&lt;Stream::Output::Exception::Code&gt; : <a class="code hl_classRef" href="../../../IO/d6/ddf/classtrue__type.html">true_type</a> {};</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>std::error_code</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>make_error_code(Output::Exception::Code e) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}<span class="comment">//namespace Stream</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}<span class="comment">//namespace std</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#include &quot;../../src/Output.hpp&quot;</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#include &quot;../src/Output.hpp&quot;</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif </span><span class="comment">//STREAM_OUTPUT_H</span></div>
-<div class="ttc" id="aclassStream_1_1OutputFilter_html"><div class="ttname"><a href="../../d0/d57/classStream_1_1OutputFilter.html">Stream::OutputFilter</a></div><div class="ttdoc">Output stream filter base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00068">Output.h:68</a></div></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#endif </span><span class="comment">//STREAM_OUTPUT_H</span></div>
+<div class="ttc" id="aclassStream_1_1OutputFilter_html"><div class="ttname"><a href="../../d0/d57/classStream_1_1OutputFilter.html">Stream::OutputFilter</a></div><div class="ttdoc">Output stream filter base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00070">Output.h:70</a></div></div>
 <div class="ttc" id="aclassStream_1_1Output_html"><div class="ttname"><a href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a></div><div class="ttdoc">Output stream base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00013">Output.h:13</a></div></div>
-<div class="ttc" id="aclasstrue__type_html"><div class="ttname"><a href="../../../IO/d6/ddf/classtrue__type.html">true_type</a></div></div>
 <div class="ttc" id="astructStream_1_1Output_1_1Exception_html"><div class="ttname"><a href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Stream::Output::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00024">Output.h:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
