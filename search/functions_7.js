@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3e_3e_0',['operator&gt;&gt;',['../d7/d83/classStream_1_1Input.html#a0a8cb2f45caeb5a945eb15ea27244f31',1,'Stream::Input']]]
+  ['pipe_0',['Pipe',['../../IO/d4/d80/classIO_1_1Pipe.html#a49734764ce3f858af87d50e266a2e234',1,'IO::Pipe']]]
 ];
