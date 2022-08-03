@@ -1,8 +1,8 @@
 #ifndef STREAM_IN_OUT_HPP
 #define STREAM_IN_OUT_HPP
 
-#include "Stream/Input.hpp"
-#include "Stream/Output.hpp"
+#include "Input.hpp"
+#include "Output.hpp"
 
 namespace Stream {
 

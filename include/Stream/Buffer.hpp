@@ -105,7 +105,7 @@ public:
 		enum class Code : int {
 			BadAllocation = 1
 		};
-	};//struct Exception
+	};//struct Stream::Buffer::Exception
 
 	explicit Buffer(std::size_t inBuffInitialSize = 0, std::size_t outBuffInitialSize = 0);
 
