@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 		<meta name="generator" content="Doxygen 1.9.3"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Stream: /run/media/null/Lepton/Stream/include/Stream/Output.h Source File</title>
+		<title>Stream: /run/media/null/Lepton/Stream/include/Stream/Output.hpp Source File</title>
 		<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="../../jquery.js"></script>
 		<script type="text/javascript" src="../../dynsections.js"></script>
@@ -25,7 +25,6 @@
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">Stream
 							</div>
-							<div id="projectbrief">Stream abstraction library for various data sources and sinks</div>
 						</td>
 					</tr>
 				</tbody>
@@ -68,11 +67,11 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">Output.h</div></div>
+  <div class="headertitle"><div class="title">Output.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef STREAM_OUTPUT_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define STREAM_OUTPUT_H</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef STREAM_OUTPUT_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define STREAM_OUTPUT_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;system_error&gt;</span></div>
@@ -108,7 +107,7 @@ $(function() {
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">void</span> <span class="keyword">const</span>* mSrc;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::size_t mSize;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    };<span class="comment">//struct Exception</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    };<span class="comment">//struct Stream::Output::Exception</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>(<a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
@@ -130,7 +129,7 @@ $(function() {
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a>&amp;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    operator&lt;&lt;(<span class="keyword">auto</span> <span class="keyword">const</span>&amp; t)</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">requires</span> std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(t)&gt;&gt;;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};<span class="comment">//class Output</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};<span class="comment">//class Stream::Output</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="../../d0/d57/classStream_1_1OutputFilter.html">   70</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../df/dc2/classStream_1_1Output.html">Output</a> {</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">protected</span>:</div>
@@ -150,19 +149,19 @@ $(function() {
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">friend</span> <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    operator&lt;&lt;(std::nullptr_t, <a class="code hl_class" href="../../d0/d57/classStream_1_1OutputFilter.html">OutputFilter</a>&amp; outputFilter) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};<span class="comment">//class OutputFilter</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};<span class="comment">//class Stream::OutputFilter</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>std::error_code</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>make_error_code(Output::Exception::Code e) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}<span class="comment">//namespace Stream</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#include &quot;../../src/Output.hpp&quot;</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#include &quot;../../src/Output.tpp&quot;</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#endif </span><span class="comment">//STREAM_OUTPUT_H</span></div>
-<div class="ttc" id="aclassStream_1_1OutputFilter_html"><div class="ttname"><a href="../../d0/d57/classStream_1_1OutputFilter.html">Stream::OutputFilter</a></div><div class="ttdoc">Output stream filter base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00070">Output.h:70</a></div></div>
-<div class="ttc" id="aclassStream_1_1Output_html"><div class="ttname"><a href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a></div><div class="ttdoc">Output stream base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00013">Output.h:13</a></div></div>
-<div class="ttc" id="astructStream_1_1Output_1_1Exception_html"><div class="ttname"><a href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Stream::Output::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddf/Output_8h_source.html#l00024">Output.h:24</a></div></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#endif </span><span class="comment">//STREAM_OUTPUT_HPP</span></div>
+<div class="ttc" id="aclassStream_1_1OutputFilter_html"><div class="ttname"><a href="../../d0/d57/classStream_1_1OutputFilter.html">Stream::OutputFilter</a></div><div class="ttdoc">Output stream filter base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbf/Output_8hpp_source.html#l00070">Output.hpp:70</a></div></div>
+<div class="ttc" id="aclassStream_1_1Output_html"><div class="ttname"><a href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a></div><div class="ttdoc">Output stream base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbf/Output_8hpp_source.html#l00013">Output.hpp:13</a></div></div>
+<div class="ttc" id="astructStream_1_1Output_1_1Exception_html"><div class="ttname"><a href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Stream::Output::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbf/Output_8hpp_source.html#l00024">Output.hpp:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 		<script src="../../custom.js"></script>
