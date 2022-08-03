@@ -1,14 +1,14 @@
-#ifndef STREAM_SOCKET_H
-#define STREAM_SOCKET_H
+#ifndef STREAM_SOCKET_HPP
+#define STREAM_SOCKET_HPP
 
-#include "InOut.h"
-#include <IO/Socket.h>
+#include "InOut.hpp"
+#include <IO/Socket.hpp>
 
 namespace Stream {
 
 /**
  * @brief	IO::Socket Input stream
- * @class	SocketInput Socket.h "Stream/Socket.h"
+ * @class	SocketInput Socket.hpp "Stream/Socket.hpp"
  */
 class SocketInput : public Input {
 	IO::Socket* mSocket;
@@ -37,11 +37,11 @@ public:
 
 	friend SocketInput&
 	operator>>(std::nullptr_t, SocketInput& socketInput) noexcept;
-};//class SocketInput
+};//class Stream::SocketInput
 
 /**
  * @brief IO::Socket Output stream
- * @class SocketOutput Socket.h "Stream/Socket.h"
+ * @class SocketOutput Socket.hpp "Stream/Socket.hpp"
  */
 class SocketOutput : public Output {
 	IO::Socket* mSocket;
@@ -70,11 +70,11 @@ public:
 
 	friend SocketOutput&
 	operator<<(std::nullptr_t, SocketOutput& socketOutput) noexcept;
-};//class SocketOutput
+};//class Stream::SocketOutput
 
 /**
  * @brief IO::Socket Input and Output stream
- * @class Socket Socket.h "Stream/Socket.h"
+ * @class Socket Socket.hpp "Stream/Socket.hpp"
  */
 class Socket : public SocketInput, public SocketOutput {};
 
@@ -102,4 +102,4 @@ operator<=>(std::nullptr_t, SocketInOut auto& socketInOut) noexcept
 
 }//namespace Stream
 
-#endif //STREAM_SOCKET_H
+#endif //STREAM_SOCKET_HPP

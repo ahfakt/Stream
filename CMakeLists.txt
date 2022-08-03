@@ -10,21 +10,20 @@ set(DEPENDENCIES IO)
 set(INC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INC_LIST
-		${INC_ROOT}/${PROJECT_NAME}/Buffer.h
-		${INC_ROOT}/${PROJECT_NAME}/File.h
-		${INC_ROOT}/${PROJECT_NAME}/InOut.h
-		${INC_ROOT}/${PROJECT_NAME}/Input.h
-		${INC_ROOT}/${PROJECT_NAME}/Output.h
-		${INC_ROOT}/${PROJECT_NAME}/Pipe.h
-		${INC_ROOT}/${PROJECT_NAME}/Socket.h)
+		${INC_ROOT}/${PROJECT_NAME}/Buffer.hpp
+		${INC_ROOT}/${PROJECT_NAME}/File.hpp
+		${INC_ROOT}/${PROJECT_NAME}/InOut.hpp
+		${INC_ROOT}/${PROJECT_NAME}/Input.hpp
+		${INC_ROOT}/${PROJECT_NAME}/Output.hpp
+		${INC_ROOT}/${PROJECT_NAME}/Pipe.hpp
+		${INC_ROOT}/${PROJECT_NAME}/Socket.hpp)
 set(SRC_LIST
 		${SRC_ROOT}/Buffer.cpp
 		${SRC_ROOT}/File.cpp
-		${SRC_ROOT}/InOut.hpp
 		${SRC_ROOT}/Input.cpp
-		${SRC_ROOT}/Input.hpp
+		${SRC_ROOT}/Input.tpp
 		${SRC_ROOT}/Output.cpp
-		${SRC_ROOT}/Output.hpp
+		${SRC_ROOT}/Output.tpp
 		${SRC_ROOT}/Pipe.cpp
 		${SRC_ROOT}/Socket.cpp)
 
@@ -55,9 +54,9 @@ endif()
 if ((DEFINED DOC_ROOT) AND (NOT ${DOC_ROOT} STREQUAL ""))
 	find_package(Doxygen)
 	if (DOXYGEN_FOUND)
-		set(DOXYGEN_IN_CFG ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.in.cfg)
+		set(DOXYGEN_IN_CFG ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.cfg)
 		set(DOXYGEN_OUTPUT_DIR ${DOC_ROOT}/${PROJECT_NAME})
-		set(DOXYGEN_CFG ${DOXYGEN_OUTPUT_DIR}/doxygen.cfg)
+		set(DOXYGEN_CFG ${DOC_ROOT}/.doxy/${PROJECT_NAME}.cfg)
 
 		configure_file(${DOXYGEN_IN_CFG} ${DOXYGEN_CFG} @ONLY)
 		message("Doxygen configuration ${DOXYGEN_CFG} generated.")

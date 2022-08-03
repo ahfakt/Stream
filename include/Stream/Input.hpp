@@ -1,5 +1,5 @@
-#ifndef STREAM_INPUT_H
-#define STREAM_INPUT_H
+#ifndef STREAM_INPUT_HPP
+#define STREAM_INPUT_HPP
 
 #include <cstddef>
 #include <system_error>
@@ -8,7 +8,7 @@ namespace Stream {
 
 /**
  * @brief	Input stream base class
- * @class	Input Input.h "Stream/Input.h"
+ * @class	Input Input.hpp "Stream/Input.hpp"
  */
 class Input {
 protected:
@@ -36,7 +36,7 @@ public:
 		friend class Input;
 		void* mDest;
 		std::size_t mSize;
-	};//struct Exception
+	};//struct Stream::Input::Exception
 
 	Input(Input const&) = delete;
 
@@ -55,11 +55,11 @@ public:
 	Input&
 	operator>>(auto& t)
 	requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>;
-};//class Input
+};//class Stream::Input
 
 /**
  * @brief	Input stream filter base class
- * @class	InputFilter Input.h "Stream/Input.h"
+ * @class	InputFilter Input.hpp "Stream/Input.hpp"
  */
 class InputFilter : public Input {
 protected:
@@ -79,13 +79,13 @@ public:
 
 	friend InputFilter&
 	operator>>(std::nullptr_t, InputFilter& inputFilter) noexcept;
-};//class InputFilter
+};//class Stream::InputFilter
 
 std::error_code
 make_error_code(Input::Exception::Code e) noexcept;
 
 }//namespace Stream
 
-#include "../../src/Input.hpp"
+#include "../../src/Input.tpp"
 
-#endif //STREAM_INPUT_H
+#endif //STREAM_INPUT_HPP

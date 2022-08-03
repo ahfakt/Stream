@@ -1,14 +1,14 @@
-#ifndef STREAM_BUFFER_H
-#define STREAM_BUFFER_H
+#ifndef STREAM_BUFFER_HPP
+#define STREAM_BUFFER_HPP
 
-#include "InOut.h"
+#include "InOut.hpp"
 #include <memory>
 
 namespace Stream {
 
 /**
  * @brief	Input stream buffer
- * @class	BufferInput Buffer.h "Stream/Buffer.h"
+ * @class	BufferInput Buffer.hpp "Stream/Buffer.hpp"
  */
 class BufferInput : public InputFilter {
 	std::unique_ptr<std::byte[]> mBuff;
@@ -44,11 +44,11 @@ public:
 
 	std::size_t
 	provideData(std::size_t max);
-};//class BufferInput
+};//class Stream::BufferInput
 
 /**
  * @brief	Output stream buffer
- * @class	BufferOutput Buffer.h "Stream/Buffer.h"
+ * @class	BufferOutput Buffer.hpp "Stream/Buffer.hpp"
  */
 class BufferOutput : public OutputFilter {
 	std::unique_ptr<std::byte[]> mBuff;
@@ -93,11 +93,11 @@ public:
 
 	void
 	resetPut() noexcept;
-};//class BufferOutput
+};//class Stream::BufferOutput
 
 /**
  * @brief Input / Output stream buffer
- * @class Buffer Buffer.h "Stream/Buffer.h"
+ * @class Buffer Buffer.hpp "Stream/Buffer.hpp"
  */
 class Buffer : public BufferInput, public BufferOutput {
 public:
@@ -114,7 +114,7 @@ public:
 	Buffer(void const* sourceBuff, std::size_t sourceSize, std::size_t outBuffInitialSize = 0);
 
 	Buffer(void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize) noexcept;
-};//class Buffer
+};//class Stream::Buffer
 
 void
 swap(Buffer& a, Buffer& b) noexcept;
@@ -131,4 +131,4 @@ struct is_error_code_enum<Stream::Buffer::Exception::Code> : true_type {};
 
 }//namespace std
 
-#endif //STREAM_BUFFER_H
+#endif //STREAM_BUFFER_HPP

@@ -1,4 +1,4 @@
-#include "Stream/Buffer.h"
+#include "Stream/Buffer.hpp"
 #include <cstring>
 #include <unistd.h>
 

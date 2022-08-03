@@ -1,14 +1,14 @@
-#ifndef STREAM_PIPE_H
-#define STREAM_PIPE_H
+#ifndef STREAM_PIPE_HPP
+#define STREAM_PIPE_HPP
 
-#include "InOut.h"
-#include <IO/Pipe.h>
+#include "InOut.hpp"
+#include <IO/Pipe.hpp>
 
 namespace Stream {
 
 /**
  * @brief	IO::Pipe Input stream
- * @class	PipeInput Pipe.h "Stream/Pipe.h"
+ * @class	PipeInput Pipe.hpp "Stream/Pipe.hpp"
  */
 class PipeInput : public Input {
 	IO::Pipe* mPipe;
@@ -37,11 +37,11 @@ public:
 
 	friend PipeInput&
 	operator>>(std::nullptr_t, PipeInput& pipeInput) noexcept;
-};//class PipeInput
+};//class Stream::PipeInput
 
 /**
  * @brief	IO::Pipe Output stream
- * @class	PipeOutput Pipe.h "Stream/Pipe.h"
+ * @class	PipeOutput Pipe.hpp "Stream/Pipe.hpp"
  */
 class PipeOutput : public Output {
 	IO::Pipe* mPipe;
@@ -70,11 +70,11 @@ public:
 
 	friend PipeOutput&
 	operator<<(std::nullptr_t, PipeOutput& pipeOutput) noexcept;
-};//class PipeOutput
+};//class Stream::PipeOutput
 
 /**
  * @brief IO::Pipe Input / Output stream
- * @class Pipe Pipe.h "Stream/Pipe.h"
+ * @class Pipe Pipe.hpp "Stream/Pipe.hpp"
  */
 class Pipe : public PipeInput, public PipeOutput {};
 
@@ -102,4 +102,4 @@ operator<=>(std::nullptr_t, PipeInOut auto& pipeInOut) noexcept
 
 }//namespace Stream
 
-#endif //STREAM_PIPE_H
+#endif //STREAM_PIPE_HPP

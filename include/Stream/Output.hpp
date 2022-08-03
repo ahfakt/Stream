@@ -1,5 +1,5 @@
-#ifndef STREAM_OUTPUT_H
-#define STREAM_OUTPUT_H
+#ifndef STREAM_OUTPUT_HPP
+#define STREAM_OUTPUT_HPP
 
 #include <cstddef>
 #include <system_error>
@@ -8,7 +8,7 @@ namespace Stream {
 
 /**
  * @brief	Output stream base class
- * @class	Output Output.h "Stream/Output.h"
+ * @class	Output Output.hpp "Stream/Output.hpp"
  */
 class Output {
 protected:
@@ -39,7 +39,7 @@ public:
 		friend class Output;
 		void const* mSrc;
 		std::size_t mSize;
-	};//struct Exception
+	};//struct Stream::Output::Exception
 
 	Output(Output const&) = delete;
 
@@ -61,11 +61,11 @@ public:
 	Output&
 	operator<<(auto const& t)
 	requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>;
-};//class Output
+};//class Stream::Output
 
 /**
  * @brief	Output stream filter base class
- * @class	OutputFilter Output.h "Stream/Output.h"
+ * @class	OutputFilter Output.hpp "Stream/Output.hpp"
  */
 class OutputFilter : public Output {
 protected:
@@ -85,13 +85,13 @@ public:
 
 	friend OutputFilter&
 	operator<<(std::nullptr_t, OutputFilter& outputFilter) noexcept;
-};//class OutputFilter
+};//class Stream::OutputFilter
 
 std::error_code
 make_error_code(Output::Exception::Code e) noexcept;
 
 }//namespace Stream
 
-#include "../../src/Output.hpp"
+#include "../../src/Output.tpp"
 
-#endif //STREAM_OUTPUT_H
+#endif //STREAM_OUTPUT_HPP

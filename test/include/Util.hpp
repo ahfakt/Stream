@@ -1,11 +1,11 @@
-#ifndef STREAMTEST_UTIL_H
-#define STREAMTEST_UTIL_H
+#ifndef STREAMTEST_UTIL_HPP
+#define STREAMTEST_UTIL_HPP
 
 #include <memory>
 #include <random>
 #include <chrono>
 #include <vector>
-#include "Stream/InOut.h"
+#include "Stream/InOut.hpp"
 
 namespace StreamTest::Util {
 
@@ -76,4 +76,4 @@ AppendFile(std::string const& fileName, void* src, std::size_t size)
 
 }//namespace StreamTest::Util
 
-#endif //STREAMTEST_UTIL_H
+#endif //STREAMTEST_UTIL_HPP

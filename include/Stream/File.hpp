@@ -1,14 +1,14 @@
-#ifndef STREAM_FILE_H
-#define STREAM_FILE_H
+#ifndef STREAM_FILE_HPP
+#define STREAM_FILE_HPP
 
-#include "InOut.h"
-#include <IO/File.h>
+#include "InOut.hpp"
+#include <IO/File.hpp>
 
 namespace Stream {
 
 /**
  * @brief	IO::File Input stream
- * @class	FileInput File.h "Stream/File.h"
+ * @class	FileInput File.hpp "Stream/File.hpp"
  */
 class FileInput : public Input {
 	IO::File* mFile;
@@ -44,11 +44,11 @@ public:
 
 	[[nodiscard]] off_t
 	tellGet() const noexcept;
-};//class FileInput
+};//class Stream::FileInput
 
 /**
  * @brief	IO::File Output stream
- * @class	FileOutput File.h "Stream/File.h"
+ * @class	FileOutput File.hpp "Stream/File.hpp"
  */
 class FileOutput : public Output {
 	IO::File* mFile;
@@ -90,11 +90,11 @@ public:
 	[[nodiscard]] off_t
 	tellPut() const noexcept;
 };
-//class FileOutput
+//class Stream::FileOutput
 
 /**
  * @brief IO::File Input and Output stream
- * @class File File.h "Stream/File.h"
+ * @class File File.hpp "Stream/File.hpp"
  */
 class File : public FileInput, public FileOutput {};
 
@@ -122,4 +122,4 @@ operator<=>(std::nullptr_t, FileInOut auto& fileInOut) noexcept
 
 }//namespace Stream
 
-#endif //STREAM_FILE_H
+#endif //STREAM_FILE_HPP

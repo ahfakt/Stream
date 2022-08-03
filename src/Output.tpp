@@ -1,4 +1,4 @@
-#include "Stream/Output.h"
+#include "Stream/Output.hpp"
 #include <cstring>
 
 namespace std {

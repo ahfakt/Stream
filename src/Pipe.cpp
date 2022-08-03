@@ -1,4 +1,4 @@
-#include "Stream/Pipe.h"
+#include "Stream/Pipe.hpp"
 #include <unistd.h>
 
 namespace Stream {

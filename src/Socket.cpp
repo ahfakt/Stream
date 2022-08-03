@@ -1,4 +1,4 @@
-#include "Stream/Socket.h"
+#include "Stream/Socket.hpp"
 #include <netinet/in.h>
 
 namespace Stream {

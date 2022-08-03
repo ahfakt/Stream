@@ -1,4 +1,4 @@
-#include "Stream/Input.h"
+#include "Stream/Input.hpp"
 
 namespace Stream {
 

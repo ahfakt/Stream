@@ -1,5 +1,8 @@
-#include "Stream/Input.h"
-#include "Stream/Output.h"
+#ifndef STREAM_IN_OUT_HPP
+#define STREAM_IN_OUT_HPP
+
+#include "Stream/Input.hpp"
+#include "Stream/Output.hpp"
 
 namespace Stream {
 
@@ -26,3 +29,5 @@ operator<=>(std::nullptr_t, InOutFilter auto& inOutFilter) noexcept
 }
 
 }//namespace Stream
+
+#endif //STREAM_IN_OUT_HPP
