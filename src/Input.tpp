@@ -23,6 +23,9 @@ template <typename T, typename ... Args>
 concept ConstructibleFrom = std::destructible<T> && requires
 { T{std::declval<Args>() ...}; };
 
+template <typename T, typename ... Args>
+concept NotConstructibleFrom = !ConstructibleFrom<T, Args ...>;
+
 template <typename T, typename InputType, typename ... Args>
 concept DeserializableWith = std::derived_from<InputType, Stream::Input> &&
 	(ConstructibleFrom<T, InputType&, Args ...> ||
@@ -58,7 +61,7 @@ Get(std::derived_from<Input> auto& input, auto&& ... args)
 template <typename T>
 T
 Get(ExtractableTo<T> auto& input, auto&& ... args)
-requires (!ConstructibleFrom<T, decltype(input), decltype(args) ...>)
+requires NotConstructibleFrom<T, decltype(input), decltype(args) ...>
 {
 	T t{std::forward<decltype(args)>(args) ...};
 	input >> t;
@@ -75,7 +78,7 @@ requires (!ConstructibleFrom<T, decltype(input), decltype(args) ...>)
 template <typename T>
 T
 Get(TriviallyExtractableTo<T> auto& input)
-requires (!ConstructibleFrom<T, decltype(input)>)
+requires NotConstructibleFrom<T, decltype(input)>
 {
 	T t;
 	input >> t;
