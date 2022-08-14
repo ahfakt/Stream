@@ -6,15 +6,17 @@ namespace Stream {
 
 BufferInput::BufferInput(std::size_t buffInitialSize)
 		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
-		, mEnd(mBuff.get())
-		, mBuffSize(buffInitialSize)
-		, mGet(mBuff.get())
+		, mBeg(mBuff.get())
+		, mDataBeg(mBeg)
+		, mDataEnd(mBuff.get())
+		, mEnd(mBeg + buffInitialSize)
 {}
 
 BufferInput::BufferInput(void const* sourceBuff, std::size_t sourceSize) noexcept
-		: mEnd(reinterpret_cast<std::byte const*>(sourceBuff) + sourceSize)
-		, mBuffSize(sourceSize)
-		, mGet(reinterpret_cast<std::byte const*>(sourceBuff))
+		: mBeg(reinterpret_cast<std::byte const*>(sourceBuff))
+		, mDataBeg(mBeg)
+		, mDataEnd(const_cast<std::byte*>(mDataBeg) + sourceSize)
+		, mEnd(mBeg)
 {}
 
 BufferInput::BufferInput(BufferInput&& other) noexcept
@@ -23,77 +25,108 @@ BufferInput::BufferInput(BufferInput&& other) noexcept
 void
 swap(BufferInput& a, BufferInput& b) noexcept
 {
-	swap(static_cast<InputFilter&>(a), static_cast<InputFilter&>(b));
+	swap(static_cast<TransparentInput&>(a), static_cast<TransparentInput&>(b));
 	std::swap(a.mBuff, b.mBuff);
+	std::swap(a.mBeg, b.mBeg);
+	std::swap(a.mDataBeg, b.mDataBeg);
+	std::swap(a.mDataEnd, b.mDataEnd);
 	std::swap(a.mEnd, b.mEnd);
-	std::swap(a.mBuffSize, b.mBuffSize);
-	std::swap(a.mGet, b.mGet);
 }
 
 BufferInput&
 BufferInput::operator=(BufferInput&& other) noexcept
 {
-	std::swap(mBuff, other.mBuff);
-	std::swap(mEnd, other.mEnd);
-	std::swap(mBuffSize, other.mBuffSize);
-	std::swap(mGet, other.mGet);
+	swap(*this, other);
 	return *this;
 }
 
 std::size_t
 BufferInput::readBytes(std::byte* dest, std::size_t size)
 {
-	if (size > provideData(mBuffSize))
-		size = getAvailableDataSize();
-	std::memcpy(dest, mGet, size);
-	mGet += size;
+	size = provideSomeData(size);
+	std::memcpy(dest, mDataBeg, size);
+	mDataBeg += size;
 	return size;
 }
 
 std::size_t
-BufferInput::getInputBufferSize() const noexcept
-{ return mBuffSize; }
+BufferInput::getDataBufferSize() const noexcept
+{ return mEnd - mBeg; }
 
 std::size_t
-BufferInput::getAvailableDataSize() const noexcept
-{ return mEnd - mGet; }
+BufferInput::getDataSize() const noexcept
+{ return mDataEnd - mDataBeg; }
+
+std::byte const*
+BufferInput::getData() const noexcept
+{ return mDataBeg; }
+
+void
+BufferInput::advanceData(std::size_t size) noexcept
+{ mDataBeg += size; }
 
 std::size_t
-BufferInput::provideData(std::size_t max)
+BufferInput::provideData(std::size_t const min)
 {
-	if (mGet + max <= mEnd)
-		return max;
-
-	if (mGet != mEnd)
-		return mEnd - mGet;
-
-	if (max > mBuffSize) {
-		if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))) {
-			mBuff.reset(ptr);
-			mBuffSize = max;
-			mGet = mEnd = mBuff.get();
-		} else
-			throw Exception(Buffer::Exception::Code::BadAllocation);
+	if (mDataBeg + min > mDataEnd) {
+		if (mDataBeg + min > mEnd) {
+			if (mBeg + min > mEnd) {
+				if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t {}))) {
+					std::memcpy(ptr, mDataBeg, mDataEnd - mDataBeg);
+					mDataEnd = ptr + (mDataEnd - mDataBeg);
+					mDataBeg = ptr;
+					mBuff.reset(ptr);
+					mBeg = ptr;
+					mEnd = ptr + min;
+				} else
+					throw Exception(Buffer::Exception::Code::BadAllocation);
+			} else {
+				std::memmove(mBuff.get(), mDataBeg, mDataEnd - mDataBeg);
+				mDataEnd = mBuff.get() + (mDataEnd - mDataBeg);
+				mDataBeg = mBeg;
+			}
+		}
+		while (mDataBeg + min > mDataEnd)
+			mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);
 	}
+	return mDataEnd - mDataBeg;
+}
 
-	max = mSource->readSome(mBuff.get(), max);
-	mEnd = (mGet = mBuff.get()) + max;
+std::size_t
+BufferInput::provideSomeData(std::size_t const max)
+{
+	if (mDataBeg + max > mDataEnd) {
+		if (mDataBeg != mDataEnd)
+			return mDataEnd - mDataBeg;
+		if (mBeg + max > mEnd) {
+			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t {}))) {
+				mBuff.reset(ptr);
+				mBeg = ptr;
+				mEnd = ptr + max;
+			} else
+				throw Exception(Buffer::Exception::Code::BadAllocation);
+		}
+		mDataEnd = const_cast<std::byte*>(mDataBeg = mBeg);
+		mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);
+		if (mDataBeg + max > mDataEnd)
+			return mDataEnd - mDataBeg;
+	}
 	return max;
 }
 
 BufferOutput::BufferOutput(std::size_t buffInitialSize)
 		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
 		, mBeg(mBuff.get())
+		, mSpaceBeg(mBuff.get())
+		, mSpaceEnd(mSpaceBeg + buffInitialSize)
 		, mEnd(mBeg + buffInitialSize)
-		, mBuffSize(buffInitialSize)
-		, mPut(mBuff.get())
 {}
 
 BufferOutput::BufferOutput(void* sinkBuff, std::size_t sinkSize) noexcept
 		: mBeg(reinterpret_cast<std::byte*>(sinkBuff))
-		, mEnd(mBeg + sinkSize)
-		, mBuffSize(sinkSize)
-		, mPut(reinterpret_cast<std::byte*>(sinkBuff))
+		, mSpaceBeg(reinterpret_cast<std::byte*>(sinkBuff))
+		, mSpaceEnd(mSpaceBeg + sinkSize)
+		, mEnd(mBeg)
 {}
 
 BufferOutput::BufferOutput(BufferOutput&& other) noexcept
@@ -102,88 +135,107 @@ BufferOutput::BufferOutput(BufferOutput&& other) noexcept
 void
 swap(BufferOutput& a, BufferOutput& b) noexcept
 {
-	swap(static_cast<OutputFilter&>(a), static_cast<OutputFilter&>(b));
+	swap(static_cast<TransparentOutput&>(a), static_cast<TransparentOutput&>(b));
 	std::swap(a.mBuff, b.mBuff);
 	std::swap(a.mBeg, b.mBeg);
+	std::swap(a.mSpaceBeg, b.mSpaceBeg);
+	std::swap(a.mSpaceEnd, b.mSpaceEnd);
 	std::swap(a.mEnd, b.mEnd);
-	std::swap(a.mBuffSize, b.mBuffSize);
-	std::swap(a.mPut, b.mPut);
 }
 
 BufferOutput&
 BufferOutput::operator=(BufferOutput&& other) noexcept
 {
-	std::swap(mBuff, other.mBuff);
-	std::swap(mBeg, other.mBeg);
-	std::swap(mEnd, other.mEnd);
-	std::swap(mBuffSize, other.mBuffSize);
-	std::swap(mPut, other.mPut);
+	swap(*this, other);
 	return *this;
 }
 
 std::size_t
 BufferOutput::writeBytes(std::byte const* src, std::size_t size)
 {
-	if (size > provideSpace(1))
-		size = getAvailableSpaceSize();
-	std::memcpy(mPut, src, size);
-	mPut += size;
+	size = provideSomeSpace(size);
+	std::memcpy(mSpaceBeg, src, size);
+	mSpaceBeg += size;
 	return size;
 }
 
 void
 BufferOutput::flush()
 {
-	if (mPut != mBeg) try {
-		mSink->write(mBeg, mPut - mBeg);
-		mBeg = mBuff.get();
-		mPut = mBuff.get();
+	while (mBeg != mSpaceBeg) try {
+		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
 	} catch (Output::Exception& exc) {
 		mBeg = static_cast<std::byte const*>(exc.getUnwrittenBuffer());
 		throw;
 	}
+	mBeg = mSpaceBeg = mBuff.get();
 }
 
 BufferOutput::~BufferOutput()
 {
-	if (mPut != mBeg) try {
-		mSink->write(mBeg, mPut - mBeg);
+	while (mBeg != mSpaceBeg) try {
+		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
 	} catch (Output::Exception& exc) {
 		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
 	}
 }
 
 std::size_t
-BufferOutput::getOutputBufferSize() const noexcept
-{ return mBuffSize; }
+BufferOutput::getSpaceBufferSize() const noexcept
+{ return mEnd - mBeg; }
 
 [[nodiscard]] std::size_t
-BufferOutput::getAvailableSpaceSize() const noexcept
-{ return mEnd - mPut; }
+BufferOutput::getSpaceSize() const noexcept
+{ return mSpaceEnd - mSpaceBeg; }
+
+std::byte*
+BufferOutput::getSpace() noexcept
+{ return mSpaceBeg; }
+
+void
+BufferOutput::advanceSpace(std::size_t size) noexcept
+{ mSpaceBeg += size; }
 
 std::size_t
 BufferOutput::provideSpace(std::size_t min)
 {
-	if (mPut + min <= mEnd)
-		return mEnd - mPut;
-
-	BufferOutput::flush();
-
-	if (min > mBuffSize) {
-		if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t{}))) {
-			mBuff.reset(ptr);
-			mBeg = mBuff.get();
-			mPut = mBuff.get();
-			mEnd = mBeg + (mBuffSize = min);
-		} else
-			throw Exception(Buffer::Exception::Code::BadAllocation);
+	if (mSpaceBeg + min > mSpaceEnd) {
+		BufferOutput::flush();
+		if (mBeg + min > mEnd) {
+			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t{}))) {
+				mBuff.reset(ptr);
+				mBeg = mSpaceBeg = ptr;
+				mEnd = mSpaceEnd = ptr + min;
+			} else
+				throw Exception(Buffer::Exception::Code::BadAllocation);
+		}
 	}
-	return mBuffSize;
+	return mSpaceEnd - mSpaceBeg;
 }
 
-void
-BufferOutput::resetPut() noexcept
-{ mPut = const_cast<std::byte*>(mBeg); }
+std::size_t
+BufferOutput::provideSomeSpace(std::size_t max)
+{
+	if (mSpaceBeg + max > mSpaceEnd) {
+		if (mSpaceBeg != mSpaceEnd)
+			return mSpaceEnd - mSpaceBeg;
+		BufferOutput::flush();
+		if (mBeg + max > mEnd) {
+			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))) {
+				mBuff.reset(ptr);
+				mBeg = mSpaceBeg = ptr;
+				mEnd = mSpaceEnd = ptr + max;
+			} else
+				throw Exception(Buffer::Exception::Code::BadAllocation);
+		}
+	}
+	return max;
+}
+
+Buffer::Buffer(std::size_t buffInitialSize)
+		: BufferInput(buffInitialSize)
+		, BufferOutput(buffInitialSize)
+{}
 
 Buffer::Buffer(std::size_t inBuffInitialSize, std::size_t outBuffInitialSize)
 		: BufferInput(inBuffInitialSize)

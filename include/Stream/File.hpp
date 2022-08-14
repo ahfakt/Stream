@@ -2,57 +2,20 @@
 #define STREAM_FILE_HPP
 
 #include "InOut.hpp"
-#include <IO/File.hpp>
+#include <fcntl.h>
+#include <sys/types.h>
 
 namespace Stream {
 
 /**
- * @brief	IO::File Input stream
- * @class	FileInput File.hpp "Stream/File.hpp"
+ * @brief	File resource
+ * @class	File File.hpp "Stream/File.hpp"
  */
-class FileInput : public Input {
-	IO::File* mFile;
-	off_t mOffset = 0;
+class File : public Input, public Output {
+	int mDescriptor = -1;
 
 	std::size_t
 	readBytes(std::byte* dest, std::size_t size) override;
-
-public:
-	struct Exception : Input::Exception
-	{ using Input::Exception::Exception; };
-
-	FileInput() noexcept;
-
-	FileInput(FileInput const&) = delete;
-
-	FileInput(FileInput&& other) noexcept;
-
-	friend void
-	swap(FileInput& a, FileInput& b) noexcept;
-
-	FileInput&
-	operator=(FileInput&& other) noexcept;
-
-	friend FileInput&
-	operator>>(IO::File& file, FileInput& fileInput) noexcept;
-
-	friend FileInput&
-	operator>>(std::nullptr_t, FileInput& fileInput) noexcept;
-
-	FileInput&
-	seekGet(off_t pos) noexcept;
-
-	[[nodiscard]] off_t
-	tellGet() const noexcept;
-};//class Stream::FileInput
-
-/**
- * @brief	IO::File Output stream
- * @class	FileOutput File.hpp "Stream/File.hpp"
- */
-class FileOutput : public Output {
-	IO::File* mFile;
-	off_t mOffset = 0;
 
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override;
@@ -61,64 +24,56 @@ class FileOutput : public Output {
 	flush() final;
 
 public:
-	struct Exception : Output::Exception
-	{ using Output::Exception::Exception; };
+	struct Exception : std::system_error
+	{ using std::system_error::system_error; };
 
-	FileOutput() noexcept;
+	/**
+	 * @brief	File open modes
+	 * @class	Mode File.hpp "Stream/File.hpp"
+	 */
+	enum class Mode : int {
+		R = O_RDONLY,
+		W = O_WRONLY | O_CREAT | O_TRUNC,
+		A = O_WRONLY | O_CREAT | O_APPEND,
+		RW = O_RDWR,
+		WR = O_RDWR | O_CREAT | O_TRUNC,
+		AR = O_RDWR | O_CREAT | O_APPEND
+	};//enum class Stream::File::Mode
 
-	FileOutput(FileOutput const&) = delete;
+	/**
+	 * @brief	Construct a File resource.
+	 * @throws	File::Exception
+	 */
+	File(std::string const& name, Mode mode);
 
-	FileOutput(FileOutput&& other) noexcept;
+	File(File const&) = delete;
+
+	File(File&& other) noexcept;
 
 	friend void
-	swap(FileOutput& a, FileOutput& b) noexcept;
+	swap(File& a, File& b) noexcept;
 
-	FileOutput&
-	operator=(FileOutput&& other) noexcept;
+	File&
+	operator=(File&& other) noexcept;
 
-	~FileOutput();
+	~File();
 
-	friend FileOutput&
-	operator<<(IO::File& file, FileOutput& fileOutput) noexcept;
+	/**
+	 * @brief	Get the block size of this file.
+	 * @return	Block size in bytes
+	 * @throws	File::Exception
+	 */
+	[[nodiscard]] blksize_t
+	getBlockSize() const;
 
-	friend FileOutput&
-	operator<<(std::nullptr_t, FileOutput& fileOutput) noexcept;
-
-	FileOutput&
-	seekPut(off_t pos);
-
+	/**
+	 * @brief	Get the total size of this file.
+	 * @return	File size in bytes
+	 * @throws	File::Exception
+	 */
 	[[nodiscard]] off_t
-	tellPut() const noexcept;
-};
-//class Stream::FileOutput
-
-/**
- * @brief IO::File Input and Output stream
- * @class File File.hpp "Stream/File.hpp"
- */
-class File : public FileInput, public FileOutput {};
-
-void
-swap(File& a, File& b) noexcept;
-
-template <typename T>
-concept FileInOut = std::derived_from<T, FileInput> && std::derived_from<T, FileOutput>;
-
-auto&
-operator<=>(IO::File& file, FileInOut auto& fileInOut) noexcept
-{
-	file >> fileInOut;
-	file << fileInOut;
-	return fileInOut;
-}
-
-auto&
-operator<=>(std::nullptr_t, FileInOut auto& fileInOut) noexcept
-{
-	nullptr >> fileInOut;
-	nullptr << fileInOut;
-	return fileInOut;
-}
+	getFileSize() const;
+};//class Stream::File
 
 }//namespace Stream
 

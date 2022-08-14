@@ -16,7 +16,6 @@ INSTALL_PREFIX=/home/user
 # cmake --help to see available generators
 GENERATOR="Unix Makefiles"
 
-git clone https://github.com/ahfakt/IO.git
 git clone https://github.com/ahfakt/Stream.git
 
 # Generate
@@ -31,7 +30,6 @@ cmake \
     -G "${GENERATOR}"
 
 # Build
-# IO | IOOBJ | IODoc
 # Stream | StreamOBJ | StreamDoc
 cmake \
     --build ../build/Stream/${SYSTEM_PROCESSOR}/${BUILD_TYPE} \

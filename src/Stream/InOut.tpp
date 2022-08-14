@@ -1,11 +1,4 @@
-#include "Stream/Input.hpp"
-
-namespace std {
-
-template <>
-struct is_error_code_enum<Stream::Input::Exception::Code> : true_type {};
-
-}//namespace std
+#include "Stream/InOut.hpp"
 
 namespace Stream {
 
@@ -36,6 +29,16 @@ Input&
 Input::operator>>(auto& t)
 requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>
 { return read(reinterpret_cast<void*>(&t), sizeof t); }
+
+template <Char C>
+Input&
+Input::operator>>(std::basic_string<C>& str)
+{
+	std::uint64_t size = 0;
+	read(&size, sizeof size);
+	str.resize(size);
+	return read(str.data(), size * sizeof(C));
+}
 
 /**
  * @brief	Construct a T object with input and optional additional args
@@ -83,6 +86,24 @@ requires NotConstructibleFrom<T, decltype(input)>
 	T t;
 	input >> t;
 	return t;
+}
+
+template <typename T, typename OutputType>
+concept InsertableTo =
+std::derived_from<OutputType, Output> &&
+std::derived_from<OutputType, std::remove_reference_t<decltype(std::declval<OutputType&>() << std::declval<T const&>())>>;
+
+Output&
+Output::operator<<(auto const& t)
+requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>
+{ return write(reinterpret_cast<void const*>(&t), sizeof t); }
+
+template <Char C>
+Output&
+Output::operator<<(std::basic_string<C> const& str)
+{
+	*this << static_cast<std::uint64_t>(str.size());
+	return write(str.data(), str.size() * sizeof(C));
 }
 
 }//namespace Stream

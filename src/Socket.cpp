@@ -1,111 +1,231 @@
 #include "Stream/Socket.hpp"
+#include <netdb.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <unistd.h>
+
+#define ExpectNNeg(x) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)))
 
 namespace Stream {
 
-SocketInput::SocketInput() noexcept
-{ nullptr >> *this; }
+Socket::Socket(int descriptor)
+		: mDescriptor(descriptor)
+{ ExpectNNeg(mDescriptor); }
 
-SocketInput::SocketInput(SocketInput&& other) noexcept
-{ swap(*this, other); }
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/socket.2.html">socket()</a>
+ * @details	Creates a socket resource.
+ *			If <b>socket()</b> system call fails, it throws a Socket::Exception.
+ */
+Socket::Socket()
+		: Socket(socket(AF_INET, SOCK_STREAM, IPPROTO_TCP))
+{}
 
-void
-swap(SocketInput& a, SocketInput& b) noexcept
-{ std::swap(a.mSocket, b.mSocket); }
-
-SocketInput&
-SocketInput::operator=(SocketInput&& other) noexcept
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/socket.2.html">socket()</a>
+ * @see	<a href="https://man7.org/linux/man-pages/man2/bind.2.html">bind()</a>
+ * @see	<a href="https://man7.org/linux/man-pages/man2/listen.2.html">listen()</a>
+ */
+Socket::Socket(Inet const& inet, int backlog)
+		: Socket()
 {
-	swap(*this, other);
-	return *this;
-}
-
-std::size_t
-SocketInput::readBytes(std::byte* dest, std::size_t size)
-{
-	try_again:
-	ssize_t res = ::recv(mSocket->mDescriptor, dest, size, 0);
-	if (res <= 0) {
-		if (res < 0) {
-			if (errno == EINTR)
-				goto try_again;
-			else
-				throw Exception(std::make_error_code(static_cast<std::errc>(errno)));
-		}
-		throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA)));
+	try {
+		bind(inet);
+		listen(backlog);
+	} catch (Exception& exc) {
+		if (close(mDescriptor) < 0)
+			perror(nullptr);
+		throw;
 	}
-	return res;
 }
 
-SocketInput&
-operator>>(IO::Socket& socket, SocketInput& socketInput) noexcept
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/socket.2.html">socket()</a>
+ * @see	<a href="https://man7.org/linux/man-pages/man2/connect.2.html">connect()</a>
+ */
+Socket::Socket(Inet const& inet)
+		: Socket()
 {
-	socketInput.mSocket = &socket;
-	return socketInput;
+	try {
+		connect(inet);
+	} catch (Exception& exc) {
+		if (close(mDescriptor) < 0)
+			perror(nullptr);
+		throw;
+	}
 }
 
-SocketInput&
-operator>>(std::nullptr_t, SocketInput& socketInput) noexcept
-{
-	static int instance = -1;
-	socketInput.mSocket = reinterpret_cast<IO::Socket*>(&instance);
-	return socketInput;
-}
-
-SocketOutput::SocketOutput() noexcept
-{ nullptr << *this; }
-
-SocketOutput::SocketOutput(SocketOutput&& other) noexcept
+Socket::Socket(Socket&& other) noexcept
 { swap(*this, other); }
 
 void
-swap(SocketOutput& a, SocketOutput& b) noexcept
-{ std::swap(a.mSocket, b.mSocket); }
+swap(Socket& a, Socket& b) noexcept
+{ std::swap(a.mDescriptor, b.mDescriptor); }
 
-SocketOutput&
-SocketOutput::operator=(SocketOutput&& other) noexcept
+Socket&
+Socket::operator=(Socket&& other) noexcept
 {
 	swap(*this, other);
 	return *this;
 }
 
 /**
- * @todo		BSD SIGNOPIPE
+ * @see		<a href="https://man7.org/linux/man-pages/man2/close.2.html">close()</a>
+ * @see		<a href="https://man7.org/linux/man-pages/man3/sys_nerr.3.html">perror()</a>
+ * @see		<a href="https://en.cppreference.com/w/cpp/io/c/std_streams">stdin, stdout, stderr</a>
+ * @details	Closes the socket resource.
+ *			If the <b>close()</b> system call fails, it writes the description of the error to the <b>standard error stream</b>.
  */
+Socket::~Socket()
+{
+	if (mDescriptor > 2 && close(mDescriptor) < 0)
+		perror(nullptr);
+}
+
 std::size_t
-SocketOutput::writeBytes(std::byte const* src, std::size_t size)
+Socket::readBytes(std::byte* dest, std::size_t size)
 {
-	try_again:
-	ssize_t res = ::send(mSocket->mDescriptor, src, size, MSG_NOSIGNAL);
-	if (res < 0) {
-		if (errno == EINTR)
-			goto try_again;
-		else
-			throw Exception(std::make_error_code(static_cast<std::errc>(errno)));
+	while (true) {
+		ssize_t r = ::recv(mDescriptor, dest, size, 0);
+		if (r > 0)
+			return r;
+		if (r == 0)
+			throw Input::Exception(std::make_error_code(static_cast<std::errc>(ENODATA)));
+		if (errno != EINTR)
+			throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
 	}
-	return res;
 }
 
-SocketOutput&
-operator<<(IO::Socket& socket, SocketOutput& socketOutput) noexcept
+std::size_t
+Socket::writeBytes(std::byte const* src, std::size_t size)
 {
-	socketOutput.mSocket = &socket;
-	return socketOutput;
+	while (true) {
+		ssize_t r = ::send(mDescriptor, src, size, MSG_NOSIGNAL);
+		if (r >= 0)
+			return r;
+		if (errno != EINTR)
+			throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+	}
 }
 
-SocketOutput&
-operator<<(std::nullptr_t, SocketOutput& socketOutput) noexcept
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/bind.2.html">bind()</a>
+ */
+void
+Socket::bind(Inet const& inet)
+{ ExpectNNeg(::bind(mDescriptor, &inet, sizeof(struct sockaddr_in))); }
+
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/listen.2.html">listen()</a>
+ */
+void
+Socket::listen(int backlog)
+{ ExpectNNeg(::listen(mDescriptor, backlog)); }
+
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/accept.2.html">accept()</a>
+ */
+Socket
+Socket::accept() const
+{ return Socket(::accept(mDescriptor, nullptr, nullptr)); }
+
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/connect.2.html">connect()</a>
+ */
+void
+Socket::connect(Inet const& inet)
+{ ExpectNNeg(::connect(mDescriptor, &inet, sizeof(struct sockaddr_in))); }
+
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man2/getsockopt.2.html">getsockopt()</a>
+ * @see	<a href="https://linux.die.net/man/7/tcp#:~:text=TCP_MAXSEG">TCP_MAXSEG</a>
+ */
+int
+Socket::getMSS() const
 {
-	static int instance = -1;
-	socketOutput.mSocket = reinterpret_cast<IO::Socket*>(&instance);
-	return socketOutput;
+	int mss = 0;
+	socklen_t optlen = sizeof mss;
+	ExpectNNeg(getsockopt(mDescriptor, IPPROTO_TCP, TCP_MAXSEG, &mss, &optlen));
+	return mss;
+}
+
+timeval
+Socket::getRecvTimeout() const
+{
+	timeval recvTimeout{0, 0};
+	socklen_t optlen = sizeof recvTimeout;
+	ExpectNNeg(getsockopt(mDescriptor, SOL_SOCKET, SO_RCVTIMEO, &recvTimeout, &optlen));
+	return recvTimeout;
 }
 
 void
-swap(Socket& a, Socket& b) noexcept
+Socket::setRecvTimeout(timeval timeout)
+{ ExpectNNeg(setsockopt(mDescriptor, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof timeout)); }
+
+timeval
+Socket::getSendTimeout() const
 {
-	swap(static_cast<SocketInput&>(a), static_cast<SocketInput&>(b));
-	swap(static_cast<SocketOutput&>(a), static_cast<SocketOutput&>(b));
+	timeval sendTimeout{0, 0};
+	socklen_t optlen = sizeof sendTimeout;
+	ExpectNNeg(getsockopt(mDescriptor, SOL_SOCKET, SO_SNDTIMEO, &sendTimeout, &optlen));
+	return sendTimeout;
+}
+
+void
+Socket::setSendTimeout(timeval timeout)
+{ ExpectNNeg(setsockopt(mDescriptor, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof timeout)); }
+
+std::uint32_t
+ResolveInet(char const* host)
+{
+	struct addrinfo hints = {0};
+	hints.ai_flags = 0;
+	hints.ai_family = AF_INET;
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_protocol = IPPROTO_TCP;
+
+	struct addrinfo* info = nullptr;
+	int e = getaddrinfo(host, nullptr, &hints, &info);
+	if (e == 0) {
+		std::uint32_t r = reinterpret_cast<sockaddr_in*>(info->ai_addr)->sin_addr.s_addr;
+		freeaddrinfo(info);
+		return r;
+	}
+	throw Socket::Inet::Exception(static_cast<Socket::Inet::Exception::Code>(e));
+}
+
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man7/ip.7.html">struct sockaddr_in</a>
+ * @see	<a href="https://man7.org/linux/man-pages/man3/inet_aton.3.html">inet_aton()</a>
+ */
+Socket::Inet::Inet(char const* host, std::uint16_t port)
+		: Inet(ResolveInet(host), port)
+{}
+
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man7/ip.7.html">struct sockaddr_in</a>
+ */
+Socket::Inet::Inet(std::uint32_t address, std::uint16_t port) noexcept
+{
+	auto* This = reinterpret_cast<sockaddr_in*>(this);
+	This->sin_family = AF_INET;
+	This->sin_port = htons(port);
+	This->sin_addr.s_addr = address;
+}
+
+std::error_code
+make_error_code(Socket::Inet::Exception::Code e) noexcept
+{
+	static struct : std::error_category {
+		[[nodiscard]] char const*
+		name() const noexcept override
+		{ return "Stream::Socket::Inet"; }
+
+		[[nodiscard]] std::string
+		message(int e) const noexcept override
+		{ return gai_strerror(e); }
+	} instance;
+	return {static_cast<int>(e), instance};
 }
 
 }//namespace Stream

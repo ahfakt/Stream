@@ -53,27 +53,6 @@ ReadRandomChunks(Stream::Input& input, std::vector<std::byte>& output, std::unif
 	}
 }
 
-std::vector<std::byte>
-ReadFile(std::string const& fileName);
-
-void
-WriteFile(std::string const& fileName, void* src, std::size_t size)
-{
-	IO::File file(fileName, IO::File::Mode::W);
-	Stream::FileOutput fileOutput;
-	file << fileOutput;
-	fileOutput.write(src, size);
-}
-
-void
-AppendFile(std::string const& fileName, void* src, std::size_t size)
-{
-	IO::File file(fileName, IO::File::Mode::A);
-	Stream::FileOutput fileOutput;
-	file << fileOutput;
-	fileOutput.write(src, size);
-}
-
 }//namespace StreamTest::Util
 
 #endif //STREAMTEST_UTIL_HPP

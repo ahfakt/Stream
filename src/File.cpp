@@ -1,157 +1,103 @@
 #include "Stream/File.hpp"
+#include <sys/stat.h>
 #include <unistd.h>
+
+#define ExpectNNeg(x) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)))
+#define ExpectNNegP(x, p) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)), p)
 
 namespace Stream {
 
-FileInput::FileInput() noexcept
-{ nullptr >> *this; }
+/**
+ * @see		<a href="https://man7.org/linux/man-pages/man2/open.2.html">open()</a>
+ * @details	Creates a file resource with given @p name and open @p mode.
+ *			If <b>open()</b> system call fails, it throws a File::Exception.
+ */
+File::File(std::string const& name, Mode mode)
+		: mDescriptor(open(name.c_str(), static_cast<int>(mode), S_IWUSR | S_IRUSR | S_IRGRP | S_IROTH))
+{ ExpectNNegP(mDescriptor, name); }
 
-FileInput::FileInput(FileInput&& other) noexcept
+File::File(File&& other) noexcept
 { swap(*this, other); }
 
 void
-swap(FileInput& a, FileInput& b) noexcept
-{
-	std::swap(a.mFile, b.mFile);
-	std::swap(a.mOffset, b.mOffset);
-}
+swap(File& a, File& b) noexcept
+{ std::swap(a.mDescriptor, b.mDescriptor); }
 
-FileInput&
-FileInput::operator=(FileInput&& other) noexcept
-{
-	swap(*this, other);
-	return *this;
-}
-
-std::size_t
-FileInput::readBytes(std::byte* dest, std::size_t size)
-{
-	try_again:
-	ssize_t res = ::pread(mFile->mDescriptor, dest, size, mOffset);
-	if (res <= 0) {
-		if (res < 0) {
-			if (errno == EINTR)
-				goto try_again;
-			else
-				throw Exception(std::make_error_code(static_cast<std::errc>(errno)));
-		}
-		throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA)));
-	}
-	mOffset += res;
-	return res;
-}
-
-FileInput&
-operator>>(IO::File& file, FileInput& fileInput) noexcept
-{
-	fileInput.mFile = &file;
-	return fileInput;
-}
-
-FileInput&
-operator>>(std::nullptr_t, FileInput& fileInput) noexcept
-{
-	static int instance = -1;
-	fileInput.mFile = reinterpret_cast<IO::File*>(&instance);
-	return fileInput;
-}
-
-FileInput&
-FileInput::seekGet(off_t pos) noexcept
-{
-	mOffset = pos;
-	return *this;
-}
-
-off_t
-FileInput::tellGet() const noexcept
-{ return mOffset; }
-
-FileOutput::FileOutput() noexcept
-{ nullptr << *this; }
-
-FileOutput::FileOutput(FileOutput&& other) noexcept
-{ swap(*this, other); }
-
-void
-swap(FileOutput& a, FileOutput& b) noexcept
-{
-	std::swap(a.mFile, b.mFile);
-	std::swap(a.mOffset, b.mOffset);
-}
-
-FileOutput&
-FileOutput::operator=(FileOutput&& other) noexcept
+File&
+File::operator=(File&& other) noexcept
 {
 	swap(*this, other);
 	return *this;
 }
 
 /**
- * @see		<a href="https://man7.org/linux/man-pages/man2/fdatasync.2.html">fsync()</a>
+ * @see		<a href="https://man7.org/linux/man-pages/man2/close.2.html">close()</a>
+ * @see		<a href="https://man7.org/linux/man-pages/man3/sys_nerr.3.html">perror()</a>
+ * @see		<a href="https://en.cppreference.com/w/cpp/io/c/std_streams">stdin, stdout, stderr</a>
+ * @details	Closes the file resource.
+ *			If the <b>close()</b> system call fails, it writes the description of the error to the <b>standard error stream</b>.
  */
-FileOutput::~FileOutput()
+File::~File()
 {
-	if (fsync(mFile->mDescriptor) < 0)
+	if (fsync(mDescriptor) < 0)
+		perror(nullptr);
+	if (mDescriptor > 2 && close(mDescriptor) < 0)
 		perror(nullptr);
 }
 
 std::size_t
-FileOutput::writeBytes(std::byte const* src, std::size_t size)
+File::readBytes(std::byte* dest, std::size_t size)
 {
-	try_again:
-	ssize_t res = ::pwrite(mFile->mDescriptor, src, size, mOffset);
-	if (res < 0) {
-		if (errno == EINTR)
-			goto try_again;
-		else
-			throw Exception(std::make_error_code(static_cast<std::errc>(errno)));
+	while (true) {
+		ssize_t r = ::read(mDescriptor, dest, size);
+		if (r > 0)
+			return r;
+		if (r == 0)
+			throw Input::Exception(std::make_error_code(static_cast<std::errc>(ENODATA)));
+		if (errno != EINTR)
+			throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
 	}
-	mOffset += res;
-	return res;
+}
+
+std::size_t
+File::writeBytes(std::byte const* src, std::size_t size)
+{
+	while (true) {
+		ssize_t r = ::write(mDescriptor, src, size);
+		if (r >= 0)
+			return r;
+		if (errno != EINTR)
+			throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+	}
 }
 
 /**
  * @see		<a href="https://man7.org/linux/man-pages/man2/fdatasync.2.html">fdatasync()</a>
  */
 void
-FileOutput::flush()
-{
-	if (fdatasync(mFile->mDescriptor) < 0)
-		throw Exception(std::make_error_code(static_cast<std::errc>(errno)));
-}
+File::flush()
+{ ExpectNNeg(fdatasync(mDescriptor)); }
 
-FileOutput&
-operator<<(IO::File& file, FileOutput& fileOutput) noexcept
+/**
+ * @see		<a href="https://man7.org/linux/man-pages/man2/lstat.2.html#:~:text=The%20fields%20in%20the%20stat,the%20file%20type%20and%20mode.">struct stat</a>
+ * @see		<a href="https://man7.org/linux/man-pages/man3/fstat.3p.html">fstat()</a>
+ * @details	Gets the block size information of the file from a <b>struct stat</b> filled by the <b>fstat()</b> function.
+ *			If the <b>fstat()</b> system call fails, it throws a File::Exception. Otherwise it returns the block size.
+ */
+blksize_t
+File::getBlockSize() const
 {
-	fileOutput.mFile = &file;
-	return fileOutput;
-}
-
-FileOutput&
-operator<<(std::nullptr_t, FileOutput& fileOutput) noexcept
-{
-	static int instance = -1;
-	fileOutput.mFile = reinterpret_cast<IO::File*>(&instance);
-	return fileOutput;
-}
-
-FileOutput&
-FileOutput::seekPut(off_t pos)
-{
-	mOffset = pos;
-	return *this;
+	struct stat fileStatus;
+	ExpectNNeg(fstat(mDescriptor, &fileStatus));
+	return fileStatus.st_blksize;
 }
 
 off_t
-FileOutput::tellPut() const noexcept
-{ return mOffset; }
-
-void
-swap(File& a, File& b) noexcept
+File::getFileSize() const
 {
-	swap(static_cast<FileInput&>(a), static_cast<FileInput&>(b));
-	swap(static_cast<FileOutput&>(a), static_cast<FileOutput&>(b));
+	struct stat fileStatus;
+	ExpectNNeg(fstat(mDescriptor, &fileStatus));
+	return fileStatus.st_size;
 }
 
 }//namespace Stream

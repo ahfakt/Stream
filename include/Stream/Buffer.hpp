@@ -1,7 +1,7 @@
 #ifndef STREAM_BUFFER_HPP
 #define STREAM_BUFFER_HPP
 
-#include "InOut.hpp"
+#include "Transparent.hpp"
 #include <memory>
 
 namespace Stream {
@@ -10,12 +10,15 @@ namespace Stream {
  * @brief	Input stream buffer
  * @class	BufferInput Buffer.hpp "Stream/Buffer.hpp"
  */
-class BufferInput : public InputFilter {
-	std::unique_ptr<std::byte[]> mBuff;
-	std::byte const* mEnd = nullptr;
-	std::size_t mBuffSize = 0;
+class BufferInput : public TransparentInput {
 protected:
-	std::byte const* mGet = nullptr;
+	std::unique_ptr<std::byte[]> mBuff;
+	std::byte const* mBeg = nullptr;
+	std::byte const* mDataBeg = nullptr;
+	std::byte* mDataEnd = nullptr;
+	std::byte const* mEnd = nullptr;
+
+	BufferInput() noexcept = default;
 
 	std::size_t
 	readBytes(std::byte* dest, std::size_t size) override;
@@ -24,7 +27,7 @@ public:
 	struct Exception : Input::Exception
 	{ using Input::Exception::Exception; };
 
-	explicit BufferInput(std::size_t buffInitialSize = 0);
+	explicit BufferInput(std::size_t buffInitialSize);
 
 	BufferInput(void const* sourceBuff, std::size_t sourceSize) noexcept;
 
@@ -37,26 +40,37 @@ public:
 	operator=(BufferInput&& other) noexcept;
 
 	[[nodiscard]] std::size_t
-	getInputBufferSize() const noexcept;
+	getDataBufferSize() const noexcept;
 
 	[[nodiscard]] std::size_t
-	getAvailableDataSize() const noexcept;
+	getDataSize() const noexcept;
 
-	std::size_t
-	provideData(std::size_t max);
+	[[nodiscard]] std::byte const*
+	getData() const noexcept;
+
+	void
+	advanceData(std::size_t size) noexcept;
+
+	virtual std::size_t
+	provideData(std::size_t min);
+
+	virtual std::size_t
+	provideSomeData(std::size_t max);
 };//class Stream::BufferInput
 
 /**
  * @brief	Output stream buffer
  * @class	BufferOutput Buffer.hpp "Stream/Buffer.hpp"
  */
-class BufferOutput : public OutputFilter {
+class BufferOutput : public TransparentOutput {
+protected:
 	std::unique_ptr<std::byte[]> mBuff;
 	std::byte const* mBeg = nullptr;
+	std::byte* mSpaceBeg = nullptr;
+	std::byte const* mSpaceEnd = nullptr;
 	std::byte const* mEnd = nullptr;
-	std::size_t mBuffSize = 0;
-protected:
-	std::byte* mPut = nullptr;
+
+	BufferOutput() noexcept = default;
 
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override;
@@ -68,7 +82,7 @@ public:
 	struct Exception : Output::Exception
 	{ using Output::Exception::Exception; };
 
-	explicit BufferOutput(std::size_t buffInitialSize = 0);
+	explicit BufferOutput(std::size_t buffInitialSize);
 
 	BufferOutput(void* sinkBuff, std::size_t sinkSize) noexcept;
 
@@ -83,16 +97,22 @@ public:
 	~BufferOutput();
 
 	[[nodiscard]] std::size_t
-	getOutputBufferSize() const noexcept;
+	getSpaceBufferSize() const noexcept;
 
 	[[nodiscard]] std::size_t
-	getAvailableSpaceSize() const noexcept;
+	getSpaceSize() const noexcept;
 
-	std::size_t
+	virtual std::size_t
 	provideSpace(std::size_t min);
 
+	std::byte*
+	getSpace() noexcept;
+
 	void
-	resetPut() noexcept;
+	advanceSpace(std::size_t size) noexcept;
+
+	virtual std::size_t
+	provideSomeSpace(std::size_t max);
 };//class Stream::BufferOutput
 
 /**
@@ -107,11 +127,13 @@ public:
 		};
 	};//struct Stream::Buffer::Exception
 
-	explicit Buffer(std::size_t inBuffInitialSize = 0, std::size_t outBuffInitialSize = 0);
+	explicit Buffer(std::size_t buffInitialSize);
+
+	Buffer(std::size_t inBuffInitialSize, std::size_t outBuffInitialSize);
 
 	Buffer(std::size_t inBuffInitialSize, void* sinkBuff, std::size_t sinkSize);
 
-	Buffer(void const* sourceBuff, std::size_t sourceSize, std::size_t outBuffInitialSize = 0);
+	Buffer(void const* sourceBuff, std::size_t sourceSize, std::size_t outBuffInitialSize);
 
 	Buffer(void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize) noexcept;
 };//class Stream::Buffer
