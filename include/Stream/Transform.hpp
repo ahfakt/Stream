@@ -18,6 +18,9 @@ protected:
 	std::size_t
 	readBytes(std::byte* dest, std::size_t size) override;
 
+	[[nodiscard]] std::size_t
+	getDataSize() const noexcept;
+
 	[[nodiscard]] std::byte const*
 	getData() const noexcept;
 
@@ -56,6 +59,9 @@ protected:
 
 	void
 	flush() override;
+
+	[[nodiscard]] std::size_t
+	getSpaceSize() const noexcept;
 
 	std::byte*
 	getSpace() noexcept;

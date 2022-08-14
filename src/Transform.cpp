@@ -28,6 +28,10 @@ size_t
 TransformInput::readBytes(std::byte* dest, std::size_t size)
 { return mSource->readSome(dest, size); }
 
+std::size_t
+TransformInput::getDataSize() const noexcept
+{ return mSource->getDataSize(); }
+
 std::byte const*
 TransformInput::getData() const noexcept
 { return mSource->getData(); }
@@ -88,6 +92,10 @@ TransformOutput::writeBytes(std::byte const* src, std::size_t size)
 void
 TransformOutput::flush()
 { *mSink << nullptr; }
+
+std::size_t
+TransformOutput::getSpaceSize() const noexcept
+{ return mSink->getSpaceSize(); }
 
 std::byte*
 TransformOutput::getSpace() noexcept
