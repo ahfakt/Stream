@@ -88,10 +88,10 @@ Inheritance diagram for Stream::Output:</div>
 <area shape="rect" href="../../df/d21/classStream_1_1File.html" title="File resource." alt="" coords="5,277,284,443"/>
 <area shape="rect" href="../../d3/de2/classStream_1_1Pipe.html" title="Pipe resource." alt="" coords="309,263,690,457"/>
 <area shape="rect" href="../../d1/db1/classStream_1_1Socket.html" title="Socket resource." alt="" coords="714,248,1018,472"/>
-<area shape="rect" href="../../d1/dff/classStream_1_1TransformOutput.html" title="Transform Output stream base class" alt="" coords="1042,285,1351,435"/>
-<area shape="rect" href="../../d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="1376,307,1820,413"/>
-<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="1383,520,1813,847"/>
-<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1291,895,1905,1031"/>
+<area shape="rect" href="../../d1/dff/classStream_1_1TransformOutput.html" title="Transform Output stream base class" alt="" coords="1042,277,1471,443"/>
+<area shape="rect" href="../../d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="1495,307,1925,413"/>
+<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="1495,520,1925,861"/>
+<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1403,909,2017,1045"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -121,8 +121,9 @@ template&lt;Char C&gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a3ad560bb36deac0f1ba31590c8456f93"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a3ad560bb36deac0f1ba31590c8456f93">writeBytes</a> (std::byte const *src, std::size_t size)=0</td></tr>
-<tr class="separator:a3ad560bb36deac0f1ba31590c8456f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4beaa5da8b666f94cfaa1b5c4b094dc"><td class="memItemLeft" align="right" valign="top"><a id="ac4beaa5da8b666f94cfaa1b5c4b094dc" name="ac4beaa5da8b666f94cfaa1b5c4b094dc"></a>
+virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>writeBytes</b> (std::byte const *src, std::size_t size)=0</td></tr>
+<tr class="separator:ac4beaa5da8b666f94cfaa1b5c4b094dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a368881bd3e729ac411a0c7ebe8295db7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a368881bd3e729ac411a0c7ebe8295db7">flush</a> ()</td></tr>
 <tr class="separator:a368881bd3e729ac411a0c7ebe8295db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -131,45 +132,6 @@ Protected Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../de/dfe/InOut_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../de/dfe/InOut_8hpp_source.html">InOut.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3ad560bb36deac0f1ba31590c8456f93" name="a3ad560bb36deac0f1ba31590c8456f93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ad560bb36deac0f1ba31590c8456f93">&#9670;&nbsp;</a></span>writeBytes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::size_t Stream::Output::writeBytes </td>
-          <td>(</td>
-          <td class="paramtype">std::byte const *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> size; }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a368881bd3e729ac411a0c7ebe8295db7" name="a368881bd3e729ac411a0c7ebe8295db7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a368881bd3e729ac411a0c7ebe8295db7">&#9670;&nbsp;</a></span>flush()</h2>
 
@@ -193,8 +155,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00065">65</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -224,19 +186,19 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>    {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">while</span> (size) {</div>
-<div class="line"><span class="lineno">   72</span>        std::size_t inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size);</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keyword">reinterpret_cast&lt;</span>std::byte const*&amp;<span class="keyword">&gt;</span>(src) += inl;</div>
-<div class="line"><span class="lineno">   74</span>        size -= inl;</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   77</span>} <span class="keywordflow">catch</span> (Exception&amp; exc) {</div>
-<div class="line"><span class="lineno">   78</span>    exc.mSrc = src;</div>
-<div class="line"><span class="lineno">   79</span>    exc.mSize = size;</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">throw</span>;</div>
-<div class="line"><span class="lineno">   81</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>    {</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">while</span> (size) {</div>
+<div class="line"><span class="lineno">   64</span>        std::size_t inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size);</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keyword">reinterpret_cast&lt;</span>std::byte const*&amp;<span class="keyword">&gt;</span>(src) += inl;</div>
+<div class="line"><span class="lineno">   66</span>        size -= inl;</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   69</span>} <span class="keywordflow">catch</span> (Exception&amp; exc) {</div>
+<div class="line"><span class="lineno">   70</span>    exc.mSrc = src;</div>
+<div class="line"><span class="lineno">   71</span>    exc.mSize = size;</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">throw</span>;</div>
+<div class="line"><span class="lineno">   73</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -266,14 +228,14 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00084">84</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (size) <span class="keywordflow">do</span> {</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">if</span> (std::size_t inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size))</div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">return</span> inl;</div>
-<div class="line"><span class="lineno">   89</span>    } <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   91</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> (size) <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (std::size_t inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size))</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span> inl;</div>
+<div class="line"><span class="lineno">   81</span>    } <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   83</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -293,11 +255,11 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00093">93</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
-<div class="line"><span class="lineno">   96</span>    flush();</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   98</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00085">85</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    flush();</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

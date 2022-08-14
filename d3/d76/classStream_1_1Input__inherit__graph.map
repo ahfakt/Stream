@@ -3,8 +3,8 @@
 <area shape="rect" id="node2" href="$df/d21/classStream_1_1File.html" title="File resource." alt="" coords="5,248,284,413"/>
 <area shape="rect" id="node3" href="$d3/de2/classStream_1_1Pipe.html" title="Pipe resource." alt="" coords="309,233,690,428"/>
 <area shape="rect" id="node4" href="$d1/db1/classStream_1_1Socket.html" title="Socket resource." alt="" coords="714,219,1018,443"/>
-<area shape="rect" id="node5" href="$db/d03/classStream_1_1TransformInput.html" title="Transform Input stream base class" alt="" coords="1043,263,1343,399"/>
-<area shape="rect" id="node6" href="$d1/dcd/classStream_1_1TransparentInput.html" title="Transparent Input stream base class" alt="" coords="1367,277,1779,384"/>
-<area shape="rect" id="node7" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="1357,491,1788,788"/>
-<area shape="rect" id="node8" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1266,836,1879,972"/>
+<area shape="rect" id="node5" href="$db/d03/classStream_1_1TransformInput.html" title="Transform Input stream base class" alt="" coords="1042,255,1439,406"/>
+<area shape="rect" id="node6" href="$d1/dcd/classStream_1_1TransparentInput.html" title="Transparent Input stream base class" alt="" coords="1463,277,1861,384"/>
+<area shape="rect" id="node7" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="1447,491,1877,803"/>
+<area shape="rect" id="node8" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1355,851,1969,987"/>
 </map>
