@@ -1,7 +1,5 @@
 <map id="Stream::File" name="Stream::File">
-<area shape="rect" id="node1" title="IO::File Input and Output stream." alt="" coords="379,476,473,553"/>
-<area shape="rect" id="node2" href="$d5/d93/classStream_1_1FileInput.html" title="IO::File Input stream." alt="" coords="86,270,409,421"/>
-<area shape="rect" id="node3" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,20,407,200"/>
-<area shape="rect" id="node4" href="$df/dc2/classStream_1_1FileOutput.html" title="IO::File Output stream." alt="" coords="455,263,797,428"/>
-<area shape="rect" id="node5" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="431,5,864,215"/>
+<area shape="rect" id="node1" title="File resource." alt="" coords="287,248,565,413"/>
+<area shape="rect" id="node2" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,20,407,185"/>
+<area shape="rect" id="node3" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="431,5,864,200"/>
 </map>

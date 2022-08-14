@@ -87,13 +87,13 @@ Inheritance diagram for Stream::Buffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d31/classStream_1_1Buffer__inherit__graph.png" border="0" usemap="#aStream_1_1Buffer_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStream_1_1Buffer_inherit__map" id="aStream_1_1Buffer_inherit__map">
-<area shape="rect" title="Input / Output stream buffer." alt="" coords="141,675,754,796"/>
-<area shape="rect" href="../../d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="5,425,436,605"/>
-<area shape="rect" href="../../d3/d2f/classStream_1_1InputFilter.html" title="Input stream filter base class." alt="" coords="22,263,419,355"/>
-<area shape="rect" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="20,20,421,200"/>
-<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="461,403,890,627"/>
-<area shape="rect" href="../../d0/d57/classStream_1_1OutputFilter.html" title="Output stream filter base class." alt="" coords="461,263,890,355"/>
-<area shape="rect" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="459,5,892,215"/>
+<area shape="rect" title="Input / Output stream buffer." alt="" coords="141,777,754,913"/>
+<area shape="rect" href="../../d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="5,417,436,715"/>
+<area shape="rect" href="../../d1/dcd/classStream_1_1TransparentInput.html" title="Transparent Input stream base class" alt="" coords="15,248,427,355"/>
+<area shape="rect" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="20,20,421,185"/>
+<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="461,403,890,729"/>
+<area shape="rect" href="../../d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="453,248,897,355"/>
+<area shape="rect" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="459,5,892,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -104,80 +104,108 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac142febace65bf84fdcbf6266f2a0a75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#ac142febace65bf84fdcbf6266f2a0a75">Buffer</a> (std::size_t inBuffInitialSize=0, std::size_t outBuffInitialSize=0)</td></tr>
-<tr class="separator:ac142febace65bf84fdcbf6266f2a0a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f0c95dce79b4ac6b0ad1f543e83feca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#a2f0c95dce79b4ac6b0ad1f543e83feca">Buffer</a> (std::size_t buffInitialSize)</td></tr>
+<tr class="separator:a2f0c95dce79b4ac6b0ad1f543e83feca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b7fccad2827d441c4e919a80dc3d511"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#a7b7fccad2827d441c4e919a80dc3d511">Buffer</a> (std::size_t inBuffInitialSize, std::size_t outBuffInitialSize)</td></tr>
+<tr class="separator:a7b7fccad2827d441c4e919a80dc3d511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a511cac269ecf3cec7d0e048228e2c8fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#a511cac269ecf3cec7d0e048228e2c8fd">Buffer</a> (std::size_t inBuffInitialSize, void *sinkBuff, std::size_t sinkSize)</td></tr>
 <tr class="separator:a511cac269ecf3cec7d0e048228e2c8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8f737818011d7f18536facdcda20a57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#af8f737818011d7f18536facdcda20a57">Buffer</a> (void const *sourceBuff, std::size_t sourceSize, std::size_t outBuffInitialSize=0)</td></tr>
-<tr class="separator:af8f737818011d7f18536facdcda20a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f1cfbd41ec9922d3529ff37680c1e06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#a1f1cfbd41ec9922d3529ff37680c1e06">Buffer</a> (void const *sourceBuff, std::size_t sourceSize, std::size_t outBuffInitialSize)</td></tr>
+<tr class="separator:a1f1cfbd41ec9922d3529ff37680c1e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f0008f697fcd6a717f741114d581155"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d04/classStream_1_1Buffer.html#a2f0008f697fcd6a717f741114d581155">Buffer</a> (void const *sourceBuff, std::size_t sourceSize, void *sinkBuff, std::size_t sinkSize) noexcept</td></tr>
 <tr class="separator:a2f0008f697fcd6a717f741114d581155"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62266f87d563884cef75ed2e8077822"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ac62266f87d563884cef75ed2e8077822">getInputBufferSize</a> () const noexcept</td></tr>
-<tr class="separator:ac62266f87d563884cef75ed2e8077822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a407a294df6ac9e15517634e1483c23e6"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a407a294df6ac9e15517634e1483c23e6">getAvailableDataSize</a> () const noexcept</td></tr>
-<tr class="separator:a407a294df6ac9e15517634e1483c23e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac78daac1aa32def1441f87f54fec3db7"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ac78daac1aa32def1441f87f54fec3db7">provideData</a> (std::size_t max)</td></tr>
-<tr class="separator:ac78daac1aa32def1441f87f54fec3db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fc7051ad641fcb1d586fb9bff7cbeb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#a2fc7051ad641fcb1d586fb9bff7cbeb7">operator&gt;&gt;</a> (std::string &amp;str)</td></tr>
-<tr class="separator:a2fc7051ad641fcb1d586fb9bff7cbeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7445fe1252aff13dd78545c16797864"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#aa7445fe1252aff13dd78545c16797864">operator&gt;&gt;</a> (char *str)</td></tr>
-<tr class="separator:aa7445fe1252aff13dd78545c16797864"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memItemLeft" align="right" valign="top"><a id="a0a8cb2f45caeb5a945eb15ea27244f31" name="a0a8cb2f45caeb5a945eb15ea27244f31"></a>
-<a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (auto &amp;t)</td></tr>
-<tr class="separator:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5c69b4895a45f939cc1df9bc5309704"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#af5c69b4895a45f939cc1df9bc5309704">getDataBufferSize</a> () const noexcept</td></tr>
+<tr class="separator:af5c69b4895a45f939cc1df9bc5309704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaaa027d7cf1a34e60d57d9046224293"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#aaaaa027d7cf1a34e60d57d9046224293">getDataSize</a> () const noexcept</td></tr>
+<tr class="separator:aaaaa027d7cf1a34e60d57d9046224293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cdf582af62bc6406efb5472f910b535"><td class="memItemLeft" align="right" valign="top">std::byte const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a1cdf582af62bc6406efb5472f910b535">getData</a> () const noexcept</td></tr>
+<tr class="separator:a1cdf582af62bc6406efb5472f910b535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac26ef641d07e57099e4f5b7aa3a9c0a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ac26ef641d07e57099e4f5b7aa3a9c0a3">advanceData</a> (std::size_t size) noexcept</td></tr>
+<tr class="separator:ac26ef641d07e57099e4f5b7aa3a9c0a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac98a578cb8d01f18e9e79b52e8bdf3d6"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ac98a578cb8d01f18e9e79b52e8bdf3d6">provideData</a> (std::size_t min)</td></tr>
+<tr class="separator:ac98a578cb8d01f18e9e79b52e8bdf3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6488b6cf7a8aa56047b7209170b8c633"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a6488b6cf7a8aa56047b7209170b8c633">provideSomeData</a> (std::size_t max)</td></tr>
+<tr class="separator:a6488b6cf7a8aa56047b7209170b8c633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acab44ccdd132bf75e026757ed28bf9be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#acab44ccdd132bf75e026757ed28bf9be">read</a> (void *dest, std::size_t size)</td></tr>
 <tr class="separator:acab44ccdd132bf75e026757ed28bf9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a384d556a5657bfd088df0031ab290dc0"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d83/classStream_1_1Input.html#a384d556a5657bfd088df0031ab290dc0">readSome</a> (void *dest, std::size_t size)</td></tr>
 <tr class="separator:a384d556a5657bfd088df0031ab290dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a88d89b1c89df2d3fefe990006dcf01"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a2a88d89b1c89df2d3fefe990006dcf01">getOutputBufferSize</a> () const noexcept</td></tr>
-<tr class="separator:a2a88d89b1c89df2d3fefe990006dcf01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80397d8933f6349e8830483a3b574610"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a80397d8933f6349e8830483a3b574610">getAvailableSpaceSize</a> () const noexcept</td></tr>
-<tr class="separator:a80397d8933f6349e8830483a3b574610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab47a81e40f46bce9e6fd7dbcd59c147"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#aab47a81e40f46bce9e6fd7dbcd59c147">provideSpace</a> (std::size_t min)</td></tr>
+<tr class="memitem:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memItemLeft" align="right" valign="top"><a id="a0a8cb2f45caeb5a945eb15ea27244f31" name="a0a8cb2f45caeb5a945eb15ea27244f31"></a>
+<a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (auto &amp;t)</td></tr>
+<tr class="separator:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d5feb68535761a4b816c3e9b79fd63d"><td class="memTemplParams" colspan="2"><a id="a2d5feb68535761a4b816c3e9b79fd63d" name="a2d5feb68535761a4b816c3e9b79fd63d"></a>
+template&lt;Char C&gt; </td></tr>
+<tr class="memitem:a2d5feb68535761a4b816c3e9b79fd63d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::basic_string&lt; C &gt; &amp;str)</td></tr>
+<tr class="separator:a2d5feb68535761a4b816c3e9b79fd63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ce8763aefbdd64907c749099c8d0315"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a3ce8763aefbdd64907c749099c8d0315">getSpaceBufferSize</a> () const noexcept</td></tr>
+<tr class="separator:a3ce8763aefbdd64907c749099c8d0315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba2e5e38f934927a6d0efc9d3d3507c"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a5ba2e5e38f934927a6d0efc9d3d3507c">getSpaceSize</a> () const noexcept</td></tr>
+<tr class="separator:a5ba2e5e38f934927a6d0efc9d3d3507c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab47a81e40f46bce9e6fd7dbcd59c147"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#aab47a81e40f46bce9e6fd7dbcd59c147">provideSpace</a> (std::size_t min)</td></tr>
 <tr class="separator:aab47a81e40f46bce9e6fd7dbcd59c147"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0da489bd938db7f1fba01e14e21e36d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#ae0da489bd938db7f1fba01e14e21e36d">resetPut</a> () noexcept</td></tr>
-<tr class="separator:ae0da489bd938db7f1fba01e14e21e36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa68d1911fa99efe40b0180bebb46e85b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#aa68d1911fa99efe40b0180bebb46e85b">operator&lt;&lt;</a> (std::nullptr_t)</td></tr>
-<tr class="separator:aa68d1911fa99efe40b0180bebb46e85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafe2d00c7c879aca4a7b778502ca03fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#aafe2d00c7c879aca4a7b778502ca03fe">operator&lt;&lt;</a> (std::string const &amp;str)</td></tr>
-<tr class="separator:aafe2d00c7c879aca4a7b778502ca03fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21bb9ccd7c1ea37b4d156a733e0beab2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a21bb9ccd7c1ea37b4d156a733e0beab2">operator&lt;&lt;</a> (char const *str)</td></tr>
-<tr class="separator:a21bb9ccd7c1ea37b4d156a733e0beab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5da122e55ec3248c903aa17a9547aace"><td class="memItemLeft" align="right" valign="top"><a id="a5da122e55ec3248c903aa17a9547aace" name="a5da122e55ec3248c903aa17a9547aace"></a>
-<a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (auto const &amp;t)</td></tr>
-<tr class="separator:a5da122e55ec3248c903aa17a9547aace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0064bf6993503912143010468346cfb3"><td class="memItemLeft" align="right" valign="top">std::byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a0064bf6993503912143010468346cfb3">getSpace</a> () noexcept</td></tr>
+<tr class="separator:a0064bf6993503912143010468346cfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad708476b969b7135d967647711a169f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#ad708476b969b7135d967647711a169f2">advanceSpace</a> (std::size_t size) noexcept</td></tr>
+<tr class="separator:ad708476b969b7135d967647711a169f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35917a142cbcf4aa5883ed79f592c748"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a35917a142cbcf4aa5883ed79f592c748">provideSomeSpace</a> (std::size_t max)</td></tr>
+<tr class="separator:a35917a142cbcf4aa5883ed79f592c748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e9f440efebe0cebafff8a29e1d7009a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a2e9f440efebe0cebafff8a29e1d7009a">write</a> (void const *src, std::size_t size)</td></tr>
 <tr class="separator:a2e9f440efebe0cebafff8a29e1d7009a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a261ae3420b028ef98211b093702efdc4"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a261ae3420b028ef98211b093702efdc4">writeSome</a> (void const *src, std::size_t size)</td></tr>
 <tr class="separator:a261ae3420b028ef98211b093702efdc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa68d1911fa99efe40b0180bebb46e85b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#aa68d1911fa99efe40b0180bebb46e85b">operator&lt;&lt;</a> (std::nullptr_t)</td></tr>
+<tr class="separator:aa68d1911fa99efe40b0180bebb46e85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da122e55ec3248c903aa17a9547aace"><td class="memItemLeft" align="right" valign="top"><a id="a5da122e55ec3248c903aa17a9547aace" name="a5da122e55ec3248c903aa17a9547aace"></a>
+<a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (auto const &amp;t)</td></tr>
+<tr class="separator:a5da122e55ec3248c903aa17a9547aace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7534a80e2ea47070732751745a5e88"><td class="memTemplParams" colspan="2"><a id="a4a7534a80e2ea47070732751745a5e88" name="a4a7534a80e2ea47070732751745a5e88"></a>
+template&lt;Char C&gt; </td></tr>
+<tr class="memitem:a4a7534a80e2ea47070732751745a5e88"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::basic_string&lt; C &gt; const &amp;str)</td></tr>
+<tr class="separator:a4a7534a80e2ea47070732751745a5e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a6d87424c12a5991ff5461cf6a553c18a"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a6d87424c12a5991ff5461cf6a553c18a">readBytes</a> (std::byte *dest, std::size_t size) override</td></tr>
 <tr class="separator:a6d87424c12a5991ff5461cf6a553c18a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a851e1af7d254c6d8a6e5c4237f16af8f"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dcd/classStream_1_1TransparentInput.html#a851e1af7d254c6d8a6e5c4237f16af8f">getSome</a> (void *dest, std::size_t size)</td></tr>
+<tr class="separator:a851e1af7d254c6d8a6e5c4237f16af8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc7daf68cbb7b79d2d1f19aa4a7b84f7"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#afc7daf68cbb7b79d2d1f19aa4a7b84f7">writeBytes</a> (std::byte const *src, std::size_t size) override</td></tr>
 <tr class="separator:afc7daf68cbb7b79d2d1f19aa4a7b84f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2561eee2acde3b7b85bde2db7749e274"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a2561eee2acde3b7b85bde2db7749e274">flush</a> () override</td></tr>
 <tr class="separator:a2561eee2acde3b7b85bde2db7749e274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1271046c1fcdbca982aec1607fce370d"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html#a1271046c1fcdbca982aec1607fce370d">putSome</a> (void const *src, std::size_t size)</td></tr>
+<tr class="separator:a1271046c1fcdbca982aec1607fce370d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a7411a8fe888c70c41aee83f7cbf80ff0"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a7411a8fe888c70c41aee83f7cbf80ff0">mGet</a> = nullptr</td></tr>
-<tr class="separator:a7411a8fe888c70c41aee83f7cbf80ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84984380c0ec30c0a9aaf0683da0bbea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2f/classStream_1_1InputFilter.html#a84984380c0ec30c0a9aaf0683da0bbea">mSource</a></td></tr>
-<tr class="separator:a84984380c0ec30c0a9aaf0683da0bbea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b3b31b4de0f6ee7102df0b66e3835ea"><td class="memItemLeft" align="right" valign="top">std::byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a3b3b31b4de0f6ee7102df0b66e3835ea">mPut</a> = nullptr</td></tr>
-<tr class="separator:a3b3b31b4de0f6ee7102df0b66e3835ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5619c25edd5536c9d7d033a497a93af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d57/classStream_1_1OutputFilter.html#ad5619c25edd5536c9d7d033a497a93af">mSink</a></td></tr>
-<tr class="separator:ad5619c25edd5536c9d7d033a497a93af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab36b98aac6f6fbdb50c5743f69f8649a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; std::byte[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ab36b98aac6f6fbdb50c5743f69f8649a">mBuff</a></td></tr>
+<tr class="separator:ab36b98aac6f6fbdb50c5743f69f8649a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09fbed3e1a3870a7a9517b79bd2b17bb"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a09fbed3e1a3870a7a9517b79bd2b17bb">mBeg</a> = nullptr</td></tr>
+<tr class="separator:a09fbed3e1a3870a7a9517b79bd2b17bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9240712de52853823608dd10bc4b31f1"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a9240712de52853823608dd10bc4b31f1">mDataBeg</a> = nullptr</td></tr>
+<tr class="separator:a9240712de52853823608dd10bc4b31f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4a038abf4d88567a8e344aed3789486"><td class="memItemLeft" align="right" valign="top">std::byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#aa4a038abf4d88567a8e344aed3789486">mDataEnd</a> = nullptr</td></tr>
+<tr class="separator:aa4a038abf4d88567a8e344aed3789486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c6205d6bffdb47edf85c56175ea869"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ad7c6205d6bffdb47edf85c56175ea869">mEnd</a> = nullptr</td></tr>
+<tr class="separator:ad7c6205d6bffdb47edf85c56175ea869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12309c4b3567e17cfe4410931ebc0e3e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; std::byte[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a12309c4b3567e17cfe4410931ebc0e3e">mBuff</a></td></tr>
+<tr class="separator:a12309c4b3567e17cfe4410931ebc0e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab52abe7aeb995a0b9c3c14fe02c342e"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#aab52abe7aeb995a0b9c3c14fe02c342e">mBeg</a> = nullptr</td></tr>
+<tr class="separator:aab52abe7aeb995a0b9c3c14fe02c342e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acde3f24fa1847e0f5f502cb1c9964001"><td class="memItemLeft" align="right" valign="top">std::byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#acde3f24fa1847e0f5f502cb1c9964001">mSpaceBeg</a> = nullptr</td></tr>
+<tr class="separator:acde3f24fa1847e0f5f502cb1c9964001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a963e7bb621df59f69414fc16b9089162"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a963e7bb621df59f69414fc16b9089162">mSpaceEnd</a> = nullptr</td></tr>
+<tr class="separator:a963e7bb621df59f69414fc16b9089162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa29f7e5ed199c444f1934b05778ae0"><td class="memItemLeft" align="right" valign="top">std::byte const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/classStream_1_1BufferOutput.html#a4fa29f7e5ed199c444f1934b05778ae0">mEnd</a> = nullptr</td></tr>
+<tr class="separator:a4fa29f7e5ed199c444f1934b05778ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class.">Input</a> / <a class="el" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class.">Output</a> stream buffer. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00122">122</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac142febace65bf84fdcbf6266f2a0a75" name="ac142febace65bf84fdcbf6266f2a0a75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac142febace65bf84fdcbf6266f2a0a75">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[1/4]</span></h2>
+<a id="a2f0c95dce79b4ac6b0ad1f543e83feca" name="a2f0c95dce79b4ac6b0ad1f543e83feca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f0c95dce79b4ac6b0ad1f543e83feca">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,18 +217,8 @@ Protected Attributes</h2></td></tr>
           <td class="memname">Stream::Buffer::Buffer </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>inBuffInitialSize</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>buffInitialSize</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>outBuffInitialSize</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -210,15 +228,48 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00188">188</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  189</span>        : BufferInput(inBuffInitialSize)</div>
-<div class="line"><span class="lineno">  190</span>        , BufferOutput(outBuffInitialSize)</div>
-<div class="line"><span class="lineno">  191</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00235">235</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  236</span>        : BufferInput(buffInitialSize)</div>
+<div class="line"><span class="lineno">  237</span>        , BufferOutput(buffInitialSize)</div>
+<div class="line"><span class="lineno">  238</span>{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7b7fccad2827d441c4e919a80dc3d511" name="a7b7fccad2827d441c4e919a80dc3d511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b7fccad2827d441c4e919a80dc3d511">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Stream::Buffer::Buffer </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>inBuffInitialSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>outBuffInitialSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00240">240</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  241</span>        : BufferInput(inBuffInitialSize)</div>
+<div class="line"><span class="lineno">  242</span>        , BufferOutput(outBuffInitialSize)</div>
+<div class="line"><span class="lineno">  243</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a511cac269ecf3cec7d0e048228e2c8fd" name="a511cac269ecf3cec7d0e048228e2c8fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a511cac269ecf3cec7d0e048228e2c8fd">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a511cac269ecf3cec7d0e048228e2c8fd">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,15 +300,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00193">193</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  194</span>        : BufferInput(inBuffInitialSize)</div>
-<div class="line"><span class="lineno">  195</span>        , BufferOutput(sinkBuff, sinkSize)</div>
-<div class="line"><span class="lineno">  196</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00245">245</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  246</span>        : BufferInput(inBuffInitialSize)</div>
+<div class="line"><span class="lineno">  247</span>        , BufferOutput(sinkBuff, sinkSize)</div>
+<div class="line"><span class="lineno">  248</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af8f737818011d7f18536facdcda20a57" name="af8f737818011d7f18536facdcda20a57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8f737818011d7f18536facdcda20a57">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[3/4]</span></h2>
+<a id="a1f1cfbd41ec9922d3529ff37680c1e06" name="a1f1cfbd41ec9922d3529ff37680c1e06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f1cfbd41ec9922d3529ff37680c1e06">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,7 +329,7 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>outBuffInitialSize</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>outBuffInitialSize</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -288,15 +339,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00198">198</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  199</span>        : BufferInput(sourceBuff, sourceSize)</div>
-<div class="line"><span class="lineno">  200</span>        , BufferOutput(outBuffInitialSize)</div>
-<div class="line"><span class="lineno">  201</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00250">250</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  251</span>        : BufferInput(sourceBuff, sourceSize)</div>
+<div class="line"><span class="lineno">  252</span>        , BufferOutput(outBuffInitialSize)</div>
+<div class="line"><span class="lineno">  253</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a2f0008f697fcd6a717f741114d581155" name="a2f0008f697fcd6a717f741114d581155"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f0008f697fcd6a717f741114d581155">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f0008f697fcd6a717f741114d581155">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,10 +392,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00203">203</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  204</span>        : BufferInput(sourceBuff, sourceSize)</div>
-<div class="line"><span class="lineno">  205</span>        , BufferOutput(sinkBuff, sinkSize)</div>
-<div class="line"><span class="lineno">  206</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00255">255</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  256</span>        : BufferInput(sourceBuff, sourceSize)</div>
+<div class="line"><span class="lineno">  257</span>        , BufferOutput(sinkBuff, sinkSize)</div>
+<div class="line"><span class="lineno">  258</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -383,21 +434,20 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="../../d7/d83/classStream_1_1Input.html">Stream::Input</a>.</p>
+<p>Implements <a class="el" href="../../d1/dcd/classStream_1_1TransparentInput.html">Stream::TransparentInput</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">if</span> (size &gt; provideData(mBuffSize))</div>
-<div class="line"><span class="lineno">   47</span>        size = getAvailableDataSize();</div>
-<div class="line"><span class="lineno">   48</span>    std::memcpy(dest, mGet, size);</div>
-<div class="line"><span class="lineno">   49</span>    mGet += size;</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> size;</div>
-<div class="line"><span class="lineno">   51</span>}</div>
+<div class="line"><span class="lineno">   46</span>    size = provideSomeData(size);</div>
+<div class="line"><span class="lineno">   47</span>    std::memcpy(dest, mDataBeg, size);</div>
+<div class="line"><span class="lineno">   48</span>    mDataBeg += size;</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> size;</div>
+<div class="line"><span class="lineno">   50</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac62266f87d563884cef75ed2e8077822" name="ac62266f87d563884cef75ed2e8077822"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac62266f87d563884cef75ed2e8077822">&#9670;&nbsp;</a></span>getInputBufferSize()</h2>
+<a id="af5c69b4895a45f939cc1df9bc5309704" name="af5c69b4895a45f939cc1df9bc5309704"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5c69b4895a45f939cc1df9bc5309704">&#9670;&nbsp;</a></span>getDataBufferSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -406,7 +456,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t Stream::BufferInput::getInputBufferSize </td>
+          <td class="memname">std::size_t Stream::BufferInput::getDataBufferSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -419,13 +469,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{ <span class="keywordflow">return</span> mBuffSize; }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{ <span class="keywordflow">return</span> mEnd - mBeg; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a407a294df6ac9e15517634e1483c23e6" name="a407a294df6ac9e15517634e1483c23e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a407a294df6ac9e15517634e1483c23e6">&#9670;&nbsp;</a></span>getAvailableDataSize()</h2>
+<a id="aaaaa027d7cf1a34e60d57d9046224293" name="aaaaa027d7cf1a34e60d57d9046224293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaaa027d7cf1a34e60d57d9046224293">&#9670;&nbsp;</a></span>getDataSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +484,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t Stream::BufferInput::getAvailableDataSize </td>
+          <td class="memname">std::size_t Stream::BufferInput::getDataSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -447,13 +497,70 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>{ <span class="keywordflow">return</span> mEnd - mGet; }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{ <span class="keywordflow">return</span> mDataEnd - mDataBeg; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac78daac1aa32def1441f87f54fec3db7" name="ac78daac1aa32def1441f87f54fec3db7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac78daac1aa32def1441f87f54fec3db7">&#9670;&nbsp;</a></span>provideData()</h2>
+<a id="a1cdf582af62bc6406efb5472f910b535" name="a1cdf582af62bc6406efb5472f910b535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cdf582af62bc6406efb5472f910b535">&#9670;&nbsp;</a></span>getData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte const  * Stream::BufferInput::getData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> mDataBeg; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac26ef641d07e57099e4f5b7aa3a9c0a3" name="ac26ef641d07e57099e4f5b7aa3a9c0a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac26ef641d07e57099e4f5b7aa3a9c0a3">&#9670;&nbsp;</a></span>advanceData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Stream::BufferInput::advanceData </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00065">65</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>{ mDataBeg += size; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac98a578cb8d01f18e9e79b52e8bdf3d6" name="ac98a578cb8d01f18e9e79b52e8bdf3d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac98a578cb8d01f18e9e79b52e8bdf3d6">&#9670;&nbsp;</a></span>provideData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -465,43 +572,94 @@ Protected Attributes</h2></td></tr>
           <td class="memname">std::size_t Stream::BufferInput::provideData </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>min</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (mDataBeg + min &gt; mDataEnd) {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">if</span> (mDataBeg + min &gt; mEnd) {</div>
+<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (mBeg + min &gt; mEnd) {</div>
+<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(min, std::nothrow_t {}))) {</div>
+<div class="line"><span class="lineno">   75</span>                    std::memcpy(ptr, mDataBeg, mDataEnd - mDataBeg);</div>
+<div class="line"><span class="lineno">   76</span>                    mDataEnd = ptr + (mDataEnd - mDataBeg);</div>
+<div class="line"><span class="lineno">   77</span>                    mDataBeg = ptr;</div>
+<div class="line"><span class="lineno">   78</span>                    mBuff.reset(ptr);</div>
+<div class="line"><span class="lineno">   79</span>                    mBeg = ptr;</div>
+<div class="line"><span class="lineno">   80</span>                    mEnd = ptr + min;</div>
+<div class="line"><span class="lineno">   81</span>                } <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   82</span>                    <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
+<div class="line"><span class="lineno">   83</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   84</span>                std::memmove(mBuff.get(), mDataBeg, mDataEnd - mDataBeg);</div>
+<div class="line"><span class="lineno">   85</span>                mDataEnd = mBuff.get() + (mDataEnd - mDataBeg);</div>
+<div class="line"><span class="lineno">   86</span>                mDataBeg = mBeg;</div>
+<div class="line"><span class="lineno">   87</span>            }</div>
+<div class="line"><span class="lineno">   88</span>        }</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">while</span> (mDataBeg + min &gt; mDataEnd)</div>
+<div class="line"><span class="lineno">   90</span>            mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">   93</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6488b6cf7a8aa56047b7209170b8c633" name="a6488b6cf7a8aa56047b7209170b8c633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6488b6cf7a8aa56047b7209170b8c633">&#9670;&nbsp;</a></span>provideSomeData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t Stream::BufferInput::provideSomeData </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>max</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (mGet + max &lt;= mEnd)</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> max;</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (mGet != mEnd)</div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">return</span> mEnd - mGet;</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (max &gt; mBuffSize) {</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(max, std::nothrow_t{}))) {</div>
-<div class="line"><span class="lineno">   72</span>            mBuff.reset(ptr);</div>
-<div class="line"><span class="lineno">   73</span>            mBuffSize = max;</div>
-<div class="line"><span class="lineno">   74</span>            mGet = mEnd = mBuff.get();</div>
-<div class="line"><span class="lineno">   75</span>        } <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
-<div class="line"><span class="lineno">   77</span>    }</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>    max = mSource-&gt;readSome(mBuff.get(), max);</div>
-<div class="line"><span class="lineno">   80</span>    mEnd = (mGet = mBuff.get()) + max;</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> max;</div>
-<div class="line"><span class="lineno">   82</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00096">96</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (mDataBeg + max &gt; mDataEnd) {</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (mDataBeg != mDataEnd)</div>
+<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">if</span> (mBeg + max &gt; mEnd) {</div>
+<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(max, std::nothrow_t {}))) {</div>
+<div class="line"><span class="lineno">  103</span>                mBuff.reset(ptr);</div>
+<div class="line"><span class="lineno">  104</span>                mBeg = ptr;</div>
+<div class="line"><span class="lineno">  105</span>                mEnd = ptr + max;</div>
+<div class="line"><span class="lineno">  106</span>            } <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  107</span>                <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
+<div class="line"><span class="lineno">  108</span>        }</div>
+<div class="line"><span class="lineno">  109</span>        mDataEnd = <span class="keyword">const_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(mDataBeg = mBeg);</div>
+<div class="line"><span class="lineno">  110</span>        mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">if</span> (mDataBeg + max &gt; mDataEnd)</div>
+<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">  113</span>    }</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> max;</div>
+<div class="line"><span class="lineno">  115</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a2fc7051ad641fcb1d586fb9bff7cbeb7" name="a2fc7051ad641fcb1d586fb9bff7cbeb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fc7051ad641fcb1d586fb9bff7cbeb7">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[1/2]</span></h2>
+<a id="a851e1af7d254c6d8a6e5c4237f16af8f" name="a851e1af7d254c6d8a6e5c4237f16af8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a851e1af7d254c6d8a6e5c4237f16af8f">&#9670;&nbsp;</a></span>getSome()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -510,65 +668,32 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp; Stream::Input::operator&gt;&gt; </td>
+          <td class="memname">std::size_t Stream::TransparentInput::getSome </td>
           <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>    str.clear();</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordtype">char</span> c;</div>
-<div class="line"><span class="lineno">   30</span>    read(&amp;c, 1);</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">while</span> (c) {</div>
-<div class="line"><span class="lineno">   32</span>        str.push_back(c);</div>
-<div class="line"><span class="lineno">   33</span>        read(&amp;c, 1);</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aa7445fe1252aff13dd78545c16797864" name="aa7445fe1252aff13dd78545c16797864"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7445fe1252aff13dd78545c16797864">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp; Stream::Input::operator&gt;&gt; </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00039">39</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">do</span> {</div>
-<div class="line"><span class="lineno">   42</span>        read(str, 1);</div>
-<div class="line"><span class="lineno">   43</span>    } <span class="keywordflow">while</span>(*str++);</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   45</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{ <span class="keywordflow">return</span> mSource-&gt;readSome(dest, size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -606,16 +731,19 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00006">6</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>    {</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">for</span> (std::size_t outl; size; <span class="keyword">reinterpret_cast&lt;</span>std::byte*&amp;<span class="keyword">&gt;</span>(dest) += outl, size -= outl)</div>
-<div class="line"><span class="lineno">    9</span>        outl = readBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(dest), size);</div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   11</span>} <span class="keywordflow">catch</span> (Exception&amp; exc) {</div>
-<div class="line"><span class="lineno">   12</span>    exc.mDest = dest;</div>
-<div class="line"><span class="lineno">   13</span>    exc.mSize = size;</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">throw</span>;</div>
-<div class="line"><span class="lineno">   15</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00011">11</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>    {</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">while</span> (size) {</div>
+<div class="line"><span class="lineno">   14</span>        std::size_t outl = readBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(dest), size);</div>
+<div class="line"><span class="lineno">   15</span>        <span class="keyword">reinterpret_cast&lt;</span>std::byte*&amp;<span class="keyword">&gt;</span>(dest) += outl;</div>
+<div class="line"><span class="lineno">   16</span>        size -= outl;</div>
+<div class="line"><span class="lineno">   17</span>    }</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   19</span>} <span class="keywordflow">catch</span> (Exception&amp; exc) {</div>
+<div class="line"><span class="lineno">   20</span>    exc.mDest = dest;</div>
+<div class="line"><span class="lineno">   21</span>    exc.mSize = size;</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">throw</span>;</div>
+<div class="line"><span class="lineno">   23</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -653,12 +781,14 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/de8/Input_8cpp_source.html#l00018">18</a> of file <a class="el" href="../../df/de8/Input_8cpp_source.html">Input.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
-<div class="line"><span class="lineno">   20</span>    std::size_t outl;</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">while</span> (!(outl = readBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(dest), size)));</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> outl;</div>
-<div class="line"><span class="lineno">   23</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (size) <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">if</span> (std::size_t outl = readBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(dest), size))</div>
+<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">return</span> outl;</div>
+<div class="line"><span class="lineno">   31</span>    } <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   33</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -696,16 +826,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a>.</p>
+<p>Implements <a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">Stream::TransparentOutput</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (size &gt; provideSpace(1))</div>
-<div class="line"><span class="lineno">  128</span>        size = getAvailableSpaceSize();</div>
-<div class="line"><span class="lineno">  129</span>    std::memcpy(mPut, src, size);</div>
-<div class="line"><span class="lineno">  130</span>    mPut += size;</div>
-<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> size;</div>
-<div class="line"><span class="lineno">  132</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00154">154</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  155</span>{</div>
+<div class="line"><span class="lineno">  156</span>    size = provideSomeSpace(size);</div>
+<div class="line"><span class="lineno">  157</span>    std::memcpy(mSpaceBeg, src, size);</div>
+<div class="line"><span class="lineno">  158</span>    mSpaceBeg += size;</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> size;</div>
+<div class="line"><span class="lineno">  160</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -734,22 +863,21 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00135">135</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (mPut != mBeg) <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  138</span>        mSink-&gt;write(mBeg, mPut - mBeg);</div>
-<div class="line"><span class="lineno">  139</span>        mBeg = mBuff.get();</div>
-<div class="line"><span class="lineno">  140</span>        mPut = mBuff.get();</div>
-<div class="line"><span class="lineno">  141</span>    } <span class="keywordflow">catch</span> (Output::Exception&amp; exc) {</div>
-<div class="line"><span class="lineno">  142</span>        mBeg = <span class="keyword">static_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(exc.getUnwrittenBuffer());</div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">throw</span>;</div>
-<div class="line"><span class="lineno">  144</span>    }</div>
-<div class="line"><span class="lineno">  145</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00163">163</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">while</span> (mBeg != mSpaceBeg) <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">  166</span>        mBeg += putSome(mBeg, mSpaceBeg - mBeg);</div>
+<div class="line"><span class="lineno">  167</span>    } <span class="keywordflow">catch</span> (Output::Exception&amp; exc) {</div>
+<div class="line"><span class="lineno">  168</span>        mBeg = <span class="keyword">static_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(exc.getUnwrittenBuffer());</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">throw</span>;</div>
+<div class="line"><span class="lineno">  170</span>    }</div>
+<div class="line"><span class="lineno">  171</span>    mBeg = mSpaceBeg = mBuff.get();</div>
+<div class="line"><span class="lineno">  172</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a2a88d89b1c89df2d3fefe990006dcf01" name="a2a88d89b1c89df2d3fefe990006dcf01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a88d89b1c89df2d3fefe990006dcf01">&#9670;&nbsp;</a></span>getOutputBufferSize()</h2>
+<a id="a3ce8763aefbdd64907c749099c8d0315" name="a3ce8763aefbdd64907c749099c8d0315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ce8763aefbdd64907c749099c8d0315">&#9670;&nbsp;</a></span>getSpaceBufferSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -758,7 +886,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t Stream::BufferOutput::getOutputBufferSize </td>
+          <td class="memname">std::size_t Stream::BufferOutput::getSpaceBufferSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -771,13 +899,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00157">157</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  158</span>{ <span class="keywordflow">return</span> mBuffSize; }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00184">184</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>{ <span class="keywordflow">return</span> mEnd - mBeg; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a80397d8933f6349e8830483a3b574610" name="a80397d8933f6349e8830483a3b574610"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80397d8933f6349e8830483a3b574610">&#9670;&nbsp;</a></span>getAvailableSpaceSize()</h2>
+<a id="a5ba2e5e38f934927a6d0efc9d3d3507c" name="a5ba2e5e38f934927a6d0efc9d3d3507c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ba2e5e38f934927a6d0efc9d3d3507c">&#9670;&nbsp;</a></span>getSpaceSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -786,7 +914,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t Stream::BufferOutput::getAvailableSpaceSize </td>
+          <td class="memname">std::size_t Stream::BufferOutput::getSpaceSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -799,8 +927,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00161">161</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  162</span>{ <span class="keywordflow">return</span> mEnd - mPut; }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00188">188</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>{ <span class="keywordflow">return</span> mSpaceEnd - mSpaceBeg; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -823,34 +951,31 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00165">165</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  166</span>{</div>
-<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">if</span> (mPut + min &lt;= mEnd)</div>
-<div class="line"><span class="lineno">  168</span>        <span class="keywordflow">return</span> mEnd - mPut;</div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>    BufferOutput::flush();</div>
-<div class="line"><span class="lineno">  171</span> </div>
-<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">if</span> (min &gt; mBuffSize) {</div>
-<div class="line"><span class="lineno">  173</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(min, std::nothrow_t{}))) {</div>
-<div class="line"><span class="lineno">  174</span>            mBuff.reset(ptr);</div>
-<div class="line"><span class="lineno">  175</span>            mBeg = mBuff.get();</div>
-<div class="line"><span class="lineno">  176</span>            mPut = mBuff.get();</div>
-<div class="line"><span class="lineno">  177</span>            mEnd = mBeg + (mBuffSize = min);</div>
-<div class="line"><span class="lineno">  178</span>        } <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
-<div class="line"><span class="lineno">  180</span>    }</div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">return</span> mBuffSize;</div>
-<div class="line"><span class="lineno">  182</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00200">200</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
+<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">if</span> (mSpaceBeg + min &gt; mSpaceEnd) {</div>
+<div class="line"><span class="lineno">  203</span>        BufferOutput::flush();</div>
+<div class="line"><span class="lineno">  204</span>        <span class="keywordflow">if</span> (mBeg + min &gt; mEnd) {</div>
+<div class="line"><span class="lineno">  205</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(min, std::nothrow_t{}))) {</div>
+<div class="line"><span class="lineno">  206</span>                mBuff.reset(ptr);</div>
+<div class="line"><span class="lineno">  207</span>                mBeg = mSpaceBeg = ptr;</div>
+<div class="line"><span class="lineno">  208</span>                mEnd = mSpaceEnd = ptr + min;</div>
+<div class="line"><span class="lineno">  209</span>            } <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  210</span>                <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
+<div class="line"><span class="lineno">  211</span>        }</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">return</span> mSpaceEnd - mSpaceBeg;</div>
+<div class="line"><span class="lineno">  214</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae0da489bd938db7f1fba01e14e21e36d" name="ae0da489bd938db7f1fba01e14e21e36d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0da489bd938db7f1fba01e14e21e36d">&#9670;&nbsp;</a></span>resetPut()</h2>
+<a id="a0064bf6993503912143010468346cfb3" name="a0064bf6993503912143010468346cfb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0064bf6993503912143010468346cfb3">&#9670;&nbsp;</a></span>getSpace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -859,7 +984,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Stream::BufferOutput::resetPut </td>
+          <td class="memname">std::byte * Stream::BufferOutput::getSpace </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -872,13 +997,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00185">185</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  186</span>{ mPut = <span class="keyword">const_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(mBeg); }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00192">192</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  193</span>{ <span class="keywordflow">return</span> mSpaceBeg; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aa68d1911fa99efe40b0180bebb46e85b" name="aa68d1911fa99efe40b0180bebb46e85b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa68d1911fa99efe40b0180bebb46e85b">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/3]</span></h2>
+<a id="ad708476b969b7135d967647711a169f2" name="ad708476b969b7135d967647711a169f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad708476b969b7135d967647711a169f2">&#9670;&nbsp;</a></span>advanceSpace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -887,30 +1012,27 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp; Stream::Output::operator&lt;&lt; </td>
+          <td class="memname">void Stream::BufferOutput::advanceSpace </td>
           <td>(</td>
-          <td class="paramtype">std::nullptr_t&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d98/Output_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../d0/d98/Output_8cpp_source.html">Output.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>    flush();</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   34</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00196">196</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  197</span>{ mSpaceBeg += size; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aafe2d00c7c879aca4a7b778502ca03fe" name="aafe2d00c7c879aca4a7b778502ca03fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafe2d00c7c879aca4a7b778502ca03fe">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/3]</span></h2>
+<a id="a35917a142cbcf4aa5883ed79f592c748" name="a35917a142cbcf4aa5883ed79f592c748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35917a142cbcf4aa5883ed79f592c748">&#9670;&nbsp;</a></span>provideSomeSpace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -919,27 +1041,42 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp; Stream::Output::operator&lt;&lt; </td>
+          <td class="memname">std::size_t Stream::BufferOutput::provideSomeSpace </td>
           <td>(</td>
-          <td class="paramtype">std::string const &amp;&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>max</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d98/Output_8cpp_source.html#l00036">36</a> of file <a class="el" href="../../d0/d98/Output_8cpp_source.html">Output.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{ <span class="keywordflow">return</span> write(str.c_str(), str.size() + 1); }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00217">217</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
+<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">if</span> (mSpaceBeg + max &gt; mSpaceEnd) {</div>
+<div class="line"><span class="lineno">  220</span>        <span class="keywordflow">if</span> (mSpaceBeg != mSpaceEnd)</div>
+<div class="line"><span class="lineno">  221</span>            <span class="keywordflow">return</span> mSpaceEnd - mSpaceBeg;</div>
+<div class="line"><span class="lineno">  222</span>        BufferOutput::flush();</div>
+<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">if</span> (mBeg + max &gt; mEnd) {</div>
+<div class="line"><span class="lineno">  224</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(max, std::nothrow_t{}))) {</div>
+<div class="line"><span class="lineno">  225</span>                mBuff.reset(ptr);</div>
+<div class="line"><span class="lineno">  226</span>                mBeg = mSpaceBeg = ptr;</div>
+<div class="line"><span class="lineno">  227</span>                mEnd = mSpaceEnd = ptr + max;</div>
+<div class="line"><span class="lineno">  228</span>            } <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  229</span>                <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
+<div class="line"><span class="lineno">  230</span>        }</div>
+<div class="line"><span class="lineno">  231</span>    }</div>
+<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">return</span> max;</div>
+<div class="line"><span class="lineno">  233</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a21bb9ccd7c1ea37b4d156a733e0beab2" name="a21bb9ccd7c1ea37b4d156a733e0beab2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21bb9ccd7c1ea37b4d156a733e0beab2">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[3/3]</span></h2>
+<a id="a1271046c1fcdbca982aec1607fce370d" name="a1271046c1fcdbca982aec1607fce370d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1271046c1fcdbca982aec1607fce370d">&#9670;&nbsp;</a></span>putSome()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -948,22 +1085,32 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp; Stream::Output::operator&lt;&lt; </td>
+          <td class="memname">std::size_t Stream::TransparentOutput::putSome </td>
           <td>(</td>
-          <td class="paramtype">char const *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">void const *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d98/Output_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../d0/d98/Output_8cpp_source.html">Output.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{ <span class="keywordflow">return</span> write(str, std::strlen(str) + 1); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1001,16 +1148,19 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d98/Output_8cpp_source.html#l00010">10</a> of file <a class="el" href="../../d0/d98/Output_8cpp_source.html">Output.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>    {</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">for</span> (std::size_t inl; size; <span class="keyword">reinterpret_cast&lt;</span>std::byte const*&amp;<span class="keyword">&gt;</span>(src) += inl, size -= inl)</div>
-<div class="line"><span class="lineno">   13</span>        inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size);</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   15</span>} <span class="keywordflow">catch</span> (Exception&amp; exc) {</div>
-<div class="line"><span class="lineno">   16</span>    exc.mSrc = src;</div>
-<div class="line"><span class="lineno">   17</span>    exc.mSize = size;</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">throw</span>;</div>
-<div class="line"><span class="lineno">   19</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>    {</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">while</span> (size) {</div>
+<div class="line"><span class="lineno">   72</span>        std::size_t inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size);</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keyword">reinterpret_cast&lt;</span>std::byte const*&amp;<span class="keyword">&gt;</span>(src) += inl;</div>
+<div class="line"><span class="lineno">   74</span>        size -= inl;</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   77</span>} <span class="keywordflow">catch</span> (Exception&amp; exc) {</div>
+<div class="line"><span class="lineno">   78</span>    exc.mSrc = src;</div>
+<div class="line"><span class="lineno">   79</span>    exc.mSize = size;</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">throw</span>;</div>
+<div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1048,18 +1198,19 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d98/Output_8cpp_source.html#l00022">22</a> of file <a class="el" href="../../d0/d98/Output_8cpp_source.html">Output.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>{</div>
-<div class="line"><span class="lineno">   24</span>    std::size_t inl;</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">while</span> (!(inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size)));</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> inl;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00084">84</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (size) <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">if</span> (std::size_t inl = writeBytes(<span class="keyword">reinterpret_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(src), size))</div>
+<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">return</span> inl;</div>
+<div class="line"><span class="lineno">   89</span>    } <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   91</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7411a8fe888c70c41aee83f7cbf80ff0" name="a7411a8fe888c70c41aee83f7cbf80ff0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7411a8fe888c70c41aee83f7cbf80ff0">&#9670;&nbsp;</a></span>mGet</h2>
+<a id="aa68d1911fa99efe40b0180bebb46e85b" name="aa68d1911fa99efe40b0180bebb46e85b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa68d1911fa99efe40b0180bebb46e85b">&#9670;&nbsp;</a></span>operator&lt;&lt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1068,7 +1219,112 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::byte const* Stream::BufferInput::mGet = nullptr</td>
+          <td class="memname"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp; Stream::Output::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::nullptr_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/dd0/InOut_8cpp_source.html#l00093">93</a> of file <a class="el" href="../../d8/dd0/InOut_8cpp_source.html">InOut.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    flush();</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   98</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab36b98aac6f6fbdb50c5743f69f8649a" name="ab36b98aac6f6fbdb50c5743f69f8649a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab36b98aac6f6fbdb50c5743f69f8649a">&#9670;&nbsp;</a></span>mBuff <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;std::byte[]&gt; Stream::BufferInput::mBuff</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00015">15</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a09fbed3e1a3870a7a9517b79bd2b17bb" name="a09fbed3e1a3870a7a9517b79bd2b17bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09fbed3e1a3870a7a9517b79bd2b17bb">&#9670;&nbsp;</a></span>mBeg <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte const* Stream::BufferInput::mBeg = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00016">16</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9240712de52853823608dd10bc4b31f1" name="a9240712de52853823608dd10bc4b31f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9240712de52853823608dd10bc4b31f1">&#9670;&nbsp;</a></span>mDataBeg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte const* Stream::BufferInput::mDataBeg = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00017">17</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa4a038abf4d88567a8e344aed3789486" name="aa4a038abf4d88567a8e344aed3789486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4a038abf4d88567a8e344aed3789486">&#9670;&nbsp;</a></span>mDataEnd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte* Stream::BufferInput::mDataEnd = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1082,8 +1338,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a84984380c0ec30c0a9aaf0683da0bbea" name="a84984380c0ec30c0a9aaf0683da0bbea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84984380c0ec30c0a9aaf0683da0bbea">&#9670;&nbsp;</a></span>mSource</h2>
+<a id="ad7c6205d6bffdb47edf85c56175ea869" name="ad7c6205d6bffdb47edf85c56175ea869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c6205d6bffdb47edf85c56175ea869">&#9670;&nbsp;</a></span>mEnd <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1092,7 +1348,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a>* Stream::InputFilter::mSource</td>
+          <td class="memname">std::byte const* Stream::BufferInput::mEnd = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1102,12 +1358,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d36/Input_8hpp_source.html#l00066">66</a> of file <a class="el" href="../../d1/d36/Input_8hpp_source.html">Input.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00019">19</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a3b3b31b4de0f6ee7102df0b66e3835ea" name="a3b3b31b4de0f6ee7102df0b66e3835ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b3b31b4de0f6ee7102df0b66e3835ea">&#9670;&nbsp;</a></span>mPut</h2>
+<a id="a12309c4b3567e17cfe4410931ebc0e3e" name="a12309c4b3567e17cfe4410931ebc0e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12309c4b3567e17cfe4410931ebc0e3e">&#9670;&nbsp;</a></span>mBuff <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1116,7 +1372,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::byte* Stream::BufferOutput::mPut = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;std::byte[]&gt; Stream::BufferOutput::mBuff</td>
         </tr>
       </table>
   </td>
@@ -1126,12 +1382,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00067">67</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad5619c25edd5536c9d7d033a497a93af" name="ad5619c25edd5536c9d7d033a497a93af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5619c25edd5536c9d7d033a497a93af">&#9670;&nbsp;</a></span>mSink</h2>
+<a id="aab52abe7aeb995a0b9c3c14fe02c342e" name="aab52abe7aeb995a0b9c3c14fe02c342e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab52abe7aeb995a0b9c3c14fe02c342e">&#9670;&nbsp;</a></span>mBeg <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1140,7 +1396,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a>* Stream::OutputFilter::mSink</td>
+          <td class="memname">std::byte const* Stream::BufferOutput::mBeg = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1150,7 +1406,79 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbf/Output_8hpp_source.html#l00072">72</a> of file <a class="el" href="../../d8/dbf/Output_8hpp_source.html">Output.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="acde3f24fa1847e0f5f502cb1c9964001" name="acde3f24fa1847e0f5f502cb1c9964001"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde3f24fa1847e0f5f502cb1c9964001">&#9670;&nbsp;</a></span>mSpaceBeg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte* Stream::BufferOutput::mSpaceBeg = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00069">69</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a963e7bb621df59f69414fc16b9089162" name="a963e7bb621df59f69414fc16b9089162"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a963e7bb621df59f69414fc16b9089162">&#9670;&nbsp;</a></span>mSpaceEnd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte const* Stream::BufferOutput::mSpaceEnd = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4fa29f7e5ed199c444f1934b05778ae0" name="a4fa29f7e5ed199c444f1934b05778ae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa29f7e5ed199c444f1934b05778ae0">&#9670;&nbsp;</a></span>mEnd <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte const* Stream::BufferOutput::mEnd = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d36/Buffer_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>.</p>
 
 </div>
 </div>

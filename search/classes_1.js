@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['buffer_0',['Buffer',['../d0/d04/classStream_1_1Buffer.html',1,'Stream']]],
-  ['bufferinput_1',['BufferInput',['../d2/dc2/classStream_1_1BufferInput.html',1,'Stream']]],
-  ['bufferoutput_2',['BufferOutput',['../da/d65/classStream_1_1BufferOutput.html',1,'Stream']]]
+  ['exception_0',['Exception',['../db/da5/structStream_1_1Buffer_1_1Exception.html',1,'Stream::Buffer::Exception'],['../d7/d4d/structStream_1_1BufferInput_1_1Exception.html',1,'Stream::BufferInput::Exception'],['../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html',1,'Stream::BufferOutput::Exception'],['../d4/d1b/structStream_1_1File_1_1Exception.html',1,'Stream::File::Exception'],['../d2/d85/structStream_1_1Input_1_1Exception.html',1,'Stream::Input::Exception'],['../d5/d2d/structStream_1_1Output_1_1Exception.html',1,'Stream::Output::Exception'],['../d7/d1b/structStream_1_1Pipe_1_1Exception.html',1,'Stream::Pipe::Exception'],['../d3/d86/structStream_1_1Socket_1_1Exception.html',1,'Stream::Socket::Exception'],['../dc/dbd/structStream_1_1Socket_1_1Inet_1_1Exception.html',1,'Stream::Socket::Inet::Exception']]]
 ];

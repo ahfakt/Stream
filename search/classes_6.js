@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['output_0',['Output',['../df/dc2/classStream_1_1Output.html',1,'Stream']]],
-  ['outputfilter_1',['OutputFilter',['../d0/d57/classStream_1_1OutputFilter.html',1,'Stream']]]
+  ['pipe_0',['Pipe',['../d3/de2/classStream_1_1Pipe.html',1,'Stream']]]
 ];

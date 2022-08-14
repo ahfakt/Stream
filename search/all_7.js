@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['listen_0',['listen',['../../IO/d1/d7c/classIO_1_1Socket.html#a2d228b4ad58c35360c1c76919bc90150',1,'IO::Socket']]]
+  ['listen_0',['listen',['../d1/db1/classStream_1_1Socket.html#a6082bf3f717a0c7565b625d1722b52db',1,'Stream::Socket']]]
 ];

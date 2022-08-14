@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['sockaddr_0',['sockaddr',['../../IO/d5/de1/classsockaddr.html',1,'']]],
-  ['socket_1',['Socket',['../../IO/d1/d7c/classIO_1_1Socket.html',1,'IO::Socket'],['../d1/db1/classStream_1_1Socket.html',1,'Stream::Socket']]],
-  ['socketinput_2',['SocketInput',['../dc/d10/classStream_1_1SocketInput.html',1,'Stream']]],
-  ['socketoutput_3',['SocketOutput',['../d5/d52/classStream_1_1SocketOutput.html',1,'Stream']]]
+  ['transforminput_0',['TransformInput',['../db/d03/classStream_1_1TransformInput.html',1,'Stream']]],
+  ['transformoutput_1',['TransformOutput',['../d1/dff/classStream_1_1TransformOutput.html',1,'Stream']]],
+  ['transparentinput_2',['TransparentInput',['../d1/dcd/classStream_1_1TransparentInput.html',1,'Stream']]],
+  ['transparentoutput_3',['TransparentOutput',['../d1/d52/classStream_1_1TransparentOutput.html',1,'Stream']]],
+  ['true_5ftype_4',['true_type',['../d6/ddf/classtrue__type.html',1,'']]]
 ];

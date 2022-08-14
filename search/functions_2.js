@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['connect_0',['connect',['../../IO/d1/d7c/classIO_1_1Socket.html#a5bfb2a80af5e4ae9eca4f97ec3445eda',1,'IO::Socket']]]
+  ['connect_0',['connect',['../d1/db1/classStream_1_1Socket.html#a13d613f8562ce45049373e7ea0cd20f1',1,'Stream::Socket']]]
 ];
