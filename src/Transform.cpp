@@ -57,7 +57,11 @@ operator>(std::nullptr_t, TransformInput& transformInput) noexcept
 
 static class : public BufferOutput {
 	std::size_t
-	writeBytes(std::byte const* src, std::size_t size) override
+	writeBytes(std::byte const*, std::size_t) override
+	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+
+	void
+	flush() override
 	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
 
 	std::size_t
@@ -81,6 +85,10 @@ std::size_t
 TransformOutput::writeBytes(std::byte const* src, std::size_t size)
 { return mSink->writeSome(src, size); }
 
+void
+TransformOutput::flush()
+{ *mSink << nullptr; }
+
 std::byte*
 TransformOutput::getSpace() noexcept
 { return mSink->getSpace(); }
@@ -96,10 +104,6 @@ TransformOutput::provideSpace(std::size_t min)
 std::size_t
 TransformOutput::provideSomeSpace(std::size_t max)
 { return mSink->provideSomeSpace(max); }
-
-void
-TransformOutput::flush()
-{ *mSink << nullptr; }
 
 TransformOutput&
 operator<(BufferOutput& bufferOutput, TransformOutput& transformOutput) noexcept

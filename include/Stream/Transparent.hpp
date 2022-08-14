@@ -40,7 +40,6 @@ class TransparentOutput : public Output {
 	Output* mSink;
 
 protected:
-
 	TransparentOutput() noexcept;
 
 	std::size_t

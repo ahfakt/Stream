@@ -155,6 +155,16 @@ BufferOutput::operator=(BufferOutput&& other) noexcept
 	return *this;
 }
 
+BufferOutput::~BufferOutput()
+{
+	while (mBeg != mSpaceBeg) try {
+		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
+	} catch (Output::Exception& exc) {
+		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
+		return;
+	}
+}
+
 std::size_t
 BufferOutput::writeBytes(std::byte const* src, std::size_t size)
 {
@@ -174,16 +184,6 @@ BufferOutput::flush()
 		throw;
 	}
 	mBeg = mSpaceBeg = mBuff.get();
-}
-
-BufferOutput::~BufferOutput()
-{
-	while (mBeg != mSpaceBeg) try {
-		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
-	} catch (Output::Exception& exc) {
-		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
-		return;
-	}
 }
 
 std::size_t

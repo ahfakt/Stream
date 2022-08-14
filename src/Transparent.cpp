@@ -39,6 +39,10 @@ static class : public Output {
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override
 	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+
+	void
+	flush() override
+	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
 } nullOutput;
 
 TransparentOutput::TransparentOutput() noexcept

@@ -54,6 +54,9 @@ protected:
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override;
 
+	void
+	flush() override;
+
 	std::byte*
 	getSpace() noexcept;
 
@@ -65,9 +68,6 @@ protected:
 
 	std::size_t
 	provideSomeSpace(std::size_t max);
-
-	void
-	flush() override;
 
 public:
 	friend void

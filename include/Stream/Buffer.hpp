@@ -105,14 +105,14 @@ public:
 	[[nodiscard]] std::size_t
 	getSpaceSize() const noexcept;
 
-	virtual std::size_t
-	provideSpace(std::size_t min);
-
 	std::byte*
 	getSpace() noexcept;
 
 	void
 	advanceSpace(std::size_t size) noexcept;
+
+	virtual std::size_t
+	provideSpace(std::size_t min);
 
 	virtual std::size_t
 	provideSomeSpace(std::size_t max);
