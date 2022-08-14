@@ -24,6 +24,10 @@ void
 swap(TransformInput& a, TransformInput& b) noexcept
 { std::swap(a.mSource, b.mSource); }
 
+size_t
+TransformInput::readBytes(std::byte* dest, std::size_t size)
+{ return mSource->readSome(dest, size); }
+
 std::byte const*
 TransformInput::getData() const noexcept
 { return mSource->getData(); }
@@ -72,6 +76,10 @@ TransformOutput::TransformOutput() noexcept
 void
 swap(TransformOutput& a, TransformOutput& b) noexcept
 { std::swap(a.mSink, b.mSink); }
+
+std::size_t
+TransformOutput::writeBytes(std::byte const* src, std::size_t size)
+{ return mSink->writeSome(src, size); }
 
 std::byte*
 TransformOutput::getSpace() noexcept

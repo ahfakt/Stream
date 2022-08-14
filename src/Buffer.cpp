@@ -114,6 +114,11 @@ BufferInput::provideSomeData(std::size_t const max)
 	return max;
 }
 
+void
+BufferInput::resetData() noexcept
+{ mDataBeg = mBeg; }
+
+
 BufferOutput::BufferOutput(std::size_t buffInitialSize)
 		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
 		, mBeg(mBuff.get())
@@ -177,6 +182,7 @@ BufferOutput::~BufferOutput()
 		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
 	} catch (Output::Exception& exc) {
 		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
+		return;
 	}
 }
 
@@ -231,6 +237,10 @@ BufferOutput::provideSomeSpace(std::size_t max)
 	}
 	return max;
 }
+
+void
+BufferOutput::resetSpace() noexcept
+{ mSpaceBeg = const_cast<std::byte*>(mBeg); }
 
 Buffer::Buffer(std::size_t buffInitialSize)
 		: BufferInput(buffInitialSize)

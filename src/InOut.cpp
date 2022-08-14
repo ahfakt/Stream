@@ -3,10 +3,6 @@
 
 namespace Stream {
 
-std::size_t
-Input::readBytes(std::byte* dest, std::size_t size)
-{ return size; }
-
 Input&
 Input::read(void* dest, std::size_t size)
 try {
@@ -56,10 +52,6 @@ static class : public Input {
 	}
 } StdIn;
 Input& In = StdIn;
-
-std::size_t
-Output::writeBytes(std::byte const* src, std::size_t size)
-{ return size; }
 
 void
 Output::flush()

@@ -15,6 +15,9 @@ class TransformInput : public Input {
 protected:
 	TransformInput() noexcept;
 
+	std::size_t
+	readBytes(std::byte* dest, std::size_t size) override;
+
 	[[nodiscard]] std::byte const*
 	getData() const noexcept;
 
@@ -47,6 +50,9 @@ class TransformOutput : public Output {
 
 protected:
 	TransformOutput() noexcept;
+
+	std::size_t
+	writeBytes(std::byte const* src, std::size_t size) override;
 
 	std::byte*
 	getSpace() noexcept;

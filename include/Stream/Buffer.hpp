@@ -56,6 +56,9 @@ public:
 
 	virtual std::size_t
 	provideSomeData(std::size_t max);
+
+	void
+	resetData() noexcept;
 };//class Stream::BufferInput
 
 /**
@@ -113,6 +116,9 @@ public:
 
 	virtual std::size_t
 	provideSomeSpace(std::size_t max);
+
+	void
+	resetSpace() noexcept;
 };//class Stream::BufferOutput
 
 /**

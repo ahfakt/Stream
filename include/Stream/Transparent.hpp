@@ -16,7 +16,7 @@ protected:
 	TransparentInput() noexcept;
 
 	std::size_t
-	readBytes(std::byte* dest, std::size_t size) override = 0;
+	readBytes(std::byte* dest, std::size_t size) override;
 
 	std::size_t
 	getSome(void* dest, std::size_t size);
@@ -44,7 +44,7 @@ protected:
 	TransparentOutput() noexcept;
 
 	std::size_t
-	writeBytes(std::byte const* src, std::size_t size) override = 0;
+	writeBytes(std::byte const* src, std::size_t size) override;
 
 	std::size_t
 	putSome(void const* src, std::size_t size);
