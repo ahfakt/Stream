@@ -114,7 +114,7 @@ $(function() {
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (r &gt; 0)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span> r;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> (r == 0)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">throw</span> <a class="code hl_struct" href="../../d2/d85/structStream_1_1Input_1_1Exception.html">Input::Exception</a>(std::make_error_code(<span class="keyword">static_cast&lt;</span>std::errc<span class="keyword">&gt;</span>(ENODATA)));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">throw</span> <a class="code hl_struct" href="../../d2/d85/structStream_1_1Input_1_1Exception.html">Input::Exception</a>(std::make_error_code(std::errc::no_message_available));</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span> (errno != EINTR)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">throw</span> <a class="code hl_struct" href="../../d2/d85/structStream_1_1Input_1_1Exception.html">Input::Exception</a>(std::make_error_code(<span class="keyword">static_cast&lt;</span>std::errc<span class="keyword">&gt;</span>(errno)));</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
@@ -133,7 +133,7 @@ $(function() {
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">void</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>File::flush()</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="../../df/d21/classStream_1_1File.html#a8a1102c808e8c9d8bbcb8af849393677">   78</a></span><a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a8a1102c808e8c9d8bbcb8af849393677">File::flush</a>()</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{ ExpectNNeg(fdatasync(mDescriptor)); }</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>blksize_t</div>
@@ -159,6 +159,7 @@ $(function() {
 <div class="ttc" id="aclassStream_1_1File_html_a168d0d6da6c62dd7bc93ca0007d62267"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a168d0d6da6c62dd7bc93ca0007d62267">Stream::File::getBlockSize</a></div><div class="ttdeci">blksize_t getBlockSize() const</div><div class="ttdoc">Get the block size of this file.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00088">File.cpp:88</a></div></div>
 <div class="ttc" id="aclassStream_1_1File_html_a20b33866023733462ae0aae0a144a621"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a20b33866023733462ae0aae0a144a621">Stream::File::getFileSize</a></div><div class="ttdeci">off_t getFileSize() const</div><div class="ttdoc">Get the total size of this file.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00096">File.cpp:96</a></div></div>
 <div class="ttc" id="aclassStream_1_1File_html_a6bd8774cb8863d60b7b7493518c1aba2"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a6bd8774cb8863d60b7b7493518c1aba2">Stream::File::~File</a></div><div class="ttdeci">~File()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00040">File.cpp:40</a></div></div>
+<div class="ttc" id="aclassStream_1_1File_html_a8a1102c808e8c9d8bbcb8af849393677"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a8a1102c808e8c9d8bbcb8af849393677">Stream::File::flush</a></div><div class="ttdeci">void flush() final</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00078">File.cpp:78</a></div></div>
 <div class="ttc" id="astructStream_1_1Input_1_1Exception_html"><div class="ttname"><a href="../../d2/d85/structStream_1_1Input_1_1Exception.html">Stream::Input::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfe/InOut_8hpp_source.html#l00045">InOut.hpp:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -121,7 +121,7 @@ $(function() {
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    advanceData(std::<span class="keywordtype">size_t</span> size) noexcept;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    virtual std::<span class="keywordtype">size_t</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    provideData(std::<span class="keywordtype">size_t</span> min);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    provideSomeMoreData(std::<span class="keywordtype">size_t</span> min);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    virtual std::<span class="keywordtype">size_t</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    provideSomeData(std::<span class="keywordtype">size_t</span> max);</div>
@@ -143,26 +143,26 @@ $(function() {
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::size_t</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    writeBytes(std::byte <span class="keyword">const</span>* src, std::size_t size) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    flush() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="../../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html">   85</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html">Exception</a> : <a class="code hl_struct" href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Output::Exception</a></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    { <span class="keyword">using</span> Output::Exception::Exception; };</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>(std::size_t buffInitialSize);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>(<span class="keywordtype">void</span>* sinkBuff, std::size_t sinkSize) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>(<a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="../../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html">   82</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html">Exception</a> : <a class="code hl_struct" href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Output::Exception</a></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    { <span class="keyword">using</span> Output::Exception::Exception; };</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>(std::size_t buffInitialSize);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>(<span class="keywordtype">void</span>* sinkBuff, std::size_t sinkSize) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>(<a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">friend</span> <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    swap(<a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp; a, <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp; b) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">friend</span> <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    swap(<a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp; a, <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp; b) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    operator=(<a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    operator=(<a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">BufferOutput</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">~BufferOutput</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_class" href="../../da/d65/classStream_1_1BufferOutput.html">~BufferOutput</a>();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    flush() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    [[nodiscard]] std::size_t</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    getSpaceBufferSize() const noexcept;</div>
@@ -228,10 +228,10 @@ $(function() {
 <div class="ttc" id="aclassStream_1_1TransparentOutput_html"><div class="ttname"><a href="../../d1/d52/classStream_1_1TransparentOutput.html">Stream::TransparentOutput</a></div><div class="ttdoc">Transparent Output stream base class</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6a/Transparent_8hpp_source.html#l00039">Transparent.hpp:39</a></div></div>
 <div class="ttc" id="aclasstrue__type_html"><div class="ttname"><a href="../../d6/ddf/classtrue__type.html">true_type</a></div></div>
 <div class="ttc" id="astructStream_1_1BufferInput_1_1Exception_html"><div class="ttname"><a href="../../d7/d4d/structStream_1_1BufferInput_1_1Exception.html">Stream::BufferInput::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d36/Buffer_8hpp_source.html#l00027">Buffer.hpp:28</a></div></div>
-<div class="ttc" id="astructStream_1_1BufferOutput_1_1Exception_html"><div class="ttname"><a href="../../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html">Stream::BufferOutput::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d36/Buffer_8hpp_source.html#l00085">Buffer.hpp:86</a></div></div>
+<div class="ttc" id="astructStream_1_1BufferOutput_1_1Exception_html"><div class="ttname"><a href="../../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html">Stream::BufferOutput::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d36/Buffer_8hpp_source.html#l00082">Buffer.hpp:83</a></div></div>
 <div class="ttc" id="astructStream_1_1Buffer_1_1Exception_html"><div class="ttname"><a href="../../db/da5/structStream_1_1Buffer_1_1Exception.html">Stream::Buffer::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d36/Buffer_8hpp_source.html#l00130">Buffer.hpp:130</a></div></div>
 <div class="ttc" id="astructStream_1_1Input_1_1Exception_html"><div class="ttname"><a href="../../d2/d85/structStream_1_1Input_1_1Exception.html">Stream::Input::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfe/InOut_8hpp_source.html#l00045">InOut.hpp:45</a></div></div>
-<div class="ttc" id="astructStream_1_1Output_1_1Exception_html"><div class="ttname"><a href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Stream::Output::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfe/InOut_8hpp_source.html#l00099">InOut.hpp:99</a></div></div>
+<div class="ttc" id="astructStream_1_1Output_1_1Exception_html"><div class="ttname"><a href="../../d5/d2d/structStream_1_1Output_1_1Exception.html">Stream::Output::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfe/InOut_8hpp_source.html#l00096">InOut.hpp:96</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 		<script src="../../custom.js"></script>

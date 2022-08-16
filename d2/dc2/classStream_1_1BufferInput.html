@@ -118,8 +118,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1cdf582af62bc6406efb5472f910b535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac26ef641d07e57099e4f5b7aa3a9c0a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ac26ef641d07e57099e4f5b7aa3a9c0a3">advanceData</a> (std::size_t size) noexcept</td></tr>
 <tr class="separator:ac26ef641d07e57099e4f5b7aa3a9c0a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac98a578cb8d01f18e9e79b52e8bdf3d6"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#ac98a578cb8d01f18e9e79b52e8bdf3d6">provideData</a> (std::size_t min)</td></tr>
-<tr class="separator:ac98a578cb8d01f18e9e79b52e8bdf3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ab0bc5050c1b39440fc74f13bd4106f"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a2ab0bc5050c1b39440fc74f13bd4106f">provideSomeMoreData</a> (std::size_t min)</td></tr>
+<tr class="separator:a2ab0bc5050c1b39440fc74f13bd4106f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6488b6cf7a8aa56047b7209170b8c633"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#a6488b6cf7a8aa56047b7209170b8c633">provideSomeData</a> (std::size_t max)</td></tr>
 <tr class="separator:a6488b6cf7a8aa56047b7209170b8c633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af866fb7ffd8ae1a27a9f5209bbc4bb81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc2/classStream_1_1BufferInput.html#af866fb7ffd8ae1a27a9f5209bbc4bb81">resetData</a> () noexcept</td></tr>
@@ -464,8 +464,8 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac98a578cb8d01f18e9e79b52e8bdf3d6" name="ac98a578cb8d01f18e9e79b52e8bdf3d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac98a578cb8d01f18e9e79b52e8bdf3d6">&#9670;&nbsp;</a></span>provideData()</h2>
+<a id="a2ab0bc5050c1b39440fc74f13bd4106f" name="a2ab0bc5050c1b39440fc74f13bd4106f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ab0bc5050c1b39440fc74f13bd4106f">&#9670;&nbsp;</a></span>provideSomeMoreData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -474,7 +474,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t Stream::BufferInput::provideData </td>
+          <td class="memname">std::size_t Stream::BufferInput::provideSomeMoreData </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>min</em></td><td>)</td>
@@ -490,29 +490,27 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (mDataBeg + min &gt; mDataEnd) {</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">if</span> (mDataBeg + min &gt; mEnd) {</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (mBeg + min &gt; mEnd) {</div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(min, std::nothrow_t {}))) {</div>
-<div class="line"><span class="lineno">   75</span>                    std::memcpy(ptr, mDataBeg, mDataEnd - mDataBeg);</div>
-<div class="line"><span class="lineno">   76</span>                    mDataEnd = ptr + (mDataEnd - mDataBeg);</div>
-<div class="line"><span class="lineno">   77</span>                    mDataBeg = ptr;</div>
-<div class="line"><span class="lineno">   78</span>                    mBuff.reset(ptr);</div>
-<div class="line"><span class="lineno">   79</span>                    mBeg = ptr;</div>
-<div class="line"><span class="lineno">   80</span>                    mEnd = ptr + min;</div>
-<div class="line"><span class="lineno">   81</span>                } <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   82</span>                    <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
-<div class="line"><span class="lineno">   83</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   84</span>                std::memmove(mBuff.get(), mDataBeg, mDataEnd - mDataBeg);</div>
-<div class="line"><span class="lineno">   85</span>                mDataEnd = mBuff.get() + (mDataEnd - mDataBeg);</div>
-<div class="line"><span class="lineno">   86</span>                mDataBeg = mBeg;</div>
-<div class="line"><span class="lineno">   87</span>            }</div>
-<div class="line"><span class="lineno">   88</span>        }</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">while</span> (mDataBeg + min &gt; mDataEnd)</div>
-<div class="line"><span class="lineno">   90</span>            mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
-<div class="line"><span class="lineno">   93</span>}</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (mDataEnd + min &gt; mEnd) {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keyword">auto</span> <span class="keyword">const</span> dataSize = mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">if</span> (mBeg + dataSize + min &gt; mEnd) {</div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(dataSize + min, std::nothrow_t{}))) {</div>
+<div class="line"><span class="lineno">   75</span>                std::memcpy(ptr, mDataBeg, dataSize);</div>
+<div class="line"><span class="lineno">   76</span>                mDataEnd = ptr + dataSize;</div>
+<div class="line"><span class="lineno">   77</span>                mDataBeg = ptr;</div>
+<div class="line"><span class="lineno">   78</span>                mBuff.reset(ptr);</div>
+<div class="line"><span class="lineno">   79</span>                mBeg = ptr;</div>
+<div class="line"><span class="lineno">   80</span>                mEnd = ptr + dataSize + min;</div>
+<div class="line"><span class="lineno">   81</span>            } <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   82</span>                <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
+<div class="line"><span class="lineno">   83</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   84</span>            std::memmove(mBuff.get(), mDataBeg, dataSize);</div>
+<div class="line"><span class="lineno">   85</span>            mDataEnd = mBuff.get() + dataSize;</div>
+<div class="line"><span class="lineno">   86</span>            mDataBeg = mBuff.get();</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+<div class="line"><span class="lineno">   89</span>    mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">   91</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -540,26 +538,26 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00096">96</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (mDataBeg + max &gt; mDataEnd) {</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (mDataBeg != mDataEnd)</div>
-<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
-<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">if</span> (mBeg + max &gt; mEnd) {</div>
-<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(max, std::nothrow_t {}))) {</div>
-<div class="line"><span class="lineno">  103</span>                mBuff.reset(ptr);</div>
-<div class="line"><span class="lineno">  104</span>                mBeg = ptr;</div>
-<div class="line"><span class="lineno">  105</span>                mEnd = ptr + max;</div>
-<div class="line"><span class="lineno">  106</span>            } <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  107</span>                <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
-<div class="line"><span class="lineno">  108</span>        }</div>
-<div class="line"><span class="lineno">  109</span>        mDataEnd = <span class="keyword">const_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(mDataBeg = mBeg);</div>
-<div class="line"><span class="lineno">  110</span>        mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);</div>
-<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">if</span> (mDataBeg + max &gt; mDataEnd)</div>
-<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
-<div class="line"><span class="lineno">  113</span>    }</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> max;</div>
-<div class="line"><span class="lineno">  115</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00094">94</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (mDataBeg + max &gt; mDataEnd) {</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (mDataBeg != mDataEnd)</div>
+<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (mBeg + max &gt; mEnd) {</div>
+<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* ptr = <span class="keyword">reinterpret_cast&lt;</span>std::byte*<span class="keyword">&gt;</span>(::operator <span class="keyword">new</span>(max, std::nothrow_t{}))) {</div>
+<div class="line"><span class="lineno">  101</span>                mBuff.reset(ptr);</div>
+<div class="line"><span class="lineno">  102</span>                mBeg = ptr;</div>
+<div class="line"><span class="lineno">  103</span>                mEnd = ptr + max;</div>
+<div class="line"><span class="lineno">  104</span>            } <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">throw</span> Exception(Buffer::Exception::Code::BadAllocation);</div>
+<div class="line"><span class="lineno">  106</span>        }</div>
+<div class="line"><span class="lineno">  107</span>        mDataBeg = mBeg;</div>
+<div class="line"><span class="lineno">  108</span>        mDataEnd = mBuff.get() + getSome(mBuff.get(), mEnd - mBeg);</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">if</span> (mDataBeg + max &gt; mDataEnd)</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">return</span> mDataEnd - mDataBeg;</div>
+<div class="line"><span class="lineno">  111</span>    }</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> max;</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -586,8 +584,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00118">118</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>{ mDataBeg = mBeg; }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/Buffer_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../db/d98/Buffer_8cpp_source.html">Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{ mDataBeg = mBeg; }</div>
 </div><!-- fragment -->
 </div>
 </div>

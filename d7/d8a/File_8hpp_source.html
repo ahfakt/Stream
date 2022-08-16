@@ -89,41 +89,41 @@ $(function() {
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::size_t</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    writeBytes(std::byte <span class="keyword">const</span>* src, std::size_t size) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    flush() <span class="keyword">final</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d4/d1b/structStream_1_1File_1_1Exception.html">   27</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d4/d1b/structStream_1_1File_1_1Exception.html">Exception</a> : std::system_error</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    { <span class="keyword">using</span> std::system_error::system_error; };</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">enum class</span> <a class="code hl_class" href="../../d9/d03/classMode.html">Mode</a> : <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        R = O_RDONLY,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        W = O_WRONLY | O_CREAT | O_TRUNC,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        A = O_WRONLY | O_CREAT | O_APPEND,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        RW = O_RDWR,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        WR = O_RDWR | O_CREAT | O_TRUNC,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        AR = O_RDWR | O_CREAT | O_APPEND</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    };<span class="comment">//enum class Stream::File::Mode</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1">File</a>(std::string <span class="keyword">const</span>&amp; name, <a class="code hl_class" href="../../d9/d03/classMode.html">Mode</a> mode);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1">File</a>(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1">File</a>(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../d4/d1b/structStream_1_1File_1_1Exception.html">   24</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d4/d1b/structStream_1_1File_1_1Exception.html">Exception</a> : std::system_error</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    { <span class="keyword">using</span> std::system_error::system_error; };</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">enum class</span> <a class="code hl_class" href="../../d9/d03/classMode.html">Mode</a> : <span class="keywordtype">int</span> {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        R = O_RDONLY,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        W = O_WRONLY | O_CREAT | O_TRUNC,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        A = O_WRONLY | O_CREAT | O_APPEND,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        RW = O_RDWR,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        WR = O_RDWR | O_CREAT | O_TRUNC,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        AR = O_RDWR | O_CREAT | O_APPEND</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    };<span class="comment">//enum class Stream::File::Mode</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1">File</a>(std::string <span class="keyword">const</span>&amp; name, <a class="code hl_class" href="../../d9/d03/classMode.html">Mode</a> mode);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1">File</a>(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a012a2b61d8e7ba3a46511b7bf8cfd8d1">File</a>(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">friend</span> <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    swap(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp; a, <a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp; b) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">friend</span> <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    swap(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp; a, <a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp; b) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    operator=(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    operator=(<a class="code hl_class" href="../../df/d21/classStream_1_1File.html">File</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a6bd8774cb8863d60b7b7493518c1aba2">~File</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a6bd8774cb8863d60b7b7493518c1aba2">~File</a>();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a8a1102c808e8c9d8bbcb8af849393677">flush</a>() final;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    [[nodiscard]] blksize_t</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a168d0d6da6c62dd7bc93ca0007d62267">getBlockSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a168d0d6da6c62dd7bc93ca0007d62267">getBlockSize</a>() const;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    [[nodiscard]] off_t</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a20b33866023733462ae0aae0a144a621">getFileSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_function" href="../../df/d21/classStream_1_1File.html#a20b33866023733462ae0aae0a144a621">getFileSize</a>() const;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};<span class="comment">//class Stream::File</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}<span class="comment">//namespace Stream</span></div>
@@ -135,9 +135,10 @@ $(function() {
 <div class="ttc" id="aclassStream_1_1File_html_a168d0d6da6c62dd7bc93ca0007d62267"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a168d0d6da6c62dd7bc93ca0007d62267">Stream::File::getBlockSize</a></div><div class="ttdeci">blksize_t getBlockSize() const</div><div class="ttdoc">Get the block size of this file.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00088">File.cpp:88</a></div></div>
 <div class="ttc" id="aclassStream_1_1File_html_a20b33866023733462ae0aae0a144a621"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a20b33866023733462ae0aae0a144a621">Stream::File::getFileSize</a></div><div class="ttdeci">off_t getFileSize() const</div><div class="ttdoc">Get the total size of this file.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00096">File.cpp:96</a></div></div>
 <div class="ttc" id="aclassStream_1_1File_html_a6bd8774cb8863d60b7b7493518c1aba2"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a6bd8774cb8863d60b7b7493518c1aba2">Stream::File::~File</a></div><div class="ttdeci">~File()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00040">File.cpp:40</a></div></div>
+<div class="ttc" id="aclassStream_1_1File_html_a8a1102c808e8c9d8bbcb8af849393677"><div class="ttname"><a href="../../df/d21/classStream_1_1File.html#a8a1102c808e8c9d8bbcb8af849393677">Stream::File::flush</a></div><div class="ttdeci">void flush() final</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d63/File_8cpp_source.html#l00078">File.cpp:78</a></div></div>
 <div class="ttc" id="aclassStream_1_1Input_html"><div class="ttname"><a href="../../d7/d83/classStream_1_1Input.html">Stream::Input</a></div><div class="ttdoc">Input stream base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfe/InOut_8hpp_source.html#l00037">InOut.hpp:37</a></div></div>
 <div class="ttc" id="aclassStream_1_1Output_html"><div class="ttname"><a href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a></div><div class="ttdoc">Output stream base class.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfe/InOut_8hpp_source.html#l00088">InOut.hpp:88</a></div></div>
-<div class="ttc" id="astructStream_1_1File_1_1Exception_html"><div class="ttname"><a href="../../d4/d1b/structStream_1_1File_1_1Exception.html">Stream::File::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d8a/File_8hpp_source.html#l00027">File.hpp:28</a></div></div>
+<div class="ttc" id="astructStream_1_1File_1_1Exception_html"><div class="ttname"><a href="../../d4/d1b/structStream_1_1File_1_1Exception.html">Stream::File::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d8a/File_8hpp_source.html#l00024">File.hpp:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 		<script src="../../custom.js"></script>
