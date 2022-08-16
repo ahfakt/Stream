@@ -92,9 +92,6 @@ protected:
 	virtual std::size_t
 	writeBytes(std::byte const* src, std::size_t size) = 0;
 
-	virtual void
-	flush();
-
 public:
 	struct Exception : std::system_error {
 		using std::system_error::system_error;
@@ -124,8 +121,8 @@ public:
 	std::size_t
 	writeSome(void const* src, std::size_t size);
 
-	Output&
-	operator<<(std::nullptr_t);
+	virtual void
+	flush();
 
 	Output&
 	operator<<(auto const& t)

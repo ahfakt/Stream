@@ -52,7 +52,7 @@ public:
 	advanceData(std::size_t size) noexcept;
 
 	virtual std::size_t
-	provideData(std::size_t min);
+	provideSomeMoreData(std::size_t min);
 
 	virtual std::size_t
 	provideSomeData(std::size_t max);
@@ -78,9 +78,6 @@ protected:
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override;
 
-	void
-	flush() override;
-
 public:
 	struct Exception : Output::Exception
 	{ using Output::Exception::Exception; };
@@ -98,6 +95,9 @@ public:
 	operator=(BufferOutput&& other) noexcept;
 
 	~BufferOutput();
+
+	void
+	flush() override;
 
 	[[nodiscard]] std::size_t
 	getSpaceBufferSize() const noexcept;

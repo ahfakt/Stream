@@ -55,7 +55,7 @@ Pipe::readBytes(std::byte* dest, std::size_t size)
 		if (r > 0)
 			return r;
 		if (r == 0)
-			throw Input::Exception(std::make_error_code(static_cast<std::errc>(ENODATA)));
+			throw Input::Exception(std::make_error_code(std::errc::no_message_available));
 		if (errno != EINTR)
 			throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
 	}

@@ -45,17 +45,13 @@ static class : public Input {
 			if (r > 0)
 				return r;
 			if (r == 0)
-				throw Input::Exception(std::make_error_code(static_cast<std::errc>(ENODATA)));
+				throw Input::Exception(std::make_error_code(std::errc::no_message_available));
 			if (errno != EINTR)
 				throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
 		}
 	}
 } StdIn;
 Input& In = StdIn;
-
-void
-Output::flush()
-{}
 
 Output&
 Output::write(void const* src, std::size_t size)
@@ -82,12 +78,9 @@ Output::writeSome(void const* src, std::size_t size)
 	return 0;
 }
 
-Output&
-Output::operator<<(std::nullptr_t)
-{
-	flush();
-	return *this;
-}
+void
+Output::flush()
+{}
 
 void const*
 Output::Exception::getUnwrittenBuffer() const noexcept

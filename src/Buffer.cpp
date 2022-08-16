@@ -66,29 +66,27 @@ BufferInput::advanceData(std::size_t size) noexcept
 { mDataBeg += size; }
 
 std::size_t
-BufferInput::provideData(std::size_t const min)
+BufferInput::provideSomeMoreData(std::size_t const min)
 {
-	if (mDataBeg + min > mDataEnd) {
-		if (mDataBeg + min > mEnd) {
-			if (mBeg + min > mEnd) {
-				if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t {}))) {
-					std::memcpy(ptr, mDataBeg, mDataEnd - mDataBeg);
-					mDataEnd = ptr + (mDataEnd - mDataBeg);
-					mDataBeg = ptr;
-					mBuff.reset(ptr);
-					mBeg = ptr;
-					mEnd = ptr + min;
-				} else
-					throw Exception(Buffer::Exception::Code::BadAllocation);
-			} else {
-				std::memmove(mBuff.get(), mDataBeg, mDataEnd - mDataBeg);
-				mDataEnd = mBuff.get() + (mDataEnd - mDataBeg);
-				mDataBeg = mBeg;
-			}
+	if (mDataEnd + min > mEnd) {
+		auto const dataSize = mDataEnd - mDataBeg;
+		if (mBeg + dataSize + min > mEnd) {
+			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(dataSize + min, std::nothrow_t{}))) {
+				std::memcpy(ptr, mDataBeg, dataSize);
+				mDataEnd = ptr + dataSize;
+				mDataBeg = ptr;
+				mBuff.reset(ptr);
+				mBeg = ptr;
+				mEnd = ptr + dataSize + min;
+			} else
+				throw Exception(Buffer::Exception::Code::BadAllocation);
+		} else {
+			std::memmove(mBuff.get(), mDataBeg, dataSize);
+			mDataEnd = mBuff.get() + dataSize;
+			mDataBeg = mBuff.get();
 		}
-		while (mDataBeg + min > mDataEnd)
-			mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);
 	}
+	mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);
 	return mDataEnd - mDataBeg;
 }
 
@@ -99,15 +97,15 @@ BufferInput::provideSomeData(std::size_t const max)
 		if (mDataBeg != mDataEnd)
 			return mDataEnd - mDataBeg;
 		if (mBeg + max > mEnd) {
-			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t {}))) {
+			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))) {
 				mBuff.reset(ptr);
 				mBeg = ptr;
 				mEnd = ptr + max;
 			} else
 				throw Exception(Buffer::Exception::Code::BadAllocation);
 		}
-		mDataEnd = const_cast<std::byte*>(mDataBeg = mBeg);
-		mDataEnd += getSome(mDataEnd, mEnd - mDataEnd);
+		mDataBeg = mBeg;
+		mDataEnd = mBuff.get() + getSome(mBuff.get(), mEnd - mBeg);
 		if (mDataBeg + max > mDataEnd)
 			return mDataEnd - mDataBeg;
 	}
@@ -203,7 +201,7 @@ BufferOutput::advanceSpace(std::size_t size) noexcept
 { mSpaceBeg += size; }
 
 std::size_t
-BufferOutput::provideSpace(std::size_t min)
+BufferOutput::provideSpace(std::size_t const min)
 {
 	if (mSpaceBeg + min > mSpaceEnd) {
 		BufferOutput::flush();
@@ -220,7 +218,7 @@ BufferOutput::provideSpace(std::size_t min)
 }
 
 std::size_t
-BufferOutput::provideSomeSpace(std::size_t max)
+BufferOutput::provideSomeSpace(std::size_t const max)
 {
 	if (mSpaceBeg + max > mSpaceEnd) {
 		if (mSpaceBeg != mSpaceEnd)

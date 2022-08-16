@@ -28,7 +28,7 @@ protected:
 	advanceData(std::size_t size) noexcept;
 
 	std::size_t
-	provideData(std::size_t min);
+	provideSomeMoreData(std::size_t min);
 
 	std::size_t
 	provideSomeData(std::size_t max);
@@ -57,9 +57,6 @@ protected:
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override;
 
-	void
-	flush() override;
-
 	[[nodiscard]] std::size_t
 	getSpaceSize() const noexcept;
 
@@ -78,6 +75,9 @@ protected:
 public:
 	friend void
 	swap(TransformOutput& a, TransformOutput& b) noexcept;
+
+	void
+	flush() override;
 
 	friend TransformOutput&
 	operator<(BufferOutput& bufferOutput, TransformOutput& transformOutput) noexcept;

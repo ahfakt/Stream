@@ -5,7 +5,7 @@ namespace Stream {
 static class : public Input {
 	std::size_t
 	readBytes(std::byte* dest, std::size_t size) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA))); }
+	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
 } nullInput;
 
 TransparentInput::TransparentInput() noexcept
@@ -38,11 +38,11 @@ operator>(std::nullptr_t, TransparentInput& transparentInput) noexcept
 static class : public Output {
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
 
 	void
 	flush() override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
 } nullOutput;
 
 TransparentOutput::TransparentOutput() noexcept

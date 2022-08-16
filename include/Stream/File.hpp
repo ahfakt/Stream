@@ -20,9 +20,6 @@ class File : public Input, public Output {
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override;
 
-	void
-	flush() final;
-
 public:
 	struct Exception : std::system_error
 	{ using std::system_error::system_error; };
@@ -57,6 +54,9 @@ public:
 	operator=(File&& other) noexcept;
 
 	~File();
+
+	void
+	flush() final;
 
 	/**
 	 * @brief	Get the block size of this file.

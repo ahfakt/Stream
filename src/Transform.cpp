@@ -5,15 +5,15 @@ namespace Stream {
 static class : public BufferInput {
 	std::size_t
 	readBytes(std::byte*, std::size_t) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA))); }
+	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
 
 	std::size_t
-	provideData(std::size_t) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA))); }
+	provideSomeMoreData(std::size_t) override
+	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
 
 	std::size_t
 	provideSomeData(std::size_t) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENODATA))); }
+	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
 } nullBufferInput;
 
 TransformInput::TransformInput() noexcept
@@ -41,8 +41,8 @@ TransformInput::advanceData(std::size_t size) noexcept
 { mSource->advanceData(size); }
 
 std::size_t
-TransformInput::provideData(std::size_t min)
-{ return mSource->provideData(min); }
+TransformInput::provideSomeMoreData(std::size_t min)
+{ return mSource->provideSomeMoreData(min); }
 
 std::size_t
 TransformInput::provideSomeData(std::size_t max)
@@ -62,19 +62,19 @@ operator>(std::nullptr_t, TransformInput& transformInput) noexcept
 static class : public BufferOutput {
 	std::size_t
 	writeBytes(std::byte const*, std::size_t) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
 
 	void
 	flush() override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
 
 	std::size_t
 	provideSpace(std::size_t) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
 
 	std::size_t
 	provideSomeSpace(std::size_t) override
-	{ throw Exception(std::make_error_code(static_cast<std::errc>(ENOSPC))); }
+	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
 } nullBufferOutput;
 
 TransformOutput::TransformOutput() noexcept
@@ -91,7 +91,7 @@ TransformOutput::writeBytes(std::byte const* src, std::size_t size)
 
 void
 TransformOutput::flush()
-{ *mSink << nullptr; }
+{ mSink->flush(); }
 
 std::size_t
 TransformOutput::getSpaceSize() const noexcept
