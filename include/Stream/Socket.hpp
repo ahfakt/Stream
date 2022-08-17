@@ -2,6 +2,7 @@
 #define STREAM_SOCKET_HPP
 
 #include "InOut.hpp"
+#include <netinet/in.h>
 #include <sys/socket.h>
 
 namespace Stream {
@@ -25,23 +26,14 @@ public:
 	struct Exception : std::system_error
 	{ using std::system_error::system_error; };
 
-	/**
-	 * @brief	IPv4 adress structure
-	 * @class	Inet Socket.hpp "Stream/Socket.hpp"
-	 */
-	struct Inet : sockaddr {
+	struct Address : sockaddr {
 		struct Exception : std::system_error {
 			using std::system_error::system_error;
 			enum class Code : int {};
-		};//struct Stream::Socket::Inet::Exception
+		};//struct Stream::Socket::Address::Exception
 
-		/**
-		 * @throws Socket::Inet::Exception
-		 */
-		Inet(char const* host, std::uint16_t port);
-
-		Inet(std::uint32_t address, std::uint16_t port) noexcept;
-	};//struct Stream::Socket::Inet
+		struct Inet;
+	};//struct Stream::Socket::Address
 
 	/**
 	 * @brief	Construct a IPv4 TCP Socket resource.
@@ -50,19 +42,19 @@ public:
 	Socket();
 
 	/**
-	 * @brief	Construct a IPv4 TCP server Socket.
-	 * @param[in]	address IPv4 address to be bound to accept incoming connections
+	 * @brief	Construct a TCP server Socket.
+	 * @param[in]	address Address to be bound to accept incoming connections
 	 * @param[in]	backlog Maximum length of pending connections queue
 	 * @throws	Socket::Exception
 	 */
-	Socket(Inet const& inet, int backlog);
+	Socket(Address const& address, int backlog);
 
 	/**
-	 * @brief	Construct a IPv4 TCP client Socket.
-	 * @param[in]	address IPv4 address to connect
+	 * @brief	Construct a TCP client Socket.
+	 * @param[in]	address Address to connect
 	 * @throws	Socket::Exception
 	 */
-	explicit Socket(Inet const& inet);
+	explicit Socket(Address const& address);
 
 	Socket(Socket const&) = delete;
 
@@ -79,18 +71,16 @@ public:
 	/**
 	 * @brief	Bind this Socket to an IPv4 address.
 	 * @param[in]	address IPv4 address to be bound
-	 * @throws	Socket::Exception
 	 */
-	void
-	bind(Inet const& inet);
+	bool
+	bind(Address const& address) noexcept;
 
 	/**
 	 * @brief	Put this Socket into the listening state.
 	 * @param[in]	backlog Maximum length of pending connections queue
-	 * @throws	Socket::Exception
 	 */
-	void
-	listen(int backlog);
+	bool
+	listen(int backlog) noexcept;
 
 	/**
 	 * @brief	Accept a new client connection.
@@ -103,10 +93,9 @@ public:
 	/**
 	 * @brief	Connect to an IPv4 server.
 	 * @param[in]	address IPv4 address to connect
-	 * @throws	Socket::Exception
 	 */
-	void
-	connect(Inet const& inet);
+	bool
+	connect(Address const& address) noexcept;
 
 	/**
 	 * @brief	Get the maximum segment size of the TCP connection.
@@ -129,15 +118,28 @@ public:
 	setSendTimeout(timeval timeout);
 };//class Stream::Socket
 
+struct Socket::Address::Inet : Socket::Address {
+	/**
+	 * @throws Socket::Adress::Exception
+	 */
+	Inet(char const* host, std::uint16_t port);
+
+	sockaddr_in*
+	operator->() noexcept;
+
+	sockaddr_in const*
+	operator->() const noexcept;
+};//struct Stream::Socket::Adress::Inet
+
 std::error_code
-make_error_code(Socket::Inet::Exception::Code e) noexcept;
+make_error_code(Socket::Address::Exception::Code e) noexcept;
 
 }//namespace Stream
 
 namespace std {
 
 template <>
-struct is_error_code_enum<Stream::Socket::Inet::Exception::Code> : true_type {};
+struct is_error_code_enum<Stream::Socket::Address::Exception::Code> : true_type {};
 
 }//namespace std
 

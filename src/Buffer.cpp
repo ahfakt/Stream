@@ -157,7 +157,7 @@ BufferOutput::~BufferOutput()
 {
 	while (mBeg != mSpaceBeg) try {
 		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
-	} catch (Output::Exception& exc) {
+	} catch (Output::Exception const& exc) {
 		::write(STDERR_FILENO, exc.what(), std::strlen(exc.what()));
 		return;
 	}
@@ -177,7 +177,7 @@ BufferOutput::flush()
 {
 	while (mBeg != mSpaceBeg) try {
 		mBeg += putSome(mBeg, mSpaceBeg - mBeg);
-	} catch (Output::Exception& exc) {
+	} catch (Output::Exception const& exc) {
 		mBeg = static_cast<std::byte const*>(exc.getUnwrittenBuffer());
 		throw;
 	}

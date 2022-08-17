@@ -1,6 +1,5 @@
 #include "Stream/Socket.hpp"
 #include <netdb.h>
-#include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <unistd.h>
 
@@ -26,16 +25,15 @@ Socket::Socket()
  * @see	<a href="https://man7.org/linux/man-pages/man2/bind.2.html">bind()</a>
  * @see	<a href="https://man7.org/linux/man-pages/man2/listen.2.html">listen()</a>
  */
-Socket::Socket(Inet const& inet, int backlog)
+Socket::Socket(Address const& address, int backlog)
 		: Socket()
 {
-	try {
-		bind(inet);
-		listen(backlog);
-	} catch (Exception& exc) {
+	if (::bind(mDescriptor, &address, sizeof(struct sockaddr_in)) ||
+		::listen(mDescriptor, backlog)) {
+		auto const errc = static_cast<std::errc>(errno);
 		if (close(mDescriptor) < 0)
 			perror(nullptr);
-		throw;
+		throw Exception(std::make_error_code(errc));
 	}
 }
 
@@ -43,15 +41,14 @@ Socket::Socket(Inet const& inet, int backlog)
  * @see	<a href="https://man7.org/linux/man-pages/man2/socket.2.html">socket()</a>
  * @see	<a href="https://man7.org/linux/man-pages/man2/connect.2.html">connect()</a>
  */
-Socket::Socket(Inet const& inet)
+Socket::Socket(Address const& address)
 		: Socket()
 {
-	try {
-		connect(inet);
-	} catch (Exception& exc) {
+	if (::connect(mDescriptor, &address, sizeof(struct sockaddr_in))) {
+		auto const errc = static_cast<std::errc>(errno);
 		if (close(mDescriptor) < 0)
 			perror(nullptr);
-		throw;
+		throw Exception(std::make_error_code(errc));
 	}
 }
 
@@ -111,16 +108,16 @@ Socket::writeBytes(std::byte const* src, std::size_t size)
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/bind.2.html">bind()</a>
  */
-void
-Socket::bind(Inet const& inet)
-{ ExpectNNeg(::bind(mDescriptor, &inet, sizeof(struct sockaddr_in))); }
+bool
+Socket::bind(Address const& address) noexcept
+{ return 0 == ::bind(mDescriptor, &address, sizeof(struct sockaddr_in)); }
 
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/listen.2.html">listen()</a>
  */
-void
-Socket::listen(int backlog)
-{ ExpectNNeg(::listen(mDescriptor, backlog)); }
+bool
+Socket::listen(int backlog) noexcept
+{ return 0 == ::listen(mDescriptor, backlog); }
 
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/accept.2.html">accept()</a>
@@ -132,9 +129,9 @@ Socket::accept() const
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/connect.2.html">connect()</a>
  */
-void
-Socket::connect(Inet const& inet)
-{ ExpectNNeg(::connect(mDescriptor, &inet, sizeof(struct sockaddr_in))); }
+bool
+Socket::connect(Address const& address) noexcept
+{ return 0 == ::connect(mDescriptor, &address, sizeof(struct sockaddr_in)); }
 
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/getsockopt.2.html">getsockopt()</a>
@@ -175,51 +172,44 @@ void
 Socket::setSendTimeout(timeval timeout)
 { ExpectNNeg(setsockopt(mDescriptor, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof timeout)); }
 
-std::uint32_t
-ResolveInet(char const* host)
+/**
+ * @see	<a href="https://man7.org/linux/man-pages/man7/ip.7.html">struct sockaddr_in</a>
+ * @see	<a href="https://man7.org/linux/man-pages/man3/inet_aton.3.html">inet_aton()</a>
+ */
+Socket::Address::Inet::Inet(char const* host, std::uint16_t port)
 {
-	struct addrinfo hints = {0};
+	struct addrinfo hints{};
 	hints.ai_flags = 0;
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_TCP;
 
 	struct addrinfo* info = nullptr;
-	int e = getaddrinfo(host, nullptr, &hints, &info);
-	if (e == 0) {
-		std::uint32_t r = reinterpret_cast<sockaddr_in*>(info->ai_addr)->sin_addr.s_addr;
-		freeaddrinfo(info);
-		return r;
-	}
-	throw Socket::Inet::Exception(static_cast<Socket::Inet::Exception::Code>(e));
-}
+	if (int e = getaddrinfo(host, nullptr, &hints, &info))
+		throw Socket::Address::Exception(static_cast<Socket::Address::Exception::Code>(e), host);
 
-/**
- * @see	<a href="https://man7.org/linux/man-pages/man7/ip.7.html">struct sockaddr_in</a>
- * @see	<a href="https://man7.org/linux/man-pages/man3/inet_aton.3.html">inet_aton()</a>
- */
-Socket::Inet::Inet(char const* host, std::uint16_t port)
-		: Inet(ResolveInet(host), port)
-{}
-
-/**
- * @see	<a href="https://man7.org/linux/man-pages/man7/ip.7.html">struct sockaddr_in</a>
- */
-Socket::Inet::Inet(std::uint32_t address, std::uint16_t port) noexcept
-{
 	auto* This = reinterpret_cast<sockaddr_in*>(this);
 	This->sin_family = AF_INET;
 	This->sin_port = htons(port);
-	This->sin_addr.s_addr = address;
+	This->sin_addr = reinterpret_cast<sockaddr_in*>(info->ai_addr)->sin_addr;
+	freeaddrinfo(info);
 }
 
+sockaddr_in*
+Socket::Address::Inet::operator->() noexcept
+{ return reinterpret_cast<sockaddr_in*>(this); }
+
+sockaddr_in const*
+Socket::Address::Inet::operator->() const noexcept
+{ return reinterpret_cast<sockaddr_in const*>(this); }
+
 std::error_code
-make_error_code(Socket::Inet::Exception::Code e) noexcept
+make_error_code(Socket::Address::Exception::Code e) noexcept
 {
 	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
-		{ return "Stream::Socket::Inet"; }
+		{ return "Stream::Socket::Address"; }
 
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
