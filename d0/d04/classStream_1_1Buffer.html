@@ -895,7 +895,7 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  177</span>{</div>
 <div class="line"><span class="lineno">  178</span>    <span class="keywordflow">while</span> (mBeg != mSpaceBeg) <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">  179</span>        mBeg += putSome(mBeg, mSpaceBeg - mBeg);</div>
-<div class="line"><span class="lineno">  180</span>    } <span class="keywordflow">catch</span> (Output::Exception&amp; exc) {</div>
+<div class="line"><span class="lineno">  180</span>    } <span class="keywordflow">catch</span> (Output::Exception <span class="keyword">const</span>&amp; exc) {</div>
 <div class="line"><span class="lineno">  181</span>        mBeg = <span class="keyword">static_cast&lt;</span>std::byte const*<span class="keyword">&gt;</span>(exc.getUnwrittenBuffer());</div>
 <div class="line"><span class="lineno">  182</span>        <span class="keywordflow">throw</span>;</div>
 <div class="line"><span class="lineno">  183</span>    }</div>

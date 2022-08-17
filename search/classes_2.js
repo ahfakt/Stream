@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_0',['File',['../df/d21/classStream_1_1File.html',1,'Stream']]]
+  ['exception_0',['Exception',['../db/da5/structStream_1_1Buffer_1_1Exception.html',1,'Stream::Buffer::Exception'],['../d7/d4d/structStream_1_1BufferInput_1_1Exception.html',1,'Stream::BufferInput::Exception'],['../d0/dc5/structStream_1_1BufferOutput_1_1Exception.html',1,'Stream::BufferOutput::Exception'],['../d4/d1b/structStream_1_1File_1_1Exception.html',1,'Stream::File::Exception'],['../d2/d85/structStream_1_1Input_1_1Exception.html',1,'Stream::Input::Exception'],['../d5/d2d/structStream_1_1Output_1_1Exception.html',1,'Stream::Output::Exception'],['../d7/d1b/structStream_1_1Pipe_1_1Exception.html',1,'Stream::Pipe::Exception'],['../db/d86/structStream_1_1Socket_1_1Address_1_1Exception.html',1,'Stream::Socket::Address::Exception'],['../d3/d86/structStream_1_1Socket_1_1Exception.html',1,'Stream::Socket::Exception']]]
 ];
