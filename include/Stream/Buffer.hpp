@@ -51,10 +51,10 @@ public:
 	void
 	advanceData(std::size_t size) noexcept;
 
-	virtual std::size_t
+	std::size_t
 	provideSomeMoreData(std::size_t min);
 
-	virtual std::size_t
+	std::size_t
 	provideSomeData(std::size_t max);
 
 	void

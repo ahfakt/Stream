@@ -6,14 +6,6 @@ static class : public BufferInput {
 	std::size_t
 	readBytes(std::byte*, std::size_t) override
 	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
-
-	std::size_t
-	provideSomeMoreData(std::size_t) override
-	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
-
-	std::size_t
-	provideSomeData(std::size_t) override
-	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
 } nullBufferInput;
 
 TransformInput::TransformInput() noexcept

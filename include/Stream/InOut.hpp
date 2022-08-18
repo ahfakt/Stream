@@ -56,6 +56,7 @@ public:
 
 		[[nodiscard]] std::size_t
 		getUnreadSize() const noexcept;
+
 	private:
 		friend class Input;
 		void* mDest;
@@ -76,7 +77,10 @@ public:
 
 	template <Char C>
 	Input&
-	operator>>(std::basic_string<C>& str);
+	operator>>(std::basic_string<C>& s);
+
+	Input&
+	operator>>(Char auto* s);
 };//class Stream::Input
 
 extern Input& In;
@@ -107,6 +111,7 @@ public:
 
 		[[nodiscard]] std::size_t
 		getUnwrittenSize() const noexcept;
+
 	private:
 		friend class Output;
 		void const* mSrc;
@@ -130,7 +135,10 @@ public:
 
 	template <Char C>
 	Output&
-	operator<<(std::basic_string<C> const& str);
+	operator<<(std::basic_string<C> const& s);
+
+	Output&
+	operator<<(Char auto const* s);
 };//class Stream::Output
 
 extern Output& Out;

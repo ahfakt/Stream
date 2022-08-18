@@ -2,15 +2,15 @@
 
 namespace Stream {
 
-template <typename InputType, typename T>
+template <typename InputRef, typename T>
 concept ExtractableTo =
-	std::derived_from<InputType, Input> &&
-	std::derived_from<InputType, std::remove_reference_t<decltype(std::declval<InputType&>() >> std::declval<T&>())>>;
+	std::derived_from<std::remove_reference_t<InputRef>, Input> &&
+	std::derived_from<std::remove_reference_t<InputRef>, std::remove_reference_t<decltype(std::declval<InputRef>() >> std::declval<T&>())>>;
 
-template <typename InputType, typename T>
+template <typename InputRef, typename T>
 concept TriviallyExtractableTo =
 	std::is_trivially_default_constructible_v<T> &&
-	ExtractableTo<InputType, T>;
+	ExtractableTo<InputRef, T>;
 
 template <typename T, typename ... Args>
 concept ConstructibleFrom = std::destructible<T> && requires
@@ -19,11 +19,11 @@ concept ConstructibleFrom = std::destructible<T> && requires
 template <typename T, typename ... Args>
 concept NotConstructibleFrom = !ConstructibleFrom<T, Args ...>;
 
-template <typename T, typename InputType, typename ... Args>
-concept DeserializableWith = std::derived_from<InputType, Stream::Input> &&
-	(ConstructibleFrom<T, InputType&, Args ...> ||
+template <typename T, typename InputRef, typename ... Args>
+concept DeserializableWith = std::derived_from<std::remove_reference_t<InputRef>, Stream::Input> &&
+	(ConstructibleFrom<T, InputRef, Args ...> ||
 	(ConstructibleFrom<T, Args ...> || std::is_trivially_default_constructible_v<T>) &&
-		std::derived_from<InputType, std::remove_reference_t<decltype(std::declval<InputType&>() >> std::declval<T&>())>>);
+		std::derived_from<std::remove_reference_t<InputRef>, std::remove_reference_t<decltype(std::declval<InputRef>() >> std::declval<T&>())>>);
 
 Input&
 Input::operator>>(auto& t)
@@ -32,12 +32,21 @@ requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>
 
 template <Char C>
 Input&
-Input::operator>>(std::basic_string<C>& str)
+Input::operator>>(std::basic_string<C>& s)
 {
-	std::uint64_t size = 0;
+	std::uint64_t size{0};
 	read(&size, sizeof size);
-	str.resize(size);
-	return read(str.data(), size * sizeof(C));
+	s.resize(size);
+	return read(s.data(), size * sizeof(C));
+}
+
+Input&
+Input::operator>>(Char auto* s)
+{
+	using C = std::remove_pointer_t<decltype(s)>;
+	std::uint64_t size{0};
+	read(&size, sizeof size);
+	return read(s, size * sizeof(C));
 }
 
 /**
@@ -88,10 +97,10 @@ requires NotConstructibleFrom<T, decltype(input)>
 	return t;
 }
 
-template <typename T, typename OutputType>
+template <typename T, typename OutputRef>
 concept InsertableTo =
-std::derived_from<OutputType, Output> &&
-std::derived_from<OutputType, std::remove_reference_t<decltype(std::declval<OutputType&>() << std::declval<T const&>())>>;
+std::derived_from<std::remove_reference_t<OutputRef>, Output> &&
+std::derived_from<std::remove_reference_t<OutputRef>, std::remove_reference_t<decltype(std::declval<OutputRef>() << std::declval<T const&>())>>;
 
 Output&
 Output::operator<<(auto const& t)
@@ -100,10 +109,18 @@ requires std::is_trivially_copyable_v<std::remove_reference_t<decltype(t)>>
 
 template <Char C>
 Output&
-Output::operator<<(std::basic_string<C> const& str)
+Output::operator<<(std::basic_string<C> const& s)
 {
-	*this << static_cast<std::uint64_t>(str.size());
-	return write(str.data(), str.size() * sizeof(C));
+	std::uint64_t size{s.size()};
+	return write(&size, sizeof size).write(s.data(), size * sizeof(C));
+}
+
+Output&
+Output::operator<<(Char auto const* s)
+{
+	using C = std::remove_pointer_t<decltype(s)>;
+	std::uint64_t size{std::char_traits<C>::length(s)};
+	return write(&size, sizeof size).write(s, size * sizeof(C));
 }
 
 }//namespace Stream
