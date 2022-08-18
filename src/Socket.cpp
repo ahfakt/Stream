@@ -108,16 +108,16 @@ Socket::writeBytes(std::byte const* src, std::size_t size)
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/bind.2.html">bind()</a>
  */
-bool
-Socket::bind(Address const& address) noexcept
-{ return 0 == ::bind(mDescriptor, &address, sizeof(struct sockaddr_in)); }
+void
+Socket::bind(Address const& address)
+{ ExpectNNeg(::bind(mDescriptor, &address, sizeof(struct sockaddr_in))); }
 
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/listen.2.html">listen()</a>
  */
-bool
-Socket::listen(int backlog) noexcept
-{ return 0 == ::listen(mDescriptor, backlog); }
+void
+Socket::listen(int backlog)
+{ ExpectNNeg(::listen(mDescriptor, backlog)); }
 
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/accept.2.html">accept()</a>
@@ -129,9 +129,9 @@ Socket::accept() const
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/connect.2.html">connect()</a>
  */
-bool
-Socket::connect(Address const& address) noexcept
-{ return 0 == ::connect(mDescriptor, &address, sizeof(struct sockaddr_in)); }
+void
+Socket::connect(Address const& address)
+{ ExpectNNeg(::connect(mDescriptor, &address, sizeof(struct sockaddr_in))); }
 
 /**
  * @see	<a href="https://man7.org/linux/man-pages/man2/getsockopt.2.html">getsockopt()</a>

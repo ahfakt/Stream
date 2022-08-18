@@ -69,18 +69,20 @@ public:
 	~Socket();
 
 	/**
-	 * @brief	Bind this Socket to an IPv4 address.
-	 * @param[in]	address IPv4 address to be bound
+	 * @brief	Bind this Socket to an address.
+	 * @param[in]	address Address to be bound
+	 * @throws	Socket::Exception
 	 */
-	bool
-	bind(Address const& address) noexcept;
+	void
+	bind(Address const& address);
 
 	/**
 	 * @brief	Put this Socket into the listening state.
 	 * @param[in]	backlog Maximum length of pending connections queue
+	 * @throws	Socket::Exception
 	 */
-	bool
-	listen(int backlog) noexcept;
+	void
+	listen(int backlog);
 
 	/**
 	 * @brief	Accept a new client connection.
@@ -91,11 +93,12 @@ public:
 	accept() const;
 
 	/**
-	 * @brief	Connect to an IPv4 server.
-	 * @param[in]	address IPv4 address to connect
+	 * @brief	Connect to a server at the address.
+	 * @param[in]	address Address to connect
+	 * @throws	Socket::Exception
 	 */
-	bool
-	connect(Address const& address) noexcept;
+	void
+	connect(Address const& address);
 
 	/**
 	 * @brief	Get the maximum segment size of the TCP connection.
