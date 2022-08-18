@@ -22,8 +22,13 @@ protected:
 	getSome(void* dest, std::size_t size);
 
 public:
+	TransparentInput(TransparentInput&& other) noexcept;
+
 	friend void
 	swap(TransparentInput& a, TransparentInput& b) noexcept;
+
+	TransparentInput&
+	operator=(TransparentInput&& other) noexcept;
 
 	friend TransparentInput&
 	operator>(Input& input, TransparentInput& transparentInput) noexcept;
@@ -49,8 +54,13 @@ protected:
 	putSome(void const* src, std::size_t size);
 
 public:
+	TransparentOutput(TransparentOutput&& other) noexcept;
+
 	friend void
 	swap(TransparentOutput& a, TransparentOutput& b) noexcept;
+
+	TransparentOutput&
+	operator=(TransparentOutput&& other) noexcept;
 
 	friend TransparentOutput&
 	operator<(Output& output, TransparentOutput& transparentOutput) noexcept;

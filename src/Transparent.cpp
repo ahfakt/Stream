@@ -12,9 +12,19 @@ TransparentInput::TransparentInput() noexcept
 		: mSource(&nullInput)
 {}
 
+TransparentInput::TransparentInput(TransparentInput&& other) noexcept
+{ swap(*this, other); }
+
 void
 swap(TransparentInput& a, TransparentInput& b) noexcept
 { std::swap(a.mSource, b.mSource); }
+
+TransparentInput&
+TransparentInput::operator=(TransparentInput&& other) noexcept
+{
+	swap(*this, other);
+	return *this;
+}
 
 std::size_t
 TransparentInput::readBytes(std::byte* dest, std::size_t size)
@@ -49,9 +59,19 @@ TransparentOutput::TransparentOutput() noexcept
 		: mSink(&nullOutput)
 {}
 
+TransparentOutput::TransparentOutput(TransparentOutput&& other) noexcept
+{ swap(*this, other); }
+
 void
 swap(TransparentOutput& a, TransparentOutput& b) noexcept
 { std::swap(a.mSink, b.mSink); }
+
+TransparentOutput&
+TransparentOutput::operator=(TransparentOutput&& other) noexcept
+{
+	swap(*this, other);
+	return *this;
+}
 
 std::size_t
 TransparentOutput::writeBytes(std::byte const* src, std::size_t size)

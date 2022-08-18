@@ -12,9 +12,19 @@ TransformInput::TransformInput() noexcept
 		: mSource(&nullBufferInput)
 {}
 
+TransformInput::TransformInput(TransformInput&& other) noexcept
+{ swap(*this, other); }
+
 void
 swap(TransformInput& a, TransformInput& b) noexcept
 { std::swap(a.mSource, b.mSource); }
+
+TransformInput&
+TransformInput::operator=(TransformInput&& other) noexcept
+{
+	swap(*this, other);
+	return *this;
+}
 
 size_t
 TransformInput::readBytes(std::byte* dest, std::size_t size)
@@ -73,9 +83,19 @@ TransformOutput::TransformOutput() noexcept
 		: mSink(&nullBufferOutput)
 {}
 
+TransformOutput::TransformOutput(TransformOutput&& other) noexcept
+{ swap(*this, other); }
+
 void
 swap(TransformOutput& a, TransformOutput& b) noexcept
 { std::swap(a.mSink, b.mSink); }
+
+TransformOutput&
+TransformOutput::operator=(TransformOutput&& other) noexcept
+{
+	swap(*this, other);
+	return *this;
+}
 
 std::size_t
 TransformOutput::writeBytes(std::byte const* src, std::size_t size)

@@ -34,8 +34,13 @@ protected:
 	provideSomeData(std::size_t max);
 
 public:
+	TransformInput(TransformInput&& other) noexcept;
+
 	friend void
 	swap(TransformInput& a, TransformInput& b) noexcept;
+
+	TransformInput&
+	operator=(TransformInput&& other) noexcept;
 
 	friend TransformInput&
 	operator>(BufferInput& bufferInput, TransformInput& transformInput) noexcept;
@@ -73,8 +78,13 @@ protected:
 	provideSomeSpace(std::size_t max);
 
 public:
+	TransformOutput(TransformOutput&& other) noexcept;
+
 	friend void
 	swap(TransformOutput& a, TransformOutput& b) noexcept;
+
+	TransformOutput&
+	operator=(TransformOutput&& other) noexcept;
 
 	void
 	flush() override;
