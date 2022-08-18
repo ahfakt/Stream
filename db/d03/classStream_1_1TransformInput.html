@@ -86,8 +86,8 @@ Inheritance diagram for Stream::TransformInput:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/dc2/classStream_1_1TransformInput__inherit__graph.png" border="0" usemap="#aStream_1_1TransformInput_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStream_1_1TransformInput_inherit__map" id="aStream_1_1TransformInput_inherit__map">
-<area shape="rect" title="Transform Input stream base class" alt="" coords="7,219,405,384"/>
-<area shape="rect" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,5,407,171"/>
+<area shape="rect" title="Transform Input stream base class" alt="" coords="7,233,405,399"/>
+<area shape="rect" href="../../d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,5,407,185"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -100,10 +100,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memItemLeft" align="right" valign="top"><a id="a0a8cb2f45caeb5a945eb15ea27244f31" name="a0a8cb2f45caeb5a945eb15ea27244f31"></a>
 <a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (auto &amp;t)</td></tr>
 <tr class="separator:a0a8cb2f45caeb5a945eb15ea27244f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d5feb68535761a4b816c3e9b79fd63d"><td class="memTemplParams" colspan="2"><a id="a2d5feb68535761a4b816c3e9b79fd63d" name="a2d5feb68535761a4b816c3e9b79fd63d"></a>
+<tr class="memitem:aa6a0b88887d08d753697ac5d9d1ef94f"><td class="memTemplParams" colspan="2"><a id="aa6a0b88887d08d753697ac5d9d1ef94f" name="aa6a0b88887d08d753697ac5d9d1ef94f"></a>
 template&lt;Char C&gt; </td></tr>
-<tr class="memitem:a2d5feb68535761a4b816c3e9b79fd63d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::basic_string&lt; C &gt; &amp;str)</td></tr>
-<tr class="separator:a2d5feb68535761a4b816c3e9b79fd63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a0b88887d08d753697ac5d9d1ef94f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::basic_string&lt; C &gt; &amp;s)</td></tr>
+<tr class="separator:aa6a0b88887d08d753697ac5d9d1ef94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab624f3cc487f1c122955f90f2d89357"><td class="memItemLeft" align="right" valign="top"><a id="aab624f3cc487f1c122955f90f2d89357" name="aab624f3cc487f1c122955f90f2d89357"></a>
+<a class="el" href="../../d7/d83/classStream_1_1Input.html">Input</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (Char auto *s)</td></tr>
+<tr class="separator:aab624f3cc487f1c122955f90f2d89357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -157,9 +160,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>        : mSource(&amp;nullBufferInput)</div>
-<div class="line"><span class="lineno">   21</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00011">11</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>        : mSource(&amp;nullBufferInput)</div>
+<div class="line"><span class="lineno">   13</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -200,8 +203,8 @@ Friends</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d83/classStream_1_1Input.html">Stream::Input</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00028">28</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ <span class="keywordflow">return</span> mSource-&gt;readSome(dest, size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00020">20</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>{ <span class="keywordflow">return</span> mSource-&gt;readSome(dest, size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -228,8 +231,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00032">32</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>{ <span class="keywordflow">return</span> mSource-&gt;getDataSize(); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{ <span class="keywordflow">return</span> mSource-&gt;getDataSize(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -256,8 +259,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00036">36</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{ <span class="keywordflow">return</span> mSource-&gt;getData(); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00028">28</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>{ <span class="keywordflow">return</span> mSource-&gt;getData(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -285,8 +288,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{ mSource-&gt;advanceData(size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00032">32</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{ mSource-&gt;advanceData(size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -314,8 +317,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>{ <span class="keywordflow">return</span> mSource-&gt;provideSomeMoreData(min); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00036">36</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{ <span class="keywordflow">return</span> mSource-&gt;provideSomeMoreData(min); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -343,8 +346,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{ <span class="keywordflow">return</span> mSource-&gt;provideSomeData(max); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{ <span class="keywordflow">return</span> mSource-&gt;provideSomeData(max); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -478,8 +481,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>{ std::swap(a.mSource, b.mSource); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00016">16</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{ std::swap(a.mSource, b.mSource); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -517,11 +520,11 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
-<div class="line"><span class="lineno">   54</span>    transformInput.mSource = &amp;bufferInput;</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">return</span> transformInput;</div>
-<div class="line"><span class="lineno">   56</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
+<div class="line"><span class="lineno">   46</span>    transformInput.mSource = &amp;bufferInput;</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> transformInput;</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -559,8 +562,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> nullBufferInput &gt; transformInput; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{ <span class="keywordflow">return</span> nullBufferInput &gt; transformInput; }</div>
 </div><!-- fragment -->
 </div>
 </div>

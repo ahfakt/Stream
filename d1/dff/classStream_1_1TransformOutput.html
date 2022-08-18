@@ -86,8 +86,8 @@ Inheritance diagram for Stream::TransformOutput:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d17/classStream_1_1TransformOutput__inherit__graph.png" border="0" usemap="#aStream_1_1TransformOutput_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStream_1_1TransformOutput_inherit__map" id="aStream_1_1TransformOutput_inherit__map">
-<area shape="rect" title="Transform Output stream base class" alt="" coords="7,233,437,413"/>
-<area shape="rect" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="5,5,439,185"/>
+<area shape="rect" title="Transform Output stream base class" alt="" coords="7,248,437,428"/>
+<area shape="rect" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="5,5,439,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -102,10 +102,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5da122e55ec3248c903aa17a9547aace"><td class="memItemLeft" align="right" valign="top"><a id="a5da122e55ec3248c903aa17a9547aace" name="a5da122e55ec3248c903aa17a9547aace"></a>
 <a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (auto const &amp;t)</td></tr>
 <tr class="separator:a5da122e55ec3248c903aa17a9547aace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a7534a80e2ea47070732751745a5e88"><td class="memTemplParams" colspan="2"><a id="a4a7534a80e2ea47070732751745a5e88" name="a4a7534a80e2ea47070732751745a5e88"></a>
+<tr class="memitem:a73c2a64564411cfa7964178ab9c10939"><td class="memTemplParams" colspan="2"><a id="a73c2a64564411cfa7964178ab9c10939" name="a73c2a64564411cfa7964178ab9c10939"></a>
 template&lt;Char C&gt; </td></tr>
-<tr class="memitem:a4a7534a80e2ea47070732751745a5e88"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::basic_string&lt; C &gt; const &amp;str)</td></tr>
-<tr class="separator:a4a7534a80e2ea47070732751745a5e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c2a64564411cfa7964178ab9c10939"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::basic_string&lt; C &gt; const &amp;s)</td></tr>
+<tr class="separator:a73c2a64564411cfa7964178ab9c10939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f76399ecf7470c8978dc1b65cc1e999"><td class="memItemLeft" align="right" valign="top"><a id="a7f76399ecf7470c8978dc1b65cc1e999" name="a7f76399ecf7470c8978dc1b65cc1e999"></a>
+<a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (Char auto const *s)</td></tr>
+<tr class="separator:a7f76399ecf7470c8978dc1b65cc1e999"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -159,9 +162,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>        : mSink(&amp;nullBufferOutput)</div>
-<div class="line"><span class="lineno">   82</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00072">72</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>        : mSink(&amp;nullBufferOutput)</div>
+<div class="line"><span class="lineno">   74</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,8 +205,8 @@ Friends</h2></td></tr>
 
 <p>Implements <a class="el" href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   90</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00081">81</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,8 +233,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00097">97</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>{ <span class="keywordflow">return</span> mSink-&gt;getSpaceSize(); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>{ <span class="keywordflow">return</span> mSink-&gt;getSpaceSize(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -258,8 +261,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00101">101</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{ <span class="keywordflow">return</span> mSink-&gt;getSpace(); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00093">93</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{ <span class="keywordflow">return</span> mSink-&gt;getSpace(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -287,8 +290,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>{ mSink-&gt;advanceSpace(size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00097">97</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>{ mSink-&gt;advanceSpace(size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -316,8 +319,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{ <span class="keywordflow">return</span> mSink-&gt;provideSpace(min); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00101">101</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>{ <span class="keywordflow">return</span> mSink-&gt;provideSpace(min); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -345,8 +348,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00113">113</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>{ <span class="keywordflow">return</span> mSink-&gt;provideSomeSpace(max); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  106</span>{ <span class="keywordflow">return</span> mSink-&gt;provideSomeSpace(max); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -375,8 +378,8 @@ Friends</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00093">93</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>{ mSink-&gt;flush(); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00085">85</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{ mSink-&gt;flush(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -510,8 +513,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00085">85</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>{ std::swap(a.mSink, b.mSink); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00077">77</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{ std::swap(a.mSink, b.mSink); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -549,11 +552,11 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
-<div class="line"><span class="lineno">  119</span>    transformOutput.mSink = &amp;bufferOutput;</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">return</span> transformOutput;</div>
-<div class="line"><span class="lineno">  121</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00108">108</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    transformOutput.mSink = &amp;bufferOutput;</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> transformOutput;</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -591,8 +594,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00123">123</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>{ <span class="keywordflow">return</span> nullBufferOutput &lt; transformOutput; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d59/Transform_8cpp_source.html#l00115">115</a> of file <a class="el" href="../../d0/d59/Transform_8cpp_source.html">Transform.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{ <span class="keywordflow">return</span> nullBufferOutput &lt; transformOutput; }</div>
 </div><!-- fragment -->
 </div>
 </div>

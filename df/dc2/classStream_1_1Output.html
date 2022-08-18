@@ -84,14 +84,14 @@ Inheritance diagram for Stream::Output:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d07/classStream_1_1Output__inherit__graph.png" border="0" usemap="#aStream_1_1Output_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStream_1_1Output_inherit__map" id="aStream_1_1Output_inherit__map">
-<area shape="rect" title="Output stream base class." alt="" coords="649,5,1083,185"/>
-<area shape="rect" href="../../df/d21/classStream_1_1File.html" title="File resource." alt="" coords="5,255,284,435"/>
-<area shape="rect" href="../../d3/de2/classStream_1_1Pipe.html" title="Pipe resource." alt="" coords="309,248,690,443"/>
-<area shape="rect" href="../../d1/db1/classStream_1_1Socket.html" title="Socket resource." alt="" coords="714,233,1018,457"/>
-<area shape="rect" href="../../d1/dff/classStream_1_1TransformOutput.html" title="Transform Output stream base class" alt="" coords="1042,255,1471,435"/>
-<area shape="rect" href="../../d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="1495,292,1925,399"/>
-<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="1495,505,1925,847"/>
-<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1403,895,2017,1031"/>
+<area shape="rect" title="Output stream base class." alt="" coords="649,5,1083,200"/>
+<area shape="rect" href="../../df/d21/classStream_1_1File.html" title="File resource." alt="" coords="5,270,284,450"/>
+<area shape="rect" href="../../d3/de2/classStream_1_1Pipe.html" title="Pipe resource." alt="" coords="309,263,690,457"/>
+<area shape="rect" href="../../d1/db1/classStream_1_1Socket.html" title="Socket resource." alt="" coords="714,248,1018,472"/>
+<area shape="rect" href="../../d1/dff/classStream_1_1TransformOutput.html" title="Transform Output stream base class" alt="" coords="1042,270,1471,450"/>
+<area shape="rect" href="../../d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="1495,307,1925,413"/>
+<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="1495,520,1925,861"/>
+<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1403,909,2017,1045"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -114,10 +114,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5da122e55ec3248c903aa17a9547aace"><td class="memItemLeft" align="right" valign="top"><a id="a5da122e55ec3248c903aa17a9547aace" name="a5da122e55ec3248c903aa17a9547aace"></a>
 <a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (auto const &amp;t)</td></tr>
 <tr class="separator:a5da122e55ec3248c903aa17a9547aace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a7534a80e2ea47070732751745a5e88"><td class="memTemplParams" colspan="2"><a id="a4a7534a80e2ea47070732751745a5e88" name="a4a7534a80e2ea47070732751745a5e88"></a>
+<tr class="memitem:a73c2a64564411cfa7964178ab9c10939"><td class="memTemplParams" colspan="2"><a id="a73c2a64564411cfa7964178ab9c10939" name="a73c2a64564411cfa7964178ab9c10939"></a>
 template&lt;Char C&gt; </td></tr>
-<tr class="memitem:a4a7534a80e2ea47070732751745a5e88"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::basic_string&lt; C &gt; const &amp;str)</td></tr>
-<tr class="separator:a4a7534a80e2ea47070732751745a5e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c2a64564411cfa7964178ab9c10939"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::basic_string&lt; C &gt; const &amp;s)</td></tr>
+<tr class="separator:a73c2a64564411cfa7964178ab9c10939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f76399ecf7470c8978dc1b65cc1e999"><td class="memItemLeft" align="right" valign="top"><a id="a7f76399ecf7470c8978dc1b65cc1e999" name="a7f76399ecf7470c8978dc1b65cc1e999"></a>
+<a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (Char auto const *s)</td></tr>
+<tr class="separator:a7f76399ecf7470c8978dc1b65cc1e999"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -128,7 +131,7 @@ virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>writeB
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class.">Output</a> stream base class. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/dfe/InOut_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../de/dfe/InOut_8hpp_source.html">InOut.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/dfe/InOut_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../de/dfe/InOut_8hpp_source.html">InOut.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2e9f440efebe0cebafff8a29e1d7009a" name="a2e9f440efebe0cebafff8a29e1d7009a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e9f440efebe0cebafff8a29e1d7009a">&#9670;&nbsp;</a></span>write()</h2>
