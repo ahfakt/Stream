@@ -1,6 +1,6 @@
 <map id="Stream::TransparentInput" name="Stream::TransparentInput">
-<area shape="rect" id="node1" title="Transparent Input stream base class" alt="" coords="113,233,511,340"/>
-<area shape="rect" id="node3" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="97,388,527,700"/>
+<area shape="rect" id="node1" title="Transparent Input stream base class" alt="" coords="103,233,521,369"/>
+<area shape="rect" id="node3" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="97,417,527,729"/>
 <area shape="rect" id="node2" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="111,5,513,185"/>
-<area shape="rect" id="node4" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,748,619,884"/>
+<area shape="rect" id="node4" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,777,619,913"/>
 </map>

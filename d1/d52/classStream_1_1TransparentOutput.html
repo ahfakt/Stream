@@ -86,15 +86,19 @@ Inheritance diagram for Stream::TransparentOutput:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/ded/classStream_1_1TransparentOutput__inherit__graph.png" border="0" usemap="#aStream_1_1TransparentOutput_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStream_1_1TransparentOutput_inherit__map" id="aStream_1_1TransparentOutput_inherit__map">
-<area shape="rect" title="Transparent Output stream base class" alt="" coords="97,248,527,355"/>
-<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="97,403,527,744"/>
+<area shape="rect" title="Transparent Output stream base class" alt="" coords="93,248,531,384"/>
+<area shape="rect" href="../../da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="97,432,527,773"/>
 <area shape="rect" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="95,5,529,200"/>
-<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,792,619,928"/>
+<area shape="rect" href="../../d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="5,821,619,957"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a3e004d5da47ca114d837f4f0a96c2b3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html#a3e004d5da47ca114d837f4f0a96c2b3e">TransparentOutput</a> (<a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">TransparentOutput</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a3e004d5da47ca114d837f4f0a96c2b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136ff0f94bebc17018ac2c42eedacceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">TransparentOutput</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html#a136ff0f94bebc17018ac2c42eedacceb">operator=</a> (<a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">TransparentOutput</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a136ff0f94bebc17018ac2c42eedacceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e9f440efebe0cebafff8a29e1d7009a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc2/classStream_1_1Output.html">Output</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a2e9f440efebe0cebafff8a29e1d7009a">write</a> (void const *src, std::size_t size)</td></tr>
 <tr class="separator:a2e9f440efebe0cebafff8a29e1d7009a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a261ae3420b028ef98211b093702efdc4"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc2/classStream_1_1Output.html#a261ae3420b028ef98211b093702efdc4">writeSome</a> (void const *src, std::size_t size)</td></tr>
@@ -131,10 +135,10 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Transparent <a class="el" href="../../df/dc2/classStream_1_1Output.html" title="Output stream base class.">Output</a> stream base class </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d6a/Transparent_8hpp_source.html#l00039">39</a> of file <a class="el" href="../../de/d6a/Transparent_8hpp_source.html">Transparent.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d6a/Transparent_8hpp_source.html#l00044">44</a> of file <a class="el" href="../../de/d6a/Transparent_8hpp_source.html">Transparent.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8e8eb7f2af241f99926f8d51b07cb526" name="a8e8eb7f2af241f99926f8d51b07cb526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e8eb7f2af241f99926f8d51b07cb526">&#9670;&nbsp;</a></span>TransparentOutput()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e8eb7f2af241f99926f8d51b07cb526">&#9670;&nbsp;</a></span>TransparentOutput() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,9 +160,38 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>        : mSink(&amp;nullOutput)</div>
-<div class="line"><span class="lineno">   50</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>        : mSink(&amp;nullOutput)</div>
+<div class="line"><span class="lineno">   60</span>{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3e004d5da47ca114d837f4f0a96c2b3e" name="a3e004d5da47ca114d837f4f0a96c2b3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e004d5da47ca114d837f4f0a96c2b3e">&#9670;&nbsp;</a></span>TransparentOutput() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Stream::TransparentOutput::TransparentOutput </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">TransparentOutput</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>{ swap(*<span class="keyword">this</span>, other); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,8 +232,8 @@ Friends</h2></td></tr>
 
 <p>Implements <a class="el" href="../../df/dc2/classStream_1_1Output.html">Stream::Output</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00077">77</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -238,8 +271,40 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00081">81</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{ <span class="keywordflow">return</span> mSink-&gt;writeSome(src, size); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a136ff0f94bebc17018ac2c42eedacceb" name="a136ff0f94bebc17018ac2c42eedacceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136ff0f94bebc17018ac2c42eedacceb">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">TransparentOutput</a> &amp; Stream::TransparentOutput::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d52/classStream_1_1TransparentOutput.html">TransparentOutput</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    swap(*<span class="keyword">this</span>, other);</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -403,8 +468,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{ std::swap(a.mSink, b.mSink); }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{ std::swap(a.mSink, b.mSink); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -442,11 +507,11 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00064">64</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
-<div class="line"><span class="lineno">   67</span>    transparentOutput.mSink = &amp;output;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> transparentOutput;</div>
-<div class="line"><span class="lineno">   69</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00084">84</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    transparentOutput.mSink = &amp;output;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> transparentOutput;</div>
+<div class="line"><span class="lineno">   89</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -484,8 +549,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00071">71</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>{ <span class="keywordflow">return</span> nullOutput &lt; transparentOutput; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d14/Transparent_8cpp_source.html#l00091">91</a> of file <a class="el" href="../../d2/d14/Transparent_8cpp_source.html">Transparent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{ <span class="keywordflow">return</span> nullOutput &lt; transparentOutput; }</div>
 </div><!-- fragment -->
 </div>
 </div>
