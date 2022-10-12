@@ -2,37 +2,27 @@
 
 ```shell
 # Target system processor
-SYSTEM_PROCESSOR=x86_64
+SYSTEM_PROCESSOR=x64
 
-# Debug, Release, RelWithDebInfo, MinSizeRel ...
-BUILD_TYPE=Debug
-
-# Shared library files will be in ${INSTALL_PREFIX}/lib/${SYSTEM_PROCESSOR}/${BUILD_TYPE}
-INSTALL_PREFIX=/home/user
-
-# Uncomment to generate Doxygen documentation target
-#DOC_ROOT=/home/user/doc
-
-# cmake --help to see available generators
-GENERATOR="Unix Makefiles"
+# Debug, Release, RelWithDebInfo, MinSizeRel
+BUILD_TYPE=Release
 
 git clone https://github.com/ahfakt/Stream.git
 
-# Generate
-mkdir build
-cd Stream
+# Configure
+mkdir build && cd Stream
 cmake \
-    -B ../build/Stream/${SYSTEM_PROCESSOR}/${BUILD_TYPE} \
-    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-    -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-    -DDOC_ROOT=${DOC_ROOT} \
-    -DCMAKE_DEPENDS_USE_COMPILER=FALSE \
-    -G "${GENERATOR}"
+    -B../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/Stream \
+    -DCMAKE_BUILD_TYPE:STRING=${BUILD_TYPE} \
+    -DCMAKE_CXX_STANDARD:STRING=20 \
+    -G "Unix Makefiles"
 
 # Build
-# Stream | StreamOBJ | StreamDoc
+# Stream | StreamDoc
+# Test targets are avaiable only when BUILD_TYPE=Debug
+# Documentation is avaiable only when BUILD_TYPE=Release
 cmake \
-    --build ../build/Stream/${SYSTEM_PROCESSOR}/${BUILD_TYPE} \
-    --target Stream \
-    -- -j 6
+    --build ../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/Stream \
+    --config ${BUILD_TYPE} \
+    --target all
 ```
