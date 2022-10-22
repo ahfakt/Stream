@@ -1,11 +1,11 @@
 #ifndef STREAMTEST_UTIL_HPP
 #define STREAMTEST_UTIL_HPP
 
+#include "../../../inc/Stream/InOut.hpp"
 #include <memory>
 #include <random>
 #include <chrono>
 #include <vector>
-#include "Stream/InOut.hpp"
 
 namespace StreamTest::Util {
 
