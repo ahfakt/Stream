@@ -140,7 +140,7 @@ Socket::connect(Address const& address)
 int
 Socket::getMSS() const
 {
-	int mss = 0;
+	int mss{0};
 	socklen_t optlen = sizeof mss;
 	ExpectNNeg(getsockopt(mDescriptor, IPPROTO_TCP, TCP_MAXSEG, &mss, &optlen));
 	return mss;
