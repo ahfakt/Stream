@@ -184,7 +184,7 @@ Socket::Address::Inet::Inet(char const* host, std::uint16_t port)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_TCP;
 
-	struct addrinfo* info = nullptr;
+	struct addrinfo* info{nullptr};
 	if (int e = getaddrinfo(host, nullptr, &hints, &info))
 		throw Socket::Address::Exception(static_cast<Socket::Address::Exception::Code>(e), host);
 

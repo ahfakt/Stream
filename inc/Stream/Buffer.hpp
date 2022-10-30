@@ -13,10 +13,10 @@ namespace Stream {
 class BufferInput : public TransparentInput {
 protected:
 	std::unique_ptr<std::byte[]> mBuff;
-	std::byte const* mBeg = nullptr;
-	std::byte const* mDataBeg = nullptr;
-	std::byte* mDataEnd = nullptr;
-	std::byte const* mEnd = nullptr;
+	std::byte const* mBeg{nullptr};
+	std::byte const* mDataBeg{nullptr};
+	std::byte* mDataEnd{nullptr};
+	std::byte const* mEnd{nullptr};
 
 	BufferInput() noexcept = default;
 
@@ -68,10 +68,10 @@ public:
 class BufferOutput : public TransparentOutput {
 protected:
 	std::unique_ptr<std::byte[]> mBuff;
-	std::byte const* mBeg = nullptr;
-	std::byte* mSpaceBeg = nullptr;
-	std::byte const* mSpaceEnd = nullptr;
-	std::byte const* mEnd = nullptr;
+	std::byte const* mBeg{nullptr};
+	std::byte* mSpaceBeg{nullptr};
+	std::byte const* mSpaceEnd{nullptr};
+	std::byte const* mEnd{nullptr};
 
 	BufferOutput() noexcept = default;
 
