@@ -1,5 +1,0 @@
-<map id="Stream::PipeInput" name="Stream::PipeInput">
-<area shape="rect" id="node1" title="IO::Pipe Input stream." alt="" coords="40,233,372,355"/>
-<area shape="rect" id="node3" href="$d3/de2/classStream_1_1Pipe.html" title="IO::Pipe Input / Output stream." alt="" coords="157,403,255,480"/>
-<area shape="rect" id="node2" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,5,407,185"/>
-</map>
