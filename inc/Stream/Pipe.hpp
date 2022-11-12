@@ -12,7 +12,7 @@ namespace Stream {
  */
 class Pipe : public Input, public Output {
 	union {
-		int mDescriptors[2] = {-1, -1};
+		int mDescriptors[2]{-1, -1};
 		struct {
 			int mRDescriptor;
 			int mWDescriptor;

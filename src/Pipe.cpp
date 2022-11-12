@@ -2,8 +2,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define ExpectNNeg(x) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)))
-#define ExpectNNegP(x, p) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)), p)
+#define ExpectNNeg(x) if (0 > x) throw Exception{std::make_error_code(static_cast<std::errc>(errno))}
+#define ExpectNNegP(x, p) if (0 > x) throw Exception{std::make_error_code(static_cast<std::errc>(errno)), p}
 
 namespace Stream {
 
@@ -51,13 +51,13 @@ std::size_t
 Pipe::readBytes(std::byte* dest, std::size_t size)
 {
 	while (true) {
-		ssize_t r = ::read(mRDescriptor, dest, size);
+		auto r{::read(mRDescriptor, dest, size)};
 		if (r > 0)
 			return r;
 		if (r == 0)
-			throw Input::Exception(std::make_error_code(std::errc::no_message_available));
+			throw Input::Exception{std::make_error_code(std::errc::no_message_available)};
 		if (errno != EINTR)
-			throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+			throw Input::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 	}
 }
 
@@ -65,11 +65,11 @@ std::size_t
 Pipe::writeBytes(std::byte const* src, std::size_t size)
 {
 	while (true) {
-		ssize_t r = ::write(mWDescriptor, src, size);
+		auto r{::write(mWDescriptor, src, size)};
 		if (r >= 0)
 			return r;
 		if (errno != EINTR)
-			throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+			throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 	}
 }
 
@@ -82,7 +82,7 @@ Pipe::writeBytes(std::byte const* src, std::size_t size)
 std::size_t
 Pipe::setBufferSize(std::size_t bufferSize)
 {
-	int r = fcntl(mWDescriptor, F_SETPIPE_SZ, bufferSize);
+	auto r{fcntl(mWDescriptor, F_SETPIPE_SZ, bufferSize)};
 	ExpectNNegP(r, std::to_string(bufferSize));
 	return r;
 }
@@ -96,7 +96,7 @@ Pipe::setBufferSize(std::size_t bufferSize)
 std::size_t
 Pipe::getBufferSize() const
 {
-	int r = fcntl(mWDescriptor, F_GETPIPE_SZ);
+	auto r{fcntl(mWDescriptor, F_GETPIPE_SZ)};
 	ExpectNNeg(r);
 	return r;
 }

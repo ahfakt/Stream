@@ -7,7 +7,7 @@ Input&
 Input::read(void* dest, std::size_t size)
 try {
 	while (size) {
-		std::size_t outl = readBytes(reinterpret_cast<std::byte*>(dest), size);
+		auto outl{readBytes(reinterpret_cast<std::byte*>(dest), size)};
 		reinterpret_cast<std::byte*&>(dest) += outl;
 		size -= outl;
 	}
@@ -22,7 +22,7 @@ std::size_t
 Input::readSome(void* dest, std::size_t size)
 {
 	if (size) do {
-		if (std::size_t outl = readBytes(reinterpret_cast<std::byte*>(dest), size))
+		if (auto outl{readBytes(reinterpret_cast<std::byte*>(dest), size)})
 			return outl;
 	} while (true);
 	return 0;
@@ -41,13 +41,13 @@ static class : public Input {
 	readBytes(std::byte* dest, std::size_t size) override
 	{
 		while (true) {
-			ssize_t r = ::read(STDIN_FILENO, dest, size);
+			auto r{::read(STDIN_FILENO, dest, size)};
 			if (r > 0)
 				return r;
 			if (r == 0)
-				throw Input::Exception(std::make_error_code(std::errc::no_message_available));
+				throw Input::Exception{std::make_error_code(std::errc::no_message_available)};
 			if (errno != EINTR)
-				throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+				throw Input::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 		}
 	}
 } StdIn;
@@ -57,7 +57,7 @@ Output&
 Output::write(void const* src, std::size_t size)
 try {
 	while (size) {
-		std::size_t inl = writeBytes(reinterpret_cast<std::byte const*>(src), size);
+		auto inl{writeBytes(reinterpret_cast<std::byte const*>(src), size)};
 		reinterpret_cast<std::byte const*&>(src) += inl;
 		size -= inl;
 	}
@@ -72,7 +72,7 @@ std::size_t
 Output::writeSome(void const* src, std::size_t size)
 {
 	if (size) do {
-		if (std::size_t inl = writeBytes(reinterpret_cast<std::byte const*>(src), size))
+		if (auto inl{writeBytes(reinterpret_cast<std::byte const*>(src), size)})
 			return inl;
 	} while (true);
 	return 0;
@@ -95,11 +95,11 @@ static class : public Output {
 	writeBytes(std::byte const* src, std::size_t size) override
 	{
 		while (true) {
-			ssize_t r = ::write(STDOUT_FILENO, src, size);
+			auto r{::write(STDOUT_FILENO, src, size)};
 			if (r >= 0)
 				return r;
 			if (errno != EINTR)
-				throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+				throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 		}
 	}
 } StdOut;
@@ -110,11 +110,11 @@ static class : public Output {
 	writeBytes(std::byte const* src, std::size_t size) override
 	{
 		while (true) {
-			ssize_t r = ::write(STDERR_FILENO, src, size);
+			auto r{::write(STDERR_FILENO, src, size)};
 			if (r >= 0)
 				return r;
 			if (errno != EINTR)
-				throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+				throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 		}
 	}
 } StdErr;
@@ -123,7 +123,7 @@ Output& Err = StdErr;
 std::error_code
 make_error_code(Input::Exception::Code e) noexcept
 {
-	static struct : std::error_category {
+	static const struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Input"; }
@@ -131,14 +131,14 @@ make_error_code(Input::Exception::Code e) noexcept
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
 		{ return e == 1 ? "Uninitialized" : "Unknown Error"; }
-	} instance;
-	return {static_cast<int>(e), instance};
+	} cat;
+	return {static_cast<int>(e), cat};
 }
 
 std::error_code
 make_error_code(Output::Exception::Code e) noexcept
 {
-	static struct : std::error_category {
+	static const struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Output"; }
@@ -146,8 +146,8 @@ make_error_code(Output::Exception::Code e) noexcept
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
 		{ return e == 1 ? "Uninitialized" : "Unknown Error"; }
-	} instance;
-	return {static_cast<int>(e), instance};
+	} cat;
+	return {static_cast<int>(e), cat};
 }
 
 }//namespace Stream

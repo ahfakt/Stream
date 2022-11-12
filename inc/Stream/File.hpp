@@ -12,7 +12,7 @@ namespace Stream {
  * @class	File File.hpp "Stream/File.hpp"
  */
 class File : public Input, public Output {
-	int mDescriptor = -1;
+	int mDescriptor{-1};
 
 	std::size_t
 	readBytes(std::byte* dest, std::size_t size) override;

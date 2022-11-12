@@ -12,7 +12,7 @@ namespace Stream {
  * @class	Socket Socket.hpp "Stream/Socket.hpp"
  */
 class Socket : public Input, public Output {
-	int mDescriptor = -1;
+	int mDescriptor{-1};
 
 	explicit Socket(int descriptor);
 

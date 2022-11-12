@@ -5,11 +5,11 @@ namespace Stream {
 static class : public Input {
 	std::size_t
 	readBytes(std::byte* dest, std::size_t size) override
-	{ throw Exception(std::make_error_code(std::errc::no_message_available)); }
+	{ throw Exception{std::make_error_code(std::errc::no_message_available)}; }
 } nullInput;
 
 TransparentInput::TransparentInput() noexcept
-		: mSource(&nullInput)
+		: mSource{&nullInput}
 {}
 
 TransparentInput::TransparentInput(TransparentInput&& other) noexcept
@@ -48,15 +48,15 @@ operator>(std::nullptr_t, TransparentInput& transparentInput) noexcept
 static class : public Output {
 	std::size_t
 	writeBytes(std::byte const* src, std::size_t size) override
-	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
+	{ throw Exception{std::make_error_code(std::errc::no_space_on_device)}; }
 
 	void
 	flush() override
-	{ throw Exception(std::make_error_code(std::errc::no_space_on_device)); }
+	{ throw Exception{std::make_error_code(std::errc::no_space_on_device)}; }
 } nullOutput;
 
 TransparentOutput::TransparentOutput() noexcept
-		: mSink(&nullOutput)
+		: mSink{&nullOutput}
 {}
 
 TransparentOutput::TransparentOutput(TransparentOutput&& other) noexcept

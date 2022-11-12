@@ -2,8 +2,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define ExpectNNeg(x) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)))
-#define ExpectNNegP(x, p) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)), p)
+#define ExpectNNeg(x) if (0 > x) throw Exception{std::make_error_code(static_cast<std::errc>(errno))}
+#define ExpectNNegP(x, p) if (0 > x) throw Exception{std::make_error_code(static_cast<std::errc>(errno)), p}
 
 namespace Stream {
 
@@ -13,7 +13,7 @@ namespace Stream {
  *			If <b>open()</b> system call fails, it throws a File::Exception.
  */
 File::File(std::string const& name, Mode mode)
-		: mDescriptor(open(name.c_str(), static_cast<int>(mode), S_IWUSR | S_IRUSR | S_IRGRP | S_IROTH))
+		: mDescriptor{open(name.c_str(), static_cast<int>(mode), S_IWUSR | S_IRUSR | S_IRGRP | S_IROTH)}
 { ExpectNNegP(mDescriptor, name); }
 
 File::File(File&& other) noexcept
@@ -49,13 +49,13 @@ std::size_t
 File::readBytes(std::byte* dest, std::size_t size)
 {
 	while (true) {
-		ssize_t r = ::read(mDescriptor, dest, size);
+		auto r{::read(mDescriptor, dest, size)};
 		if (r > 0)
 			return r;
 		if (r == 0)
-			throw Input::Exception(std::make_error_code(std::errc::no_message_available));
+			throw Input::Exception{std::make_error_code(std::errc::no_message_available)};
 		if (errno != EINTR)
-			throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+			throw Input::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 	}
 }
 
@@ -63,11 +63,11 @@ std::size_t
 File::writeBytes(std::byte const* src, std::size_t size)
 {
 	while (true) {
-		ssize_t r = ::write(mDescriptor, src, size);
+		auto r{::write(mDescriptor, src, size)};
 		if (r >= 0)
 			return r;
 		if (errno != EINTR)
-			throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
+			throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
 	}
 }
 

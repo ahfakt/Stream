@@ -5,18 +5,18 @@
 namespace Stream {
 
 BufferInput::BufferInput(std::size_t buffInitialSize)
-		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
-		, mBeg(mBuff.get())
-		, mDataBeg(mBeg)
-		, mDataEnd(mBuff.get())
-		, mEnd(mBeg + buffInitialSize)
+		: mBuff{reinterpret_cast<std::byte*>(::operator new(buffInitialSize))}
+		, mBeg{mBuff.get()}
+		, mDataBeg{mBeg}
+		, mDataEnd{mBuff.get()}
+		, mEnd{mBeg + buffInitialSize}
 {}
 
 BufferInput::BufferInput(void const* sourceBuff, std::size_t sourceSize) noexcept
-		: mBeg(reinterpret_cast<std::byte const*>(sourceBuff))
-		, mDataBeg(mBeg)
-		, mDataEnd(const_cast<std::byte*>(mDataBeg) + sourceSize)
-		, mEnd(mBeg)
+		: mBeg{reinterpret_cast<std::byte const*>(sourceBuff)}
+		, mDataBeg{mBeg}
+		, mDataEnd{const_cast<std::byte*>(mDataBeg) + sourceSize}
+		, mEnd{mBeg}
 {}
 
 BufferInput::BufferInput(BufferInput&& other) noexcept
@@ -66,21 +66,21 @@ BufferInput::advanceData(std::size_t size) noexcept
 { mDataBeg += size; }
 
 std::size_t
-BufferInput::provideSomeMoreData(std::size_t const min)
+BufferInput::provideSomeMoreData(std::size_t const tryMin)
 {
-	if (mDataEnd + min > mEnd) {
-		auto const dataSize = mDataEnd - mDataBeg;
-		if (mBeg + dataSize + min > mEnd) {
-			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(dataSize + min, std::nothrow_t{}))) {
+	if (mDataEnd + tryMin > mEnd) { // remaining space is not enough to fill with requested extra data
+		auto const dataSize{mDataEnd - mDataBeg};
+		if (mBeg + dataSize + tryMin > mEnd) { // buffer is not large enough
+			if (auto* ptr{reinterpret_cast<std::byte*>(::operator new(dataSize + tryMin, std::nothrow_t{}))}) {
 				std::memcpy(ptr, mDataBeg, dataSize);
 				mDataEnd = ptr + dataSize;
 				mDataBeg = ptr;
 				mBuff.reset(ptr);
 				mBeg = ptr;
-				mEnd = ptr + dataSize + min;
+				mEnd = ptr + dataSize + tryMin;
 			} else
-				throw Exception(Buffer::Exception::Code::BadAllocation);
-		} else {
+				throw Exception{Buffer::Exception::Code::BadAllocation};
+		} else { // buffer is large enough if unread data is to be shifted
 			std::memmove(mBuff.get(), mDataBeg, dataSize);
 			mDataEnd = mBuff.get() + dataSize;
 			mDataBeg = mBuff.get();
@@ -96,13 +96,13 @@ BufferInput::provideSomeData(std::size_t const max)
 	if (mDataBeg + max > mDataEnd) {
 		if (mDataBeg != mDataEnd)
 			return mDataEnd - mDataBeg;
-		if (mBeg + max > mEnd) {
-			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))) {
+		if (mBeg + max > mEnd) { // buffer is not large enough
+			if (auto* ptr{reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))}) {
 				mBuff.reset(ptr);
 				mBeg = ptr;
 				mEnd = ptr + max;
 			} else
-				throw Exception(Buffer::Exception::Code::BadAllocation);
+				throw Exception{Buffer::Exception::Code::BadAllocation};
 		}
 		mDataBeg = mBeg;
 		mDataEnd = mBuff.get() + getSome(mBuff.get(), mEnd - mBeg);
@@ -118,18 +118,18 @@ BufferInput::resetData() noexcept
 
 
 BufferOutput::BufferOutput(std::size_t buffInitialSize)
-		: mBuff(reinterpret_cast<std::byte*>(::operator new(buffInitialSize)))
-		, mBeg(mBuff.get())
-		, mSpaceBeg(mBuff.get())
-		, mSpaceEnd(mSpaceBeg + buffInitialSize)
-		, mEnd(mBeg + buffInitialSize)
+		: mBuff{reinterpret_cast<std::byte*>(::operator new(buffInitialSize))}
+		, mBeg{mBuff.get()}
+		, mSpaceBeg{mBuff.get()}
+		, mSpaceEnd{mSpaceBeg + buffInitialSize}
+		, mEnd{mBeg + buffInitialSize}
 {}
 
 BufferOutput::BufferOutput(void* sinkBuff, std::size_t sinkSize) noexcept
-		: mBeg(reinterpret_cast<std::byte*>(sinkBuff))
-		, mSpaceBeg(reinterpret_cast<std::byte*>(sinkBuff))
-		, mSpaceEnd(mSpaceBeg + sinkSize)
-		, mEnd(mBeg)
+		: mBeg{reinterpret_cast<std::byte*>(sinkBuff)}
+		, mSpaceBeg{reinterpret_cast<std::byte*>(sinkBuff)}
+		, mSpaceEnd{mSpaceBeg + sinkSize}
+		, mEnd{mBeg}
 {}
 
 BufferOutput::BufferOutput(BufferOutput&& other) noexcept
@@ -206,12 +206,12 @@ BufferOutput::provideSpace(std::size_t const min)
 	if (mSpaceBeg + min > mSpaceEnd) {
 		BufferOutput::flush();
 		if (mBeg + min > mEnd) {
-			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t{}))) {
+			if (auto* ptr{reinterpret_cast<std::byte*>(::operator new(min, std::nothrow_t{}))}) {
 				mBuff.reset(ptr);
 				mBeg = mSpaceBeg = ptr;
 				mEnd = mSpaceEnd = ptr + min;
 			} else
-				throw Exception(Buffer::Exception::Code::BadAllocation);
+				throw Exception{Buffer::Exception::Code::BadAllocation};
 		}
 	}
 	return mSpaceEnd - mSpaceBeg;
@@ -225,12 +225,12 @@ BufferOutput::provideSomeSpace(std::size_t const max)
 			return mSpaceEnd - mSpaceBeg;
 		BufferOutput::flush();
 		if (mBeg + max > mEnd) {
-			if (auto* ptr = reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))) {
+			if (auto* ptr{reinterpret_cast<std::byte*>(::operator new(max, std::nothrow_t{}))}) {
 				mBuff.reset(ptr);
 				mBeg = mSpaceBeg = ptr;
 				mEnd = mSpaceEnd = ptr + max;
 			} else
-				throw Exception(Buffer::Exception::Code::BadAllocation);
+				throw Exception{Buffer::Exception::Code::BadAllocation};
 		}
 	}
 	return max;
@@ -241,28 +241,28 @@ BufferOutput::resetSpace() noexcept
 { mSpaceBeg = const_cast<std::byte*>(mBeg); }
 
 Buffer::Buffer(std::size_t buffInitialSize)
-		: BufferInput(buffInitialSize)
-		, BufferOutput(buffInitialSize)
+		: BufferInput{buffInitialSize}
+		, BufferOutput{buffInitialSize}
 {}
 
 Buffer::Buffer(std::size_t inBuffInitialSize, std::size_t outBuffInitialSize)
-		: BufferInput(inBuffInitialSize)
-		, BufferOutput(outBuffInitialSize)
+		: BufferInput{inBuffInitialSize}
+		, BufferOutput{outBuffInitialSize}
 {}
 
 Buffer::Buffer(std::size_t inBuffInitialSize, void* sinkBuff, std::size_t sinkSize)
-		: BufferInput(inBuffInitialSize)
-		, BufferOutput(sinkBuff, sinkSize)
+		: BufferInput{inBuffInitialSize}
+		, BufferOutput{sinkBuff, sinkSize}
 {}
 
 Buffer::Buffer(void const* sourceBuff, std::size_t sourceSize, std::size_t outBuffInitialSize)
-		: BufferInput(sourceBuff, sourceSize)
-		, BufferOutput(outBuffInitialSize)
+		: BufferInput{sourceBuff, sourceSize}
+		, BufferOutput{outBuffInitialSize}
 {}
 
 Buffer::Buffer(void const* sourceBuff, std::size_t sourceSize, void* sinkBuff, std::size_t sinkSize) noexcept
-		: BufferInput(sourceBuff, sourceSize)
-		, BufferOutput(sinkBuff, sinkSize)
+		: BufferInput{sourceBuff, sourceSize}
+		, BufferOutput{sinkBuff, sinkSize}
 {}
 
 void
@@ -275,7 +275,7 @@ swap(Buffer& a, Buffer& b) noexcept
 std::error_code
 make_error_code(Buffer::Exception::Code e) noexcept
 {
-	static struct : std::error_category {
+	static const struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Buffer"; }
@@ -283,8 +283,8 @@ make_error_code(Buffer::Exception::Code e) noexcept
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
 		{ return e == 1 ? "Bad Allocation" : "Unknown Error"; }
-	} instance;
-	return {static_cast<int>(e), instance};
+	} cat;
+	return {static_cast<int>(e), cat};
 }
 
 }//namespace Stream

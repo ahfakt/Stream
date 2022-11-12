@@ -52,7 +52,7 @@ public:
 	advanceData(std::size_t size) noexcept;
 
 	std::size_t
-	provideSomeMoreData(std::size_t min);
+	provideSomeMoreData(std::size_t tryMin);
 
 	std::size_t
 	provideSomeData(std::size_t max);
