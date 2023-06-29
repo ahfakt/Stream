@@ -13,6 +13,7 @@ TransparentInput::TransparentInput() noexcept
 {}
 
 TransparentInput::TransparentInput(TransparentInput&& other) noexcept
+		: TransparentInput{}
 { swap(*this, other); }
 
 void
@@ -60,6 +61,7 @@ TransparentOutput::TransparentOutput() noexcept
 {}
 
 TransparentOutput::TransparentOutput(TransparentOutput&& other) noexcept
+		: TransparentOutput{}
 { swap(*this, other); }
 
 void

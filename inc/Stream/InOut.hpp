@@ -1,7 +1,7 @@
 #ifndef STREAM_INOUT_HPP
 #define STREAM_INOUT_HPP
 
-#include <cstddef>
+#include <cstdint>
 #include <system_error>
 
 namespace Stream {

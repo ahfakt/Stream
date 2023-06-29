@@ -282,7 +282,11 @@ make_error_code(Buffer::Exception::Code e) noexcept
 
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
-		{ return e == 1 ? "Bad Allocation" : "Unknown Error"; }
+		{
+			using namespace std::string_literals;
+			return static_cast<Buffer::Exception::Code>(e) == Buffer::Exception::Code::BadAllocation
+				? "Bad Allocation"s : "Unknown Error"s;
+		}
 	} cat;
 	return {static_cast<int>(e), cat};
 }

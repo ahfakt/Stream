@@ -13,6 +13,7 @@ TransformInput::TransformInput() noexcept
 {}
 
 TransformInput::TransformInput(TransformInput&& other) noexcept
+		: TransformInput{}
 { swap(*this, other); }
 
 void
@@ -84,6 +85,7 @@ TransformOutput::TransformOutput() noexcept
 {}
 
 TransformOutput::TransformOutput(TransformOutput&& other) noexcept
+		: TransformOutput{}
 { swap(*this, other); }
 
 void

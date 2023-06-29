@@ -95,8 +95,7 @@ static class : public Output {
 	writeBytes(std::byte const* src, std::size_t size) override
 	{
 		while (true) {
-			auto r{::write(STDOUT_FILENO, src, size)};
-			if (r >= 0)
+			if (auto r{::write(STDOUT_FILENO, src, size)}; r >= 0)
 				return r;
 			if (errno != EINTR)
 				throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
@@ -110,8 +109,7 @@ static class : public Output {
 	writeBytes(std::byte const* src, std::size_t size) override
 	{
 		while (true) {
-			auto r{::write(STDERR_FILENO, src, size)};
-			if (r >= 0)
+			if (auto r{::write(STDERR_FILENO, src, size)}; r >= 0)
 				return r;
 			if (errno != EINTR)
 				throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
@@ -130,7 +128,11 @@ make_error_code(Input::Exception::Code e) noexcept
 
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
-		{ return e == 1 ? "Uninitialized" : "Unknown Error"; }
+		{
+			using namespace std::string_literals;
+			return static_cast<Input::Exception::Code>(e) == Input::Exception::Code::Uninitialized
+				? "Uninitialized"s : "Unknown Error"s;
+		}
 	} cat;
 	return {static_cast<int>(e), cat};
 }
@@ -145,7 +147,11 @@ make_error_code(Output::Exception::Code e) noexcept
 
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
-		{ return e == 1 ? "Uninitialized" : "Unknown Error"; }
+		{
+			using namespace std::string_literals;
+			return static_cast<Output::Exception::Code>(e) == Output::Exception::Code::Uninitialized
+				? "Uninitialized"s : "Unknown Error"s;
+		}
 	} cat;
 	return {static_cast<int>(e), cat};
 }
