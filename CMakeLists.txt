@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14.0)
+cmake_minimum_required(VERSION 3.20.0)
 project(Stream VERSION 0.7 DESCRIPTION "Stream abstraction library for various data sources")
 
 
