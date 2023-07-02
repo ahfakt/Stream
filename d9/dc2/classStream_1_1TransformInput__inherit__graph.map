@@ -1,4 +1,5 @@
 <map id="Stream::TransformInput" name="Stream::TransformInput">
-<area shape="rect" id="node1" title="Transform Input stream base class" alt="" coords="7,211,405,383"/>
-<area shape="rect" id="node2" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,5,407,163"/>
+<area shape="rect" id="Node000001" title="Transform Input stream base class" alt="" coords="7,272,395,512"/>
+<area shape="rect" id="Node000002" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,5,397,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,238,204,272,199,272,199,238"/>
 </map>

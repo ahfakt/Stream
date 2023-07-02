@@ -1,4 +1,5 @@
 <map id="Stream::TransformOutput" name="Stream::TransformOutput">
-<area shape="rect" id="node1" title="Transform Output stream base class" alt="" coords="7,225,437,412"/>
-<area shape="rect" id="node2" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="5,5,439,177"/>
+<area shape="rect" id="Node000001" title="Transform Output stream base class" alt="" coords="7,293,427,555"/>
+<area shape="rect" id="Node000002" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="5,5,429,245"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,259,220,293,215,293,215,259"/>
 </map>

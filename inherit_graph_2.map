@@ -1,11 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,129,129,155"/>
-<area shape="rect" id="node2" href="$d4/d1b/structStream_1_1File_1_1Exception.html" title=" " alt="" coords="215,5,374,31"/>
-<area shape="rect" id="node3" href="$d2/d85/structStream_1_1Input_1_1Exception.html" title=" " alt="" coords="211,55,378,80"/>
-<area shape="rect" id="node5" href="$d5/d2d/structStream_1_1Output_1_1Exception.html" title=" " alt="" coords="206,104,383,129"/>
-<area shape="rect" id="node7" href="$d7/d1b/structStream_1_1Pipe_1_1Exception.html" title=" " alt="" coords="213,153,377,179"/>
-<area shape="rect" id="node8" href="$db/d86/structStream_1_1Socket_1_1Address_1_1Exception.html" title=" " alt="" coords="177,203,412,228"/>
-<area shape="rect" id="node9" href="$d3/d86/structStream_1_1Socket_1_1Exception.html" title=" " alt="" coords="205,252,384,277"/>
-<area shape="rect" id="node4" href="$d7/d4d/structStream_1_1BufferInput_1_1Exception.html" title=" " alt="" coords="465,55,666,80"/>
-<area shape="rect" id="node6" href="$d0/dc5/structStream_1_1BufferOutput_1_1Exception.html" title=" " alt="" coords="460,104,671,129"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,132,129,159"/>
+<area shape="rect" id="Node000001" href="$d4/d1b/structStream_1_1File_1_1Exception.html" title=" " alt="" coords="215,5,373,32"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="86,118,125,78,149,58,175,42,214,27,215,32,178,46,152,63,128,82,90,122"/>
+<area shape="rect" id="Node000002" href="$d2/d85/structStream_1_1Input_1_1Exception.html" title=" " alt="" coords="211,56,377,83"/>
+<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="105,123,176,92,216,81,218,86,178,97,108,127"/>
+<area shape="rect" id="Node000004" href="$d5/d2d/structStream_1_1Output_1_1Exception.html" title=" " alt="" coords="206,107,382,133"/>
+<area shape="poly" id="edge6_Node000000_Node000004" title=" " alt="" coords="143,134,205,127,206,133,143,140"/>
+<area shape="rect" id="Node000006" href="$d7/d1b/structStream_1_1Pipe_1_1Exception.html" title=" " alt="" coords="212,157,376,184"/>
+<area shape="poly" id="edge8_Node000000_Node000006" title=" " alt="" coords="143,151,212,159,211,164,143,156"/>
+<area shape="rect" id="Node000007" href="$db/d86/structStream_1_1Socket_1_1Address_1_1Exception.html" title=" " alt="" coords="177,208,411,235"/>
+<area shape="poly" id="edge9_Node000000_Node000007" title=" " alt="" coords="108,163,178,193,218,205,216,210,176,199,105,168"/>
+<area shape="rect" id="Node000008" href="$d3/d86/structStream_1_1Socket_1_1Exception.html" title=" " alt="" coords="205,259,383,285"/>
+<area shape="poly" id="edge10_Node000000_Node000008" title=" " alt="" coords="90,169,128,208,152,228,178,244,206,256,204,261,175,249,149,232,125,212,86,172"/>
+<area shape="rect" id="Node000003" href="$d7/d4d/structStream_1_1BufferInput_1_1Exception.html" title=" " alt="" coords="464,56,664,83"/>
+<area shape="poly" id="edge5_Node000002_Node000003" title=" " alt="" coords="392,67,464,67,464,72,392,72"/>
+<area shape="rect" id="Node000005" href="$d0/dc5/structStream_1_1BufferOutput_1_1Exception.html" title=" " alt="" coords="459,107,669,133"/>
+<area shape="poly" id="edge7_Node000004_Node000005" title=" " alt="" coords="397,117,458,117,458,123,397,123"/>
 </map>

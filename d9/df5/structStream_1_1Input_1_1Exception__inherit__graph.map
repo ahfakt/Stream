@@ -1,5 +1,7 @@
 <map id="Stream::Input::Exception" name="Stream::Input::Exception">
-<area shape="rect" id="node1" title=" " alt="" coords="5,93,299,177"/>
-<area shape="rect" id="node3" href="$d7/d4d/structStream_1_1BufferInput_1_1Exception.html" title=" " alt="" coords="49,225,255,265"/>
-<area shape="rect" id="node2" title=" " alt="" coords="88,5,216,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,281,235"/>
+<area shape="rect" id="Node000003" href="$d7/d4d/structStream_1_1BufferInput_1_1Exception.html" title=" " alt="" coords="47,283,239,352"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,249,146,283,141,283,141,249"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="86,5,201,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,89,146,123,141,123,141,89"/>
 </map>

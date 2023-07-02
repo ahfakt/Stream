@@ -1,5 +1,7 @@
 <map id="sockaddr" name="sockaddr">
-<area shape="rect" id="node1" title=" " alt="" coords="123,5,201,45"/>
-<area shape="rect" id="node2" href="$de/d56/structStream_1_1Socket_1_1Address.html" title=" " alt="" coords="75,93,249,133"/>
-<area shape="rect" id="node3" href="$dd/ddd/structStream_1_1Socket_1_1Address_1_1Inet.html" title=" " alt="" coords="5,181,319,265"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="124,5,189,75"/>
+<area shape="rect" id="Node000002" href="$de/d56/structStream_1_1Socket_1_1Address.html" title=" " alt="" coords="77,123,237,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,89,159,123,154,123,154,89"/>
+<area shape="rect" id="Node000003" href="$dd/ddd/structStream_1_1Socket_1_1Address_1_1Inet.html" title=" " alt="" coords="5,240,308,352"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="159,207,159,240,154,240,154,207"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="Stream::Socket" name="Stream::Socket">
-<area shape="rect" id="node1" title="Socket resource." alt="" coords="274,225,578,427"/>
-<area shape="rect" id="node2" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,13,407,170"/>
-<area shape="rect" id="node3" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="431,5,864,177"/>
+<area shape="rect" id="Node000001" title="Socket resource." alt="" coords="271,293,564,576"/>
+<area shape="rect" id="Node000002" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="5,16,397,235"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="288,245,321,292,317,295,283,248"/>
+<area shape="rect" id="Node000003" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="421,5,845,245"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="544,259,518,295,514,292,539,256"/>
 </map>
