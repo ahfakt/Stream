@@ -101,7 +101,7 @@ public:
 		using std::system_error::system_error;
 
 		enum class Code : int {
-			Uninitialized = 1
+			Uninitialized
 		};
 
 		Exception(Exception const& other) = default;

@@ -30,7 +30,7 @@ Socket::Socket(Address const& address, int backlog)
 {
 	if (::bind(mDescriptor, &address, sizeof(struct sockaddr_in)) ||
 		::listen(mDescriptor, backlog)) {
-		auto const errc {static_cast<std::errc>(errno)};
+		auto const errc{static_cast<std::errc>(errno)};
 		if (close(mDescriptor) < 0)
 			perror(nullptr);
 		throw Exception{std::make_error_code(errc)};
