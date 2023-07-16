@@ -121,7 +121,7 @@ Output& Err = StdErr;
 std::error_code
 make_error_code(Input::Exception::Code e) noexcept
 {
-	static const struct : std::error_category {
+	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Input"; }
@@ -133,14 +133,14 @@ make_error_code(Input::Exception::Code e) noexcept
 			return static_cast<Input::Exception::Code>(e) == Input::Exception::Code::Uninitialized
 				? "Uninitialized"s : "Unknown Error"s;
 		}
-	} cat;
+	} const cat;
 	return {static_cast<int>(e), cat};
 }
 
 std::error_code
 make_error_code(Output::Exception::Code e) noexcept
 {
-	static const struct : std::error_category {
+	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Output"; }
@@ -152,7 +152,7 @@ make_error_code(Output::Exception::Code e) noexcept
 			return static_cast<Output::Exception::Code>(e) == Output::Exception::Code::Uninitialized
 				? "Uninitialized"s : "Unknown Error"s;
 		}
-	} cat;
+	} const cat;
 	return {static_cast<int>(e), cat};
 }
 

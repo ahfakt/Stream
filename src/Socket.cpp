@@ -206,7 +206,7 @@ Socket::Address::Inet::operator->() const noexcept
 std::error_code
 make_error_code(Socket::Address::Exception::Code e) noexcept
 {
-	static const struct : std::error_category {
+	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Socket::Address"; }
@@ -214,7 +214,7 @@ make_error_code(Socket::Address::Exception::Code e) noexcept
 		[[nodiscard]] std::string
 		message(int e) const noexcept override
 		{ return gai_strerror(e); }
-	} cat;
+	} const cat;
 	return {static_cast<int>(e), cat};
 }
 

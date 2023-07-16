@@ -275,7 +275,7 @@ swap(Buffer& a, Buffer& b) noexcept
 std::error_code
 make_error_code(Buffer::Exception::Code e) noexcept
 {
-	static const struct : std::error_category {
+	static struct : std::error_category {
 		[[nodiscard]] char const*
 		name() const noexcept override
 		{ return "Stream::Buffer"; }
@@ -287,7 +287,7 @@ make_error_code(Buffer::Exception::Code e) noexcept
 			return static_cast<Buffer::Exception::Code>(e) == Buffer::Exception::Code::BadAllocation
 				? "Bad Allocation"s : "Unknown Error"s;
 		}
-	} cat;
+	} const cat;
 	return {static_cast<int>(e), cat};
 }
 
