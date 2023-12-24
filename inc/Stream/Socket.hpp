@@ -1,5 +1,4 @@
-#ifndef STREAM_SOCKET_HPP
-#define STREAM_SOCKET_HPP
+#pragma once
 
 #include "InOut.hpp"
 #include <netinet/in.h>
@@ -145,5 +144,3 @@ template <>
 struct is_error_code_enum<Stream::Socket::Address::Exception::Code> : true_type {};
 
 }//namespace std
-
-#endif //STREAM_SOCKET_HPP

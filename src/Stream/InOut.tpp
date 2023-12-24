@@ -2,28 +2,71 @@
 
 namespace Stream {
 
-template <typename InputRef, typename T>
-concept ExtractableTo =
-	std::derived_from<std::remove_reference_t<InputRef>, Input> &&
-	std::derived_from<std::remove_reference_t<InputRef>, std::remove_reference_t<decltype(std::declval<InputRef>() >> std::declval<T&>())>>;
+template <typename In>
+concept Source =
+	std::derived_from<In, Input>;
 
-template <typename InputRef, typename T>
-concept TriviallyExtractableTo =
-	std::is_trivially_default_constructible_v<T> &&
-	ExtractableTo<InputRef, T>;
+template <typename InputRef>
+concept SourceRef =
+	std::is_lvalue_reference_v<InputRef> &&
+	Source<std::remove_reference_t<InputRef>>;
+
+template <typename T, typename InputRef>
+concept HasExtraction =
+	requires { std::declval<InputRef>() >> std::declval<T&>(); } &&
+	SourceRef<decltype(std::declval<InputRef>() >> std::declval<T&>())>;
 
 template <typename T, typename ... Args>
-concept ConstructibleFrom = std::destructible<T> && requires
-{ T{std::declval<Args>() ...}; };
-
-template <typename T, typename ... Args>
-concept NotConstructibleFrom = !ConstructibleFrom<T, Args ...>;
+concept InitializableFrom =
+	requires { T{std::declval<Args>() ...}; } &&
+	std::destructible<T>;
 
 template <typename T, typename InputRef, typename ... Args>
-concept DeserializableWith = std::derived_from<std::remove_reference_t<InputRef>, Stream::Input> &&
-	(ConstructibleFrom<T, InputRef, Args ...> ||
-	(ConstructibleFrom<T, Args ...> || std::is_trivially_default_constructible_v<T>) &&
-		std::derived_from<std::remove_reference_t<InputRef>, std::remove_reference_t<decltype(std::declval<InputRef>() >> std::declval<T&>())>>);
+concept InitializableExtractableFrom =
+	SourceRef<InputRef> &&
+	!std::constructible_from<T, InputRef, Args ...> &&
+	InitializableFrom<T, Args ...> &&
+	HasExtraction<T, InputRef>;
+
+template <typename T, typename InputRef>
+concept TriviallyExtractableFrom =
+	SourceRef<InputRef> &&
+	!std::constructible_from<T, InputRef> &&
+	std::is_trivially_default_constructible_v<T> &&
+	HasExtraction<T, InputRef>;
+
+template <typename T, typename InputRef, typename ... Args>
+concept Deserializable =
+	SourceRef<InputRef> && (
+		std::constructible_from<T, InputRef, Args ...> || (
+			(
+				InitializableFrom<T, Args ...> || (
+					sizeof...(Args) == 0 &&
+					std::is_trivially_default_constructible_v<T>
+				)
+			) &&
+			HasExtraction<T, InputRef>
+		)
+	);
+
+template <typename Out>
+concept Sink =
+	std::derived_from<Out, Output>;
+
+template <typename OutputRef>
+concept SinkRef =
+	std::is_lvalue_reference_v<OutputRef> &&
+	Sink<std::remove_reference_t<OutputRef>>;
+
+template <typename T, typename OutputRef>
+concept HasInsertion =
+	requires { std::declval<OutputRef>() << std::declval<T const&>(); } &&
+	SinkRef<decltype(std::declval<OutputRef>() << std::declval<T const&>())>;
+
+template <typename T, typename OutputRef>
+concept InsertableTo =
+	SinkRef<OutputRef> &&
+	HasInsertion<T, OutputRef>;
 
 Input&
 Input::operator>>(auto& t)
@@ -50,30 +93,31 @@ Input::operator>>(Char auto* s)
 }
 
 /**
- * @brief	Construct a T object with input and optional additional args
+ * @brief	Initialize a T object with input and optional additional args
  * @tparam	T
  * @param	input
  * @param	args
- * @return
+ * @return	T object
  * @details
  */
 template <typename T>
 T
-Get(std::derived_from<Input> auto& input, auto&& ... args)
+Get(Stream::Source auto& input, auto&& ... args)
+requires InitializableFrom<T, decltype(input), decltype(args) ...>
 { return {input, std::forward<decltype(args)>(args) ...}; }
 
 /**
- * @brief	Construct a T object with optional args and extract it from input
+ * @brief	Initialize a T object with optional args and extract it from input
  * @tparam	T
  * @param	input
  * @param	args
- * @return
+ * @return	T object
  * @details
  */
 template <typename T>
 T
-Get(ExtractableTo<T> auto& input, auto&& ... args)
-requires NotConstructibleFrom<T, decltype(input), decltype(args) ...>
+Get(Stream::Source auto& input, auto&& ... args)
+requires InitializableExtractableFrom<T, decltype(input), decltype(args) ...>
 {
 	T t{std::forward<decltype(args)>(args) ...};
 	input >> t;
@@ -84,23 +128,18 @@ requires NotConstructibleFrom<T, decltype(input), decltype(args) ...>
  * @brief	Trivially default construct a T object and extract it from input
  * @tparam	T
  * @param	input
- * @return
+ * @return	T object
  * @details
  */
 template <typename T>
 T
-Get(TriviallyExtractableTo<T> auto& input)
-requires NotConstructibleFrom<T, decltype(input)>
+Get(Stream::Source auto& input)
+requires TriviallyExtractableFrom<T, decltype(input)>
 {
 	T t;
 	input >> t;
 	return t;
 }
-
-template <typename T, typename OutputRef>
-concept InsertableTo =
-std::derived_from<std::remove_reference_t<OutputRef>, Output> &&
-std::derived_from<std::remove_reference_t<OutputRef>, std::remove_reference_t<decltype(std::declval<OutputRef>() << std::declval<T const&>())>>;
 
 Output&
 Output::operator<<(auto const& t)

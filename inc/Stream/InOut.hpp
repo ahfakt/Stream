@@ -1,5 +1,4 @@
-#ifndef STREAM_INOUT_HPP
-#define STREAM_INOUT_HPP
+#pragma once
 
 #include <cstdint>
 #include <system_error>
@@ -7,25 +6,28 @@
 namespace Stream {
 
 template <typename C>
-concept Char = std::is_same_v<C, char>
-		|| std::is_same_v<C, wchar_t>
-		|| std::is_same_v<C, char8_t>
-		|| std::is_same_v<C, char16_t>
-		|| std::is_same_v<C, char32_t>;
+concept Char =
+	std::is_same_v<C, char> ||
+	std::is_same_v<C, wchar_t> ||
+	std::is_same_v<C, char8_t> ||
+	std::is_same_v<C, char16_t> ||
+	std::is_same_v<C, char32_t>;
 
 template <typename I>
-concept SignedInt = std::is_same_v<I, signed char>
-		|| std::is_same_v<I, signed short>
-		|| std::is_same_v<I, signed int>
-		|| std::is_same_v<I, signed long>
-		|| std::is_same_v<I, signed long long>;
+concept SignedInt =
+	std::is_same_v<I, signed char> ||
+	std::is_same_v<I, signed short> ||
+	std::is_same_v<I, signed int> ||
+	std::is_same_v<I, signed long> ||
+	std::is_same_v<I, signed long long>;
 
 template <typename I>
-concept UnsignedInt = std::is_same_v<I, unsigned char>
-		|| std::is_same_v<I, unsigned short>
-		|| std::is_same_v<I, unsigned int>
-		|| std::is_same_v<I, unsigned long>
-		|| std::is_same_v<I, unsigned long long>;
+concept UnsignedInt =
+	std::is_same_v<I, unsigned char> ||
+	std::is_same_v<I, unsigned short> ||
+	std::is_same_v<I, unsigned int> ||
+	std::is_same_v<I, unsigned long> ||
+	std::is_same_v<I, unsigned long long>;
 
 template <typename I>
 concept Integer = SignedInt<I> || UnsignedInt<I>;
@@ -163,5 +165,3 @@ struct is_error_code_enum<Stream::Output::Exception::Code> : true_type {};
 }//namespace std
 
 #include "../../src/Stream/InOut.tpp"
-
-#endif //STREAM_INOUT_HPP

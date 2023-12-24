@@ -1,5 +1,4 @@
-#ifndef STREAMTEST_UTIL_HPP
-#define STREAMTEST_UTIL_HPP
+#pragma once
 
 #include "Stream/InOut.hpp"
 #include <memory>
@@ -32,5 +31,3 @@ void
 ReadRandomChunks(Stream::Input& input, std::vector<std::byte>& output, std::uniform_int_distribution<int> distribution);
 
 }//namespace StreamTest
-
-#endif //STREAMTEST_UTIL_HPP

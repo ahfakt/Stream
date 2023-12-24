@@ -1,5 +1,4 @@
-#ifndef STREAM_PIPE_HPP
-#define STREAM_PIPE_HPP
+#pragma once
 
 #include "InOut.hpp"
 #include <climits>
@@ -66,5 +65,3 @@ public:
 };//class Stream::Pipe
 
 }//namespace Stream
-
-#endif //STREAM_PIPE_HPP

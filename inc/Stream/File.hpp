@@ -1,5 +1,4 @@
-#ifndef STREAM_FILE_HPP
-#define STREAM_FILE_HPP
+#pragma once
 
 #include "InOut.hpp"
 #include <fcntl.h>
@@ -76,5 +75,3 @@ public:
 };//class Stream::File
 
 }//namespace Stream
-
-#endif //STREAM_FILE_HPP

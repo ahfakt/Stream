@@ -1,5 +1,4 @@
-#ifndef STREAM_TRANSFORM_HPP
-#define STREAM_TRANSFORM_HPP
+#pragma once
 
 #include "Buffer.hpp"
 
@@ -99,5 +98,3 @@ public:
 }//namespace Stream
 
 #include "../../src/Stream/Transform.tpp"
-
-#endif //STREAM_TRANSFORM_HPP

@@ -1,5 +1,4 @@
-#ifndef STREAM_BUFFER_HPP
-#define STREAM_BUFFER_HPP
+#pragma once
 
 #include "Transparent.hpp"
 #include <memory>
@@ -158,5 +157,3 @@ template <>
 struct is_error_code_enum<Stream::Buffer::Exception::Code> : true_type {};
 
 }//namespace std
-
-#endif //STREAM_BUFFER_HPP

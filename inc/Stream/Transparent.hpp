@@ -1,5 +1,4 @@
-#ifndef STREAM_TRANSPARENT_HPP
-#define STREAM_TRANSPARENT_HPP
+#pragma once
 
 #include "InOut.hpp"
 
@@ -72,5 +71,3 @@ public:
 }//namespace Stream
 
 #include "../../src/Stream/Transparent.tpp"
-
-#endif //STREAM_TRANSPARENT_HPP
