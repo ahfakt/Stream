@@ -82,6 +82,13 @@ void
 Output::flush()
 {}
 
+Output&
+Output::operator<<(std::nullptr_t)
+{
+	flush();
+	return *this;
+}
+
 void const*
 Output::Exception::getUnwrittenBuffer() const noexcept
 { return mSrc; }

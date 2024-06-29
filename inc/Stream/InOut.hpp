@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <system_error>
 
@@ -130,6 +131,9 @@ public:
 
 	virtual void
 	flush();
+
+	Output&
+	operator<<(std::nullptr_t);
 
 	Output&
 	operator<<(auto const& t)
