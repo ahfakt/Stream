@@ -14,7 +14,6 @@ mkdir build && cd Stream
 cmake \
     -B../build/${SYSTEM_PROCESSOR}/${BUILD_TYPE}/Stream \
     -DCMAKE_BUILD_TYPE:STRING=${BUILD_TYPE} \
-    -DCMAKE_CXX_STANDARD:STRING=20 \
     -G "Unix Makefiles"
 
 # Build
