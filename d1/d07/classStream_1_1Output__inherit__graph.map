@@ -1,10 +1,10 @@
 <map id="Stream::Output" name="Stream::Output">
-<area shape="rect" id="node1" title="Output stream base class." alt="" coords="658,5,1091,177"/>
-<area shape="rect" id="node2" href="$df/d21/classStream_1_1File.html" title="File resource." alt="" coords="5,247,293,405"/>
-<area shape="rect" id="node3" href="$d3/de2/classStream_1_1Pipe.html" title="Pipe resource." alt="" coords="317,233,699,419"/>
-<area shape="rect" id="node4" href="$d1/db1/classStream_1_1Socket.html" title="Socket resource." alt="" coords="723,225,1027,427"/>
-<area shape="rect" id="node5" href="$d1/dff/classStream_1_1TransformOutput.html" title="Transform Output stream base class" alt="" coords="1051,233,1480,419"/>
-<area shape="rect" id="node6" href="$d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="1504,269,1941,383"/>
-<area shape="rect" id="node7" href="$da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="1508,475,1937,808"/>
-<area shape="rect" id="node8" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1414,856,2031,969"/>
+<area shape="rect" id="node1" title="Output stream base class." alt="" coords="703,5,1186,215"/>
+<area shape="rect" id="node2" href="$df/d21/classStream_1_1File.html" title="File resource." alt="" coords="5,285,316,465"/>
+<area shape="rect" id="node3" href="$d3/de2/classStream_1_1Pipe.html" title="Pipe resource." alt="" coords="341,277,751,472"/>
+<area shape="rect" id="node4" href="$d1/db1/classStream_1_1Socket.html" title="Socket resource." alt="" coords="775,263,1114,487"/>
+<area shape="rect" id="node5" href="$d1/dff/classStream_1_1TransformOutput.html" title="Transform Output stream base class" alt="" coords="1138,270,1613,479"/>
+<area shape="rect" id="node6" href="$d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="1637,307,2130,443"/>
+<area shape="rect" id="node7" href="$da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="1646,535,2121,876"/>
+<area shape="rect" id="node8" href="$d0/d04/classStream_1_1Buffer.html" title="Input / Output stream buffer." alt="" coords="1545,924,2222,1060"/>
 </map>

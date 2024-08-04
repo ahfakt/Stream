@@ -1,9 +1,9 @@
 <map id="Stream::Buffer" name="Stream::Buffer">
-<area shape="rect" id="node1" title="Input / Output stream buffer." alt="" coords="142,768,759,881"/>
-<area shape="rect" id="node2" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="5,401,440,705"/>
-<area shape="rect" id="node3" href="$d1/dcd/classStream_1_1TransparentInput.html" title="Transparent Input stream base class" alt="" coords="14,225,431,339"/>
-<area shape="rect" id="node4" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="22,13,423,170"/>
-<area shape="rect" id="node5" href="$da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="464,387,893,720"/>
-<area shape="rect" id="node6" href="$d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="460,225,897,339"/>
-<area shape="rect" id="node7" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="462,5,895,177"/>
+<area shape="rect" id="node1" title="Input / Output stream buffer." alt="" coords="157,836,834,972"/>
+<area shape="rect" id="node2" href="$d2/dc2/classStream_1_1BufferInput.html" title="Input stream buffer." alt="" coords="5,461,484,773"/>
+<area shape="rect" id="node3" href="$d1/dcd/classStream_1_1TransparentInput.html" title="Transparent Input stream base class" alt="" coords="7,263,477,399"/>
+<area shape="rect" id="node4" href="$d7/d83/classStream_1_1Input.html" title="Input stream base class." alt="" coords="18,20,466,200"/>
+<area shape="rect" id="node5" href="$da/d65/classStream_1_1BufferOutput.html" title="Output stream buffer." alt="" coords="510,447,985,788"/>
+<area shape="rect" id="node6" href="$d1/d52/classStream_1_1TransparentOutput.html" title="Transparent Output stream base class" alt="" coords="502,263,995,399"/>
+<area shape="rect" id="node7" href="$df/dc2/classStream_1_1Output.html" title="Output stream base class." alt="" coords="507,5,990,215"/>
 </map>
