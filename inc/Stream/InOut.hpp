@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstddef>
 #include <cstdint>
 #include <system_error>
 
@@ -54,10 +53,12 @@ public:
 
 		Exception(Exception const& other) = default;
 
-		[[nodiscard]] void*
+		[[nodiscard]]
+		void*
 		getUnreadBuffer() const noexcept;
 
-		[[nodiscard]] std::size_t
+		[[nodiscard]]
+		std::size_t
 		getUnreadSize() const noexcept;
 
 	private:
@@ -109,10 +110,12 @@ public:
 
 		Exception(Exception const& other) = default;
 
-		[[nodiscard]] void const*
+		[[nodiscard]]
+		void const*
 		getUnwrittenBuffer() const noexcept;
 
-		[[nodiscard]] std::size_t
+		[[nodiscard]]
+		std::size_t
 		getUnwrittenSize() const noexcept;
 
 	private:

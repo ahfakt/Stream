@@ -6,7 +6,7 @@
 #include <chrono>
 #include <vector>
 
-namespace StreamTest {
+namespace Stream::Test {
 
 template <typename duration>
 std::vector<std::byte>
@@ -30,4 +30,4 @@ WriteRandomChunks(Stream::Output& output, std::vector<std::byte> const& input, s
 void
 ReadRandomChunks(Stream::Input& input, std::vector<std::byte>& output, std::uniform_int_distribution<int> distribution);
 
-}//namespace StreamTest
+}//namespace Stream::Test

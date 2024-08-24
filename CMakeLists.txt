@@ -5,11 +5,12 @@ project(Stream VERSION 0.7 DESCRIPTION "Stream abstraction library for various d
 set(CMAKE_CXX_STANDARD 20)
 
 
-add_library(${PROJECT_NAME} OBJECT)
-target_include_directories(${PROJECT_NAME} PUBLIC inc)
 file(GLOB INC ${CMAKE_CURRENT_SOURCE_DIR}/inc/${PROJECT_NAME}/*.hpp)
 file(GLOB SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+
+add_library(${PROJECT_NAME} OBJECT)
 target_sources(${PROJECT_NAME} PUBLIC ${INC} PRIVATE ${SRC})
+target_include_directories(${PROJECT_NAME} PUBLIC inc)
 
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)

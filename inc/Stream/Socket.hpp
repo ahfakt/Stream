@@ -53,7 +53,8 @@ public:
 	 * @param[in]	address Address to connect
 	 * @throws	Socket::Exception
 	 */
-	explicit Socket(Address const& address);
+	explicit
+	Socket(Address const& address);
 
 	Socket(Socket const&) = delete;
 
@@ -63,7 +64,7 @@ public:
 	swap(Socket& a, Socket& b) noexcept;
 
 	Socket&
-	operator=(Socket&& other) noexcept;
+	operator=(Socket other) noexcept;
 
 	~Socket();
 
@@ -88,7 +89,8 @@ public:
 	 * @returns	Socket
 	 * @throws	Socket::Exception
 	 */
-	[[nodiscard]] Socket
+	[[nodiscard]]
+	Socket
 	accept() const;
 
 	/**
@@ -104,16 +106,19 @@ public:
 	 * @return	Maximum segment size in bytes
 	 * @throws	Socket::Exception
 	 */
-	[[nodiscard]] int
+	[[nodiscard]]
+	int
 	getMSS() const;
 
-	[[nodiscard]] timeval
+	[[nodiscard]]
+	timeval
 	getRecvTimeout() const;
 
 	void
 	setRecvTimeout(timeval timeout);
 
-	[[nodiscard]] timeval
+	[[nodiscard]]
+	timeval
 	getSendTimeout() const;
 
 	void

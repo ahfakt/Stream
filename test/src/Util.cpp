@@ -1,6 +1,6 @@
-#include "StreamTest/Util.hpp"
+#include "Stream/Test/Util.hpp"
 
-namespace StreamTest {
+namespace Stream::Test {
 
 void
 WriteRandomChunks(Stream::Output& output, std::vector<std::byte> const& input, std::uniform_int_distribution<int> distribution)
@@ -30,4 +30,4 @@ ReadRandomChunks(Stream::Input& input, std::vector<std::byte>& output, std::unif
 	}
 }
 
-}//namespace StreamTest
+}//namespace Stream::Test

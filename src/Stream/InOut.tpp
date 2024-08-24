@@ -17,34 +17,29 @@ concept HasExtraction =
 	SourceRef<decltype(std::declval<InputRef>() >> std::declval<T&>())>;
 
 template <typename T, typename ... Args>
-concept InitializableFrom =
+concept Initializable =
 	requires { T{std::declval<Args>() ...}; } &&
-	std::destructible<T>;
+	std::is_nothrow_destructible_v<T>;
 
 template <typename T, typename InputRef, typename ... Args>
-concept InitializableExtractableFrom =
+concept Extractable =
 	SourceRef<InputRef> &&
-	!std::constructible_from<T, InputRef, Args ...> &&
-	InitializableFrom<T, Args ...> &&
+	!Initializable<T, InputRef, Args ...> &&
+	Initializable<T, Args ...> &&
 	HasExtraction<T, InputRef>;
 
 template <typename T, typename InputRef>
-concept TriviallyExtractableFrom =
+concept TriviallyExtractable =
 	SourceRef<InputRef> &&
-	!std::constructible_from<T, InputRef> &&
+	!Initializable<T, InputRef> &&
 	std::is_trivially_default_constructible_v<T> &&
 	HasExtraction<T, InputRef>;
 
 template <typename T, typename InputRef, typename ... Args>
 concept Deserializable =
 	SourceRef<InputRef> && (
-		std::constructible_from<T, InputRef, Args ...> || (
-			(
-				InitializableFrom<T, Args ...> || (
-					sizeof...(Args) == 0 &&
-					std::is_trivially_default_constructible_v<T>
-				)
-			) &&
+		Initializable<T, InputRef, Args ...> || (
+			(Initializable<T, Args ...> || std::is_trivially_default_constructible_v<T>) &&
 			HasExtraction<T, InputRef>
 		)
 	);
@@ -102,8 +97,8 @@ Input::operator>>(Char auto* s)
  */
 template <typename T>
 T
-Get(Stream::Source auto& input, auto&& ... args)
-requires InitializableFrom<T, decltype(input), decltype(args) ...>
+Get(Source auto& input, auto&& ... args)
+requires Initializable<T, decltype(input), decltype(args) ...>
 { return {input, std::forward<decltype(args)>(args) ...}; }
 
 /**
@@ -116,8 +111,8 @@ requires InitializableFrom<T, decltype(input), decltype(args) ...>
  */
 template <typename T>
 T
-Get(Stream::Source auto& input, auto&& ... args)
-requires InitializableExtractableFrom<T, decltype(input), decltype(args) ...>
+Get(Source auto& input, auto&& ... args)
+requires Extractable<T, decltype(input), decltype(args) ...>
 {
 	T t{std::forward<decltype(args)>(args) ...};
 	input >> t;
@@ -133,8 +128,8 @@ requires InitializableExtractableFrom<T, decltype(input), decltype(args) ...>
  */
 template <typename T>
 T
-Get(Stream::Source auto& input)
-requires TriviallyExtractableFrom<T, decltype(input)>
+Get(Source auto& input)
+requires TriviallyExtractable<T, decltype(input)>
 {
 	T t;
 	input >> t;

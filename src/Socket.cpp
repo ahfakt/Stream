@@ -3,7 +3,7 @@
 #include <netinet/tcp.h>
 #include <unistd.h>
 
-#define ExpectNNeg(x) if (0 > x) throw Exception{std::make_error_code(static_cast<std::errc>(errno))}
+#define ExpectNNeg(x) if (0 > x) throw Exception(std::make_error_code(static_cast<std::errc>(errno)))
 
 namespace Stream {
 
@@ -17,7 +17,7 @@ Socket::Socket(int descriptor)
  *			If <b>socket()</b> system call fails, it throws a Socket::Exception.
  */
 Socket::Socket()
-		: Socket{socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)}
+		: Socket(socket(AF_INET, SOCK_STREAM, IPPROTO_TCP))
 {}
 
 /**
@@ -26,14 +26,14 @@ Socket::Socket()
  * @see	<a href="https://man7.org/linux/man-pages/man2/listen.2.html">listen()</a>
  */
 Socket::Socket(Address const& address, int backlog)
-		: Socket{}
+		: Socket()
 {
 	if (::bind(mDescriptor, &address, sizeof(struct sockaddr_in)) ||
 		::listen(mDescriptor, backlog)) {
 		auto const errc{static_cast<std::errc>(errno)};
 		if (close(mDescriptor) < 0)
 			perror(nullptr);
-		throw Exception{std::make_error_code(errc)};
+		throw Exception(std::make_error_code(errc));
 	}
 }
 
@@ -48,7 +48,7 @@ Socket::Socket(Address const& address)
 		auto const errc{static_cast<std::errc>(errno)};
 		if (close(mDescriptor) < 0)
 			perror(nullptr);
-		throw Exception{std::make_error_code(errc)};
+		throw Exception(std::make_error_code(errc));
 	}
 }
 
@@ -60,7 +60,7 @@ swap(Socket& a, Socket& b) noexcept
 { std::swap(a.mDescriptor, b.mDescriptor); }
 
 Socket&
-Socket::operator=(Socket&& other) noexcept
+Socket::operator=(Socket other) noexcept
 {
 	swap(*this, other);
 	return *this;
@@ -87,9 +87,9 @@ Socket::readBytes(std::byte* dest, std::size_t size)
 		if (r > 0)
 			return r;
 		if (r == 0)
-			throw Input::Exception{std::make_error_code(std::errc::no_message_available)};
+			throw Input::Exception(std::make_error_code(std::errc::no_message_available));
 		if (errno != EINTR)
-			throw Input::Exception{std::make_error_code(static_cast<std::errc>(errno))};
+			throw Input::Exception(std::make_error_code(static_cast<std::errc>(errno)));
 	}
 }
 
@@ -101,7 +101,7 @@ Socket::writeBytes(std::byte const* src, std::size_t size)
 		if (r >= 0)
 			return r;
 		if (errno != EINTR)
-			throw Output::Exception{std::make_error_code(static_cast<std::errc>(errno))};
+			throw Output::Exception(std::make_error_code(static_cast<std::errc>(errno)));
 	}
 }
 
@@ -186,7 +186,7 @@ Socket::Address::Inet::Inet(char const* host, std::uint16_t port)
 
 	struct addrinfo* info{nullptr};
 	if (int e = getaddrinfo(host, nullptr, &hints, &info))
-		throw Socket::Address::Exception{static_cast<Socket::Address::Exception::Code>(e), host};
+		throw Socket::Address::Exception(static_cast<Socket::Address::Exception::Code>(e), host);
 
 	auto* This{reinterpret_cast<sockaddr_in*>(this)};
 	This->sin_family = AF_INET;
@@ -207,11 +207,13 @@ std::error_code
 make_error_code(Socket::Address::Exception::Code e) noexcept
 {
 	static struct : std::error_category {
-		[[nodiscard]] char const*
+		[[nodiscard]]
+		char const*
 		name() const noexcept override
 		{ return "Stream::Socket::Address"; }
 
-		[[nodiscard]] std::string
+		[[nodiscard]]
+		std::string
 		message(int e) const noexcept override
 		{ return gai_strerror(e); }
 	} const cat;
