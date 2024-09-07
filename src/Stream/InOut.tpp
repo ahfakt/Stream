@@ -25,21 +25,14 @@ template <typename T, typename InputRef, typename ... Args>
 concept Extractable =
 	SourceRef<InputRef> &&
 	!Initializable<T, InputRef, Args ...> &&
-	Initializable<T, Args ...> &&
-	HasExtraction<T, InputRef>;
-
-template <typename T, typename InputRef>
-concept TriviallyExtractable =
-	SourceRef<InputRef> &&
-	!Initializable<T, InputRef> &&
-	std::is_trivially_default_constructible_v<T> &&
+	((sizeof...(Args) == 0 && std::is_trivially_default_constructible_v<T>) || Initializable<T, Args ...>) &&
 	HasExtraction<T, InputRef>;
 
 template <typename T, typename InputRef, typename ... Args>
 concept Deserializable =
 	SourceRef<InputRef> && (
 		Initializable<T, InputRef, Args ...> || (
-			(Initializable<T, Args ...> || std::is_trivially_default_constructible_v<T>) &&
+			((sizeof...(Args) == 0 && std::is_trivially_default_constructible_v<T>) || Initializable<T, Args ...>) &&
 			HasExtraction<T, InputRef>
 		)
 	);
@@ -99,7 +92,7 @@ template <typename T>
 T
 Get(Source auto& input, auto&& ... args)
 requires Initializable<T, decltype(input), decltype(args) ...>
-{ return {input, std::forward<decltype(args)>(args) ...}; }
+{ return T{input, std::forward<decltype(args)>(args) ...}; }
 
 /**
  * @brief	Initialize a T object with optional args and extract it from input
@@ -114,26 +107,15 @@ T
 Get(Source auto& input, auto&& ... args)
 requires Extractable<T, decltype(input), decltype(args) ...>
 {
-	T t{std::forward<decltype(args)>(args) ...};
-	input >> t;
-	return t;
-}
-
-/**
- * @brief	Trivially default construct a T object and extract it from input
- * @tparam	T
- * @param	input
- * @return	T object
- * @details
- */
-template <typename T>
-T
-Get(Source auto& input)
-requires TriviallyExtractable<T, decltype(input)>
-{
-	T t;
-	input >> t;
-	return t;
+	if constexpr (sizeof...(args) == 0 && std::is_trivially_default_constructible_v<T>) {
+		T t;
+		input >> t;
+		return t;
+	} else {
+		T t{std::forward<decltype(args)>(args) ...};
+		input >> t;
+		return t;
+	}
 }
 
 Output&
